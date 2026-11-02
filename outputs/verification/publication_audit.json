@@ -1,0 +1,445 @@
+{
+  "audited_at_utc": "2026-11-02T01:07:49.138779+00:00",
+  "status": "passed_with_external_gates_open",
+  "scope": "Read-only local evidence audit; only this script and its JSON receipt are authored by this audit.",
+  "checks": [
+    {
+      "check": "canonical_source_hashes",
+      "status": "passed",
+      "evidence": {
+        "canonical_csv": "data/raw/eia_pjm_hourly_2019_2025.csv",
+        "sha256": "83ee1f5accd837f0f7aadd41637bb0d5bb79607ad54415b0e1b3f21e269ff9f7"
+      }
+    },
+    {
+      "check": "local_original_workbook_hash",
+      "status": "passed",
+      "evidence": {
+        "file": "data/raw/eia_pjm_full_history.xlsx",
+        "bytes": 114347009,
+        "sha256": "40086ab24a80b26d816515d7202e6f405ac4bc916396cad9fbb7b64ac3c042fc"
+      }
+    },
+    {
+      "check": "source_restoration_failure_guards",
+      "status": "passed",
+      "evidence": {
+        "mocked_checks": {
+          "changed_upstream_refused_before_mutation": true,
+          "corrupt_local_workbook_refused_before_extraction": true
+        },
+        "network_requests": 0,
+        "limitation": "Failure paths use temporary files and mocked bytes; no current upstream download was requested."
+      }
+    },
+    {
+      "check": "headline_metrics_recomputed_from_export",
+      "status": "passed",
+      "evidence": {
+        "N": 8735,
+        "MAE_MW": 4219.447131011448,
+        "RMSE_MW": 5793.435217438939,
+        "WAPE_pct": 4.382002492446987,
+        "Bias_MW": -1464.9710193468804,
+        "coverage": 0.7858042358328563,
+        "daily_naive_MAE_MW": 4863.027819118489,
+        "MAE_improvement_pct": 13.23415600414356
+      }
+    },
+    {
+      "check": "baseline_pairs_are_identical",
+      "status": "passed",
+      "evidence": {
+        "champion_valid_pairs": 8735,
+        "daily_naive_valid_pairs": 8735
+      }
+    },
+    {
+      "check": "quality_population_and_exclusions",
+      "status": "passed",
+      "evidence": {
+        "source_rows": 61368,
+        "history_rows": 61368,
+        "null_cleaned_actuals": 178,
+        "reported_exclusions": 178
+      }
+    },
+    {
+      "check": "high_demand_failure_metrics",
+      "status": "passed",
+      "evidence": {
+        "threshold_MW": 111972.4,
+        "N": 1487,
+        "bias_MW": -6592.893197562206
+      }
+    },
+    {
+      "check": "rmse_tradeoff_retained",
+      "status": "passed",
+      "evidence": {
+        "ridge_RMSE_MW": 5704.5526381506625,
+        "selected_RMSE_MW": 5793.435217438939
+      }
+    },
+    {
+      "check": "saved_same_environment_reproduction_hashes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "data/powerbi/FactDemand.csv",
+          "sha256": "19edc154038e9f2310edea2f5f95bffafb7d527e3893bda1a97e0597e9aa426b",
+          "matches_saved_receipt": true
+        },
+        {
+          "path": "data/powerbi/FactForecast.csv",
+          "sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
+          "matches_saved_receipt": true
+        },
+        {
+          "path": "models/champion.joblib",
+          "sha256": "69b916ee4be80c686108230d43014526a24abdcf7abb4e50c9ffd171d39bca84",
+          "matches_saved_receipt": true
+        },
+        {
+          "path": "outputs/model_metrics.csv",
+          "sha256": "74aef53ae2415c75c101cc9d8ce8a630f66e0863956b622dc90880ac57103ec2",
+          "matches_saved_receipt": true
+        }
+      ]
+    },
+    {
+      "check": "fresh_environment_receipt_scope_is_local",
+      "status": "passed",
+      "evidence": {
+        "scope": "Full independent local environment installation and model fit; hosted CI and Windows Desktop are not included.",
+        "environment": "separate fresh Python3.12 virtual environment, installed from requirements-lock.txt; same host/platform",
+        "limitation": "Historical receipt read; this audit does not rerun or independently attest the original installation."
+      }
+    },
+    {
+      "check": "notebook_saved_execution_and_figures",
+      "status": "passed",
+      "evidence": {
+        "cells": 16,
+        "code_cells": 8,
+        "error_outputs": 0,
+        "embedded_pngs": 7,
+        "saved_pngs": [
+          "reports/figures/demand_trend.png",
+          "reports/figures/high_demand_bias.png",
+          "reports/figures/historical_next_day.png",
+          "reports/figures/hourly_profile.png",
+          "reports/figures/model_comparison.png",
+          "reports/figures/seasonal_errors.png",
+          "reports/figures/stress_week.png"
+        ],
+        "limitation": "Saved execution and image presence checked; no new native/browser visual inspection."
+      }
+    },
+    {
+      "check": "relative_artifact_links_resolve",
+      "status": "passed",
+      "evidence": {
+        "checked_local_links": 78,
+        "broken": [],
+        "external_links_checked": false,
+        "external_link_count": 14
+      }
+    },
+    {
+      "check": "public_material_private_path_scan",
+      "status": "passed",
+      "evidence": {
+        "scanned_text_files": 189,
+        "absolute_path_hits": [],
+        "credential_signature_hits": [],
+        "limitation": "Heuristic signature/path scan; not a complete secret or personal-data certification."
+      }
+    },
+    {
+      "check": "rounded_headline_claims_match_frozen_run",
+      "status": "passed",
+      "evidence": {
+        "checks": {
+          "README.md": [
+            "4.38%",
+            "4,219",
+            "8,735",
+            "13.2%",
+            "78.6%",
+            "Ridge",
+            "historical"
+          ],
+          "reports/CASE_STUDY.md": [
+            "4.38%",
+            "4,219",
+            "8,735",
+            "13.2%",
+            "78.6%",
+            "Ridge",
+            "6,593"
+          ],
+          "docs/PORTFOLIO_AND_CAREER.md": [
+            "4.38%",
+            "8,735",
+            "13.2%",
+            "78.6%"
+          ]
+        },
+        "missing_or_changed": [],
+        "limitation": "Frozen-run headline tokens, not a general natural-language truth checker."
+      }
+    },
+    {
+      "check": "historical_and_native_limitations_disclosed",
+      "status": "passed",
+      "evidence": {
+        "documents": [
+          "README.md",
+          "reports/CASE_STUDY.md",
+          "docs/PORTFOLIO_AND_CAREER.md",
+          "docs/MODEL_CARD.md"
+        ]
+      }
+    },
+    {
+      "check": "unperformed_native_checks_are_open",
+      "status": "passed",
+      "evidence": {
+        "native_items": 9,
+        "checked_native_items": 0
+      }
+    },
+    {
+      "check": "public_link_validation_not_claimed",
+      "status": "passed",
+      "evidence": {
+        "public_links": "No published repository/portfolio link is available to validate in this local audit."
+      }
+    },
+    {
+      "check": "service_receipt_file_hash_bindings",
+      "status": "passed",
+      "evidence": {
+        "file_bindings": [
+          {
+            "path": "outputs/verification/service_exports/contexts.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/models.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/history.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/primitives.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "powerbi/GridCast.SemanticModel/model.bim",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_measures.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_measures.raw.tsv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_columns.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_columns.raw.tsv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_tables.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_tables.raw.tsv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_relationships.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_relationships.raw.tsv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_measures_native.tmdl",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/metadata_measures_native_provenance.json",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/query_provenance.json",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/import_integrity.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "powerbi/validation/expected_import_integrity.json",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/query_provenance.json",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/future_visual_top.raw.ax.txt",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/future_visual_bottom.raw.ax.txt",
+            "sha256_matches": true
+          },
+          {
+            "path": "data/powerbi/FactForecast.csv",
+            "sha256_matches": true
+          },
+          {
+            "path": "outputs/verification/service_exports/future_visual_display.csv",
+            "sha256_matches": true
+          }
+        ],
+        "limitation": "Binds the retained files and source/provenance snapshots to their receipts; does not create new native execution evidence."
+      }
+    },
+    {
+      "check": "saved_service_runtime_receipts",
+      "status": "passed",
+      "evidence": {
+        "manual_refresh": {
+          "status": "Completed",
+          "type": "OnDemand",
+          "start_local_ui": "10/31/2026 10:49:34 PM",
+          "end_local_ui": "10/31/2026 10:49:39 PM",
+          "time_basis": "Local Service UI labels, retained verbatim",
+          "screenshot": "outputs/verification/screenshots/04_service_refresh_completed.jpg"
+        },
+        "model_count": 5,
+        "context_count": 12,
+        "metadata_receipt_status": "actual_service_metadata_matches_canonical_with_documented_service_differences",
+        "import_integrity_status": "actual_service_import_integrity_matches_expected",
+        "limitation": "Saved genuine Service evidence; this audit does not execute M, DAX or the visual engine."
+      }
+    },
+    {
+      "check": "saved_service_visual_receipts",
+      "status": "passed",
+      "evidence": {
+        "screenshots": [
+          {
+            "page": "01 | Demand history",
+            "path": "outputs/verification/screenshots/10_service_history_page.jpg",
+            "sha256_matches": true
+          },
+          {
+            "page": "02 | Untouched 2025 test",
+            "path": "outputs/verification/screenshots/06_service_test_page.jpg",
+            "sha256_matches": true
+          },
+          {
+            "page": "03 | Error and peak risk",
+            "path": "outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+            "sha256_matches": true
+          },
+          {
+            "page": "04 | Historical next day",
+            "path": "outputs/verification/screenshots/11_service_future_page.jpg",
+            "sha256_matches": true
+          }
+        ],
+        "visual_count": 35,
+        "filter_cases": 3,
+        "limitation": "Screenshot hashes verify retained reviewed files, not new live rendering or full accessibility certification."
+      }
+    },
+    {
+      "check": "saved_future_display_receipt",
+      "status": "passed",
+      "evidence": {
+        "rows": 24,
+        "numeric_display_cells": 72,
+        "raw_and_normalized_hashes_match": true,
+        "evidence_class": "rounded rendered Power BI Service UI accessibility rows; NOT a native full-precision CSV export"
+      }
+    },
+    {
+      "check": "saved_service_access_scope",
+      "status": "passed",
+      "evidence": {
+        "report_direct_access_results": 1,
+        "model_direct_access_results": 1,
+        "sharing_links": "No report/model links in inspected UI; organization policies still apply.",
+        "trial_scope": {
+          "observed_after": "Opening report Manage permissions",
+          "message": "Looks like you wanted to access a shared artifact. We've given you a free trial of Power BI paid features for 60 days so you can navigate Power BI freely.",
+          "action": "Dismissed using Close Dialog. No Start trial, upgrade, billing, license administration or terms action was performed.",
+          "subsequent_header": "Power BI Trial: 59 days left",
+          "access_after_trial_expiry_verified": false
+        },
+        "limitation": "Saved UI observations; not an independent tenant security or license audit."
+      }
+    },
+    {
+      "check": "declared_ci_uses_pinned_environment",
+      "status": "passed",
+      "evidence": {
+        "packages": 54,
+        "runner": "ubuntu-latest",
+        "hosted_execution_verified": false
+      }
+    },
+    {
+      "check": "cross_platform_lock_scope",
+      "status": "informational",
+      "evidence": {
+        "unconditional_platform_associated_pins": [
+          "appnope==1.0.0",
+          "pexpect==4.9.0",
+          "ptyprocess==0.7.0"
+        ],
+        "finding": "appnope 1.0.0 is a pure universal wheel and uses a dummy implementation outside macOS; no Linux install failure established.",
+        "windows_ipython_colorama_is_explicitly_pinned": false,
+        "windows_lock_note": "Installed IPython metadata requires colorama on win32. If absent from the lock, pip resolves it transitively without an explicit pin; this is a portability reproducibility gap, not an observed installation failure.",
+        "recommendation": "Use appropriate environment markers for platform-associated extras and pin active dependencies for each claimed platform. Native Windows Power BI remains outside this Python audit."
+      }
+    },
+    {
+      "check": "publication_scripts_parse",
+      "status": "passed",
+      "evidence": "Acquisition, extraction, pipeline, notebook, and narrative builders parse as Python."
+    }
+  ],
+  "findings": [],
+  "remaining_unperformed_gates": [
+    "Separate Windows Power BI Desktop/PBIP compatibility acceptance; completed Service checks do not establish it.",
+    "Hosted CI execution and Windows Python/native Desktop validation; Linux result is recorded separately in linux_reproduction.json.",
+    "Public repository/portfolio access and intended audience review; no external publication performed.",
+    "Power BI Service access after the unexpected automatic trial expires; no continued access claim."
+  ],
+  "summary": {
+    "N": 8735,
+    "MAE_MW": 4219.447131011448,
+    "RMSE_MW": 5793.435217438939,
+    "WAPE_pct": 4.382002492446987,
+    "Bias_MW": -1464.9710193468804,
+    "coverage": 0.7858042358328563,
+    "daily_naive_MAE_MW": 4863.027819118489,
+    "MAE_improvement_pct": 13.23415600414356
+  }
+}

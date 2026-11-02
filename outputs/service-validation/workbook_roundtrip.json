@@ -1,0 +1,112 @@
+{
+  "verified_at_utc": "2026-10-31T15:25:44.961913+00:00",
+  "status": "passed",
+  "method": "Independent read-only openpyxl full cell/type comparison plus saved OOXML native-table inspection",
+  "numeric_absolute_tolerance": 1e-07,
+  "text_comparison": "exact including ISO timestamp/date strings",
+  "blank_policy": "CSV empty -> Excel None, never zero or empty string",
+  "sheets": [
+    {
+      "sheet": "FactDemand",
+      "data_rows": 61368,
+      "columns": 9,
+      "cells_compared": 552312,
+      "source_blanks_checked": 345,
+      "numeric_zeros_checked": 5114,
+      "typed_booleans_checked": 61368,
+      "maximum_absolute_numeric_error": 0.0,
+      "source_sha256": "19edc154038e9f2310edea2f5f95bffafb7d527e3893bda1a97e0597e9aa426b"
+    },
+    {
+      "sheet": "FactForecast",
+      "data_rows": 131544,
+      "columns": 11,
+      "cells_compared": 1446984,
+      "source_blanks_checked": 228461,
+      "numeric_zeros_checked": 5481,
+      "typed_booleans_checked": 0,
+      "maximum_absolute_numeric_error": 0.0,
+      "source_sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f"
+    },
+    {
+      "sheet": "DimDate",
+      "data_rows": 2558,
+      "columns": 8,
+      "cells_compared": 20464,
+      "source_blanks_checked": 0,
+      "numeric_zeros_checked": 0,
+      "typed_booleans_checked": 2558,
+      "maximum_absolute_numeric_error": 0.0,
+      "source_sha256": "2c5978537da0d1b699bd6ddf1b5f5e93824edcafef4ca1501db1dd77182f8df2"
+    },
+    {
+      "sheet": "DimModel",
+      "data_rows": 5,
+      "columns": 1,
+      "cells_compared": 5,
+      "source_blanks_checked": 0,
+      "numeric_zeros_checked": 0,
+      "typed_booleans_checked": 0,
+      "maximum_absolute_numeric_error": 0.0,
+      "source_sha256": "05f423afa1c6fb6afb4884f5faf03169d9f698ecda764f1bb80a5a02e0b8d985"
+    }
+  ],
+  "tables": [
+    {
+      "name": "FactDemand",
+      "ref": "A1:I61369",
+      "columns": [
+        "DateTimeUTC",
+        "ActualMW",
+        "OriginalDemandMWh",
+        "IsActualValid",
+        "FeatureInputMW",
+        "Date",
+        "HourUTC",
+        "DateLocal",
+        "HourLocal"
+      ]
+    },
+    {
+      "name": "FactForecast",
+      "ref": "A1:K131545",
+      "columns": [
+        "DateTimeUTC",
+        "Date",
+        "HourUTC",
+        "ForecastOriginUTC",
+        "HorizonHours",
+        "Model",
+        "Split",
+        "ActualMW",
+        "ForecastMW",
+        "Lower80MW",
+        "Upper80MW"
+      ]
+    },
+    {
+      "name": "DimDate",
+      "ref": "A1:H2559",
+      "columns": [
+        "Date",
+        "Year",
+        "MonthNumber",
+        "MonthName",
+        "YearMonth",
+        "DayOfWeekNumber",
+        "DayOfWeekName",
+        "IsWeekend"
+      ]
+    },
+    {
+      "name": "DimModel",
+      "ref": "A1:A6",
+      "columns": [
+        "Model"
+      ]
+    }
+  ],
+  "errors": [],
+  "workbook_sha256": "1771113ab3f5d99fbebd417388ad51d5da16934f2c7250fa6a2edb78fc5b7d05",
+  "scope": "Data transport workbook only. No Power BI import or native Excel recalculation claim."
+}

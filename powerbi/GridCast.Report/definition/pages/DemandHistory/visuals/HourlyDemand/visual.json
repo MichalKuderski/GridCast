@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "HourlyDemand",
+  "position": {
+    "x": 630,
+    "y": 610,
+    "width": 600,
+    "height": 245,
+    "z": 1240,
+    "tabOrder": 6100630
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean demand by local hour | MW'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean demand by local hour | MW'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDemand"
+                    }
+                  },
+                  "Property": "HourLocal"
+                }
+              },
+              "queryRef": "FactDemand.HourLocal",
+              "nativeQueryRef": "HourLocal"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Mean Demand MW"
+                }
+              },
+              "queryRef": "DimModel.Mean Demand MW",
+              "nativeQueryRef": "Mean Demand MW"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactDemand"
+                  }
+                },
+                "Property": "HourLocal"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}

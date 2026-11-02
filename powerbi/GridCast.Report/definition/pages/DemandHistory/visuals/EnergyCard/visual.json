@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "EnergyCard",
+  "position": {
+    "x": 30,
+    "y": 180,
+    "width": 380,
+    "height": 105,
+    "z": 210,
+    "tabOrder": 1800030
+  },
+  "visual": {
+    "visualType": "card",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Observed energy proxy | MWh'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Observed energy proxy | MWh'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Demand MWh"
+                }
+              },
+              "queryRef": "DimModel.Demand MWh",
+              "nativeQueryRef": "Demand MWh"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

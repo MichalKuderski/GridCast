@@ -1,0 +1,114 @@
+// Create these as measures on DimModel, or use the authored model.bim.
+// Formats and descriptions are embedded in model.bim.
+
+// Sum of hourly mean MW multiplied by each one-hour interval.
+Demand MWh =
+SUM(FactDemand[ActualMW])
+
+// Mean hourly PJM balancing authority demand over the selected UTC dates.
+Mean Demand MW =
+AVERAGE(FactDemand[ActualMW])
+
+// Maximum observed hourly mean demand; not an instantaneous peak.
+Peak Demand MW =
+MAX(FactDemand[ActualMW])
+
+// Number of nonblank one-hour observations; zero when no observations exist. Missing demand is not counted as zero.
+Observed Hours =
+COALESCE(COUNT(FactDemand[ActualMW]), 0)
+
+// Number of expected one-hour slots on the complete UTC grid; zero for an empty date selection.
+Expected Hours =
+COALESCE(COUNTROWS(FactDemand), 0)
+
+// Expected hourly slots without a valid observed actual.
+Missing Hours =
+[Expected Hours] - [Observed Hours]
+
+// Observed valid hours divided by expected hourly slots.
+Observation Completeness =
+DIVIDE([Observed Hours], [Expected Hours])
+
+// Model safeguard for cards and lines; comparison tables supply row context.
+Model Selection =
+IF(HASONEVALUE(DimModel[Model]), SELECTEDVALUE(DimModel[Model]), "Select one model to view forecast KPIs")
+
+// Scored 2025 hourly pairs for exactly one model; zero for an empty scored subset.
+Test Hours =
+IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]))), 0))
+
+// Actual one-hour energy on scored test pairs; excludes future rows.
+Test Actual MWh =
+IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+
+// Forecast one-hour energy on the same scored test pairs.
+Test Forecast MWh =
+IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+
+// Mean actual hourly demand MW, at the current axis grain, on scored test pairs.
+Test Actual MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+
+// Mean forecast MW, at the current axis grain, on scored test pairs.
+Test Forecast MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+
+// Mean absolute hourly error; lower is better.
+Test MAE MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+
+// Root mean squared hourly error, emphasizing large errors.
+Test RMSE MW =
+IF(HASONEVALUE(DimModel[Model]), SQRT(AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), POWER(FactForecast[ForecastMW] - FactForecast[ActualMW], 2))))
+
+// Ratio of aggregate absolute error to aggregate absolute actual demand. Never average daily WAPE.
+Test WAPE =
+IF(HASONEVALUE(DimModel[Model]), DIVIDE(SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ActualMW]))))
+
+// Forecast minus actual; positive means overforecasting.
+Test Bias MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+
+// Number of scored test observations with both interval bounds; zero when none exist.
+Test Interval Hours =
+IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW]))), 0))
+
+// Observed empirical coverage of nominal 80% hourly prediction intervals. Zero when no actual is covered, blank when no interval pairs exist.
+Test Coverage 80 =
+IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])))))
+
+// Mean width on test rows with interval bounds.
+Test Mean Interval Width MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[Upper80MW] - FactForecast[Lower80MW]))
+
+// Fixed 90th percentile of valid initial training demand (2019–2022, after 336-hour warmup). Generated from outputs/run_summary.json; never derived from test demand.
+Training High Demand Threshold MW =
+111972.4
+
+// Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.
+Test High Demand Hours =
+IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))
+
+// Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.
+Test High Demand MAE MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+
+// Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.
+Test High Demand Bias MW =
+IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+
+// Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.
+Test High Demand Coverage 80 =
+IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))
+
+// Historical next-day forecast from the end of the frozen 2025 source; not today's live forecast.
+Future Forecast MW =
+IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[ForecastMW]), KEEPFILTERS(FactForecast[Split] = "future")))
+
+// Pointwise lower 80% bound; displayed at hourly grain only.
+Future Lower 80 MW =
+IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Lower80MW]), KEEPFILTERS(FactForecast[Split] = "future")))
+
+// Pointwise upper 80% bound; displayed at hourly grain only.
+Future Upper 80 MW =
+IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Upper80MW]), KEEPFILTERS(FactForecast[Split] = "future")))

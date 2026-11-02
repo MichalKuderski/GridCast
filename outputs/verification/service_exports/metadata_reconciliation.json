@@ -1,0 +1,548 @@
+{
+  "status": "actual_service_metadata_matches_canonical_with_documented_service_differences",
+  "checked_at_utc": "2026-11-01T05:28:21.021263+00:00",
+  "source_model": {
+    "path": "powerbi/GridCast.SemanticModel/model.bim",
+    "sha256": "e1c2d779839c2121da2e27187f29d7b004ff33ec64605292b670a999d88d407b"
+  },
+  "actual_evidence": {
+    "metadata_measures": {
+      "csv_path": "outputs/verification/service_exports/metadata_measures.csv",
+      "csv_sha256": "522e9f18649485db6e7515341f146d7a9658cfdcbb4e85eb68f811681d1640cb",
+      "raw_tsv_path": "outputs/verification/service_exports/metadata_measures.raw.tsv",
+      "raw_tsv_sha256": "4074d31623980632abb354accd810cc70b92ebd58ce69c1f1c908f31ecb39b16",
+      "rows": 28,
+      "columns": 9,
+      "raw_csv_cell_preservation": "exact"
+    },
+    "metadata_columns": {
+      "csv_path": "outputs/verification/service_exports/metadata_columns.csv",
+      "csv_sha256": "18e0c922b1256e5b21c6b4fb588445952431eea6b8e41065f8717ad04031af23",
+      "raw_tsv_path": "outputs/verification/service_exports/metadata_columns.raw.tsv",
+      "raw_tsv_sha256": "bce6cab1f7eae2aeab11d02999e2a10d732317b720d16d459911d201440ee295",
+      "rows": 28,
+      "columns": 11,
+      "raw_csv_cell_preservation": "exact"
+    },
+    "metadata_tables": {
+      "csv_path": "outputs/verification/service_exports/metadata_tables.csv",
+      "csv_sha256": "345a052079e029097d050f52923ee163a027ce1b8784b4e38e10b3d47a8604e5",
+      "raw_tsv_path": "outputs/verification/service_exports/metadata_tables.raw.tsv",
+      "raw_tsv_sha256": "3ddf8918b2818afaf4266986687d0dc6c5b17d978cbbc9597f2333c40fd82b22",
+      "rows": 9,
+      "columns": 5,
+      "raw_csv_cell_preservation": "exact"
+    },
+    "metadata_relationships": {
+      "csv_path": "outputs/verification/service_exports/metadata_relationships.csv",
+      "csv_sha256": "76f4061e3d6ad242b10e19e57aa39daa9074c5430715688ef8a345bda3c47cf5",
+      "raw_tsv_path": "outputs/verification/service_exports/metadata_relationships.raw.tsv",
+      "raw_tsv_sha256": "ed03a45d5d7fdd6bc3d358c564d119ffd924c90496ef168f4b70ce3d5e4d5750",
+      "rows": 7,
+      "columns": 10,
+      "raw_csv_cell_preservation": "exact"
+    },
+    "native_measure_only_tmdl": {
+      "path": "outputs/verification/service_exports/metadata_measures_native.tmdl",
+      "sha256": "4e19eb486cf0b3246fce7f0b1e7f9e90e4e6090bd6eeba53cde47f5fb46f5506",
+      "measure_count": 28,
+      "execution_provenance": {
+        "path": "outputs/verification/service_exports/metadata_measures_native_provenance.json",
+        "sha256": "8fa81ca4cc87c1ace9213ab49c6ef124f6147fb24bd97de931c920f1e862bb0f",
+        "record": {
+          "copiedAtUtc": "2026-11-01T03:59:47.355Z",
+          "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+          "method": "Actual Service TMDL view > DimModel > Script TMDL to > Clipboard",
+          "nativeClipboardSha256": "e8b029b371068f25cdf53cd88edd46a110761919640c0b4097ae48382b024be0",
+          "publicProjectionSha256": "4e19eb486cf0b3246fce7f0b1e7f9e90e4e6090bd6eeba53cde47f5fb46f5506",
+          "projection": "28 native measure blocks retained verbatim after newline normalization; command wrapper uses ref table; existing column and private M partition omitted",
+          "measureCount": 28,
+          "formatStringCount": 27,
+          "partitionOrConnectionDetailsPublished": false
+        }
+      }
+    }
+  },
+  "execution_provenance": {
+    "path": "outputs/verification/service_exports/query_provenance.json",
+    "sha256": "519ec9e7bffad72137aa99349adbebc962af31d824f62da241fd1c9a4d3fc8f5",
+    "queries": [
+      {
+        "queryFile": "06a_service_measures.dax",
+        "label": "metadata_measures",
+        "rows": 28,
+        "columns": 9,
+        "nativeStatus": "generic: Success (720.9 ms)",
+        "copiedAtUtc": "2026-11-01T03:56:19.297Z",
+        "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+        "queryTextVerifiedViaNativeCopy": true,
+        "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+      },
+      {
+        "queryFile": "06b_service_columns.dax",
+        "label": "metadata_columns",
+        "rows": 28,
+        "columns": 11,
+        "nativeStatus": "generic: Success (669.7 ms)",
+        "copiedAtUtc": "2026-11-01T03:56:21.602Z",
+        "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+        "queryTextVerifiedViaNativeCopy": true,
+        "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+      },
+      {
+        "queryFile": "06c_service_tables.dax",
+        "label": "metadata_tables",
+        "rows": 9,
+        "columns": 5,
+        "nativeStatus": "generic: Success (663.2 ms)",
+        "copiedAtUtc": "2026-11-01T03:56:49.064Z",
+        "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+        "queryTextVerifiedViaNativeCopy": true,
+        "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+      },
+      {
+        "queryFile": "06d_service_relationships.dax",
+        "label": "metadata_relationships",
+        "rows": 7,
+        "columns": 10,
+        "nativeStatus": "generic: Success (572.8 ms)",
+        "copiedAtUtc": "2026-11-01T03:56:51.356Z",
+        "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+        "queryTextVerifiedViaNativeCopy": true,
+        "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+      }
+    ]
+  },
+  "checks": {
+    "persisted_measure_names": {
+      "expected": 28,
+      "actual": 28,
+      "passed": true
+    },
+    "expressions_exact": {
+      "matched": 28,
+      "differences": []
+    },
+    "descriptions_exact": {
+      "matched": 28,
+      "differences": []
+    },
+    "display_folders_exact": {
+      "matched": 28,
+      "differences": []
+    },
+    "measure_formats": {
+      "status": "exact_native_tmdl_match",
+      "canonical_numeric_format_count": 27,
+      "info_view_blank_count": 28,
+      "info_view_differences": [
+        {
+          "table": "DimModel",
+          "measure": "Demand MWh",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Mean Demand MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Peak Demand MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Observed Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Expected Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Missing Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Observation Completeness",
+          "expected": "0.00%",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Actual MWh",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Forecast MWh",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Actual MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Forecast MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test MAE MW",
+          "expected": "#,0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test RMSE MW",
+          "expected": "#,0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test WAPE",
+          "expected": "0.00%",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Bias MW",
+          "expected": "+#,0.0;-#,0.0;0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Interval Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Coverage 80",
+          "expected": "0.0%",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test Mean Interval Width MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Training High Demand Threshold MW",
+          "expected": "#,0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test High Demand Hours",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test High Demand MAE MW",
+          "expected": "#,0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test High Demand Bias MW",
+          "expected": "+#,0.0;-#,0.0;0.0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Test High Demand Coverage 80",
+          "expected": "0.0%",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Future Forecast MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Future Lower 80 MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        },
+        {
+          "table": "DimModel",
+          "measure": "Future Upper 80 MW",
+          "expected": "#,0",
+          "actual_info_view": ""
+        }
+      ],
+      "native_tmdl_differences": [],
+      "native_format_groups": [
+        {
+          "formatString": "#,0",
+          "count": 17,
+          "measures": [
+            "Demand MWh",
+            "Expected Hours",
+            "Future Forecast MW",
+            "Future Lower 80 MW",
+            "Future Upper 80 MW",
+            "Mean Demand MW",
+            "Missing Hours",
+            "Observed Hours",
+            "Peak Demand MW",
+            "Test Actual MW",
+            "Test Actual MWh",
+            "Test Forecast MW",
+            "Test Forecast MWh",
+            "Test High Demand Hours",
+            "Test Hours",
+            "Test Interval Hours",
+            "Test Mean Interval Width MW"
+          ]
+        },
+        {
+          "formatString": "#,0.0",
+          "count": 4,
+          "measures": [
+            "Test High Demand MAE MW",
+            "Test MAE MW",
+            "Test RMSE MW",
+            "Training High Demand Threshold MW"
+          ]
+        },
+        {
+          "formatString": "(no explicit format)",
+          "count": 1,
+          "measures": [
+            "Model Selection"
+          ]
+        },
+        {
+          "formatString": "+#,0.0;-#,0.0;0.0",
+          "count": 2,
+          "measures": [
+            "Test Bias MW",
+            "Test High Demand Bias MW"
+          ]
+        },
+        {
+          "formatString": "0.0%",
+          "count": 2,
+          "measures": [
+            "Test Coverage 80",
+            "Test High Demand Coverage 80"
+          ]
+        },
+        {
+          "formatString": "0.00%",
+          "count": 2,
+          "measures": [
+            "Observation Completeness",
+            "Test WAPE"
+          ]
+        }
+      ],
+      "numeric_native_formats_exact": 27,
+      "interpretation": "All27 numeric format strings match the actual native TMDL projection exactly; Model Selection correctly has no explicit numeric format. The blank INFO.VIEW FormatString cells are an observed metadata-view limitation, not missing native formats."
+    },
+    "column_names": {
+      "expected": 28,
+      "actual": 28,
+      "passed": true
+    },
+    "column_types_semantically_compatible": {
+      "matched": 28,
+      "differences": [],
+      "note": "INFO.VIEW uses human-readable type families: Date covers TOM dateTime, Number covers numeric types. Imported hour/origin integrity checks independently establish retained time components; this does not assert a UI format string from the type label."
+    },
+    "sort_by_columns": {
+      "expected_explicit": 3,
+      "matched": 3,
+      "differences": []
+    },
+    "dimdate_marked": {
+      "category": "Time",
+      "is_date_table_by_category": true,
+      "date_column_key_unique_nonnullable": true
+    },
+    "canonical_relationships": {
+      "count": 3,
+      "passed": true,
+      "rows": [
+        {
+          "Relationship": "'FactDemand'[Date] *[<-]1 'DimDate'[Date]",
+          "FromTable": "FactDemand",
+          "FromColumn": "Date",
+          "FromCardinality": "Many",
+          "ToTable": "DimDate",
+          "ToColumn": "Date",
+          "ToCardinality": "One",
+          "IsActive": "true",
+          "CrossFilteringBehavior": "OneDirection",
+          "State": "Ready"
+        },
+        {
+          "Relationship": "'FactForecast'[Date] *[<-]1 'DimDate'[Date]",
+          "FromTable": "FactForecast",
+          "FromColumn": "Date",
+          "FromCardinality": "Many",
+          "ToTable": "DimDate",
+          "ToColumn": "Date",
+          "ToCardinality": "One",
+          "IsActive": "true",
+          "CrossFilteringBehavior": "OneDirection",
+          "State": "Ready"
+        },
+        {
+          "Relationship": "'FactForecast'[Model] *[<-]1 'DimModel'[Model]",
+          "FromTable": "FactForecast",
+          "FromColumn": "Model",
+          "FromCardinality": "Many",
+          "ToTable": "DimModel",
+          "ToColumn": "Model",
+          "ToCardinality": "One",
+          "IsActive": "true",
+          "CrossFilteringBehavior": "OneDirection",
+          "State": "Ready"
+        }
+      ]
+    }
+  },
+  "service_generated_objects": {
+    "engine_total_tables": 9,
+    "canonical_tables": 4,
+    "hidden_auto_date_tables": [
+      {
+        "Table": "DateTableTemplate_e527fc9a-0b88-4dc1-89d7-9a8ce4c68fdb",
+        "StorageMode": "Import",
+        "DataCategory": "Regular",
+        "IsDateTableByCategory": "false",
+        "IsHidden": "true"
+      },
+      {
+        "Table": "LocalDateTable_0b2798d6-d5b3-4d8e-9373-34030f5c8bec",
+        "StorageMode": "Import",
+        "DataCategory": "Regular",
+        "IsDateTableByCategory": "false",
+        "IsHidden": "true"
+      },
+      {
+        "Table": "LocalDateTable_2b9b404e-7f06-4c4d-b416-f399b82d4816",
+        "StorageMode": "Import",
+        "DataCategory": "Regular",
+        "IsDateTableByCategory": "false",
+        "IsHidden": "true"
+      },
+      {
+        "Table": "LocalDateTable_70fcd482-0b29-40f7-a58d-fc52dd34bd77",
+        "StorageMode": "Import",
+        "DataCategory": "Regular",
+        "IsDateTableByCategory": "false",
+        "IsHidden": "true"
+      },
+      {
+        "Table": "LocalDateTable_ce0e8501-e370-42cc-8393-c922957d42e8",
+        "StorageMode": "Import",
+        "DataCategory": "Regular",
+        "IsDateTableByCategory": "false",
+        "IsHidden": "true"
+      }
+    ],
+    "hidden_auto_objects_only": true,
+    "engine_total_relationships": 7,
+    "canonical_relationships": 3,
+    "automatic_date_relationships": [
+      {
+        "Relationship": "'FactDemand'[DateLocal] *[<-]1 'LocalDateTable_ce0e8501-e370-42cc-8393-c922957d42e8'[Date]",
+        "FromTable": "FactDemand",
+        "FromColumn": "DateLocal",
+        "FromCardinality": "Many",
+        "ToTable": "LocalDateTable_ce0e8501-e370-42cc-8393-c922957d42e8",
+        "ToColumn": "Date",
+        "ToCardinality": "One",
+        "IsActive": "true",
+        "CrossFilteringBehavior": "OneDirection",
+        "State": "Ready"
+      },
+      {
+        "Relationship": "'FactDemand'[DateTimeUTC] *[<-]1 'LocalDateTable_0b2798d6-d5b3-4d8e-9373-34030f5c8bec'[Date]",
+        "FromTable": "FactDemand",
+        "FromColumn": "DateTimeUTC",
+        "FromCardinality": "Many",
+        "ToTable": "LocalDateTable_0b2798d6-d5b3-4d8e-9373-34030f5c8bec",
+        "ToColumn": "Date",
+        "ToCardinality": "One",
+        "IsActive": "true",
+        "CrossFilteringBehavior": "OneDirection",
+        "State": "Ready"
+      },
+      {
+        "Relationship": "'FactForecast'[DateTimeUTC] *[<-]1 'LocalDateTable_70fcd482-0b29-40f7-a58d-fc52dd34bd77'[Date]",
+        "FromTable": "FactForecast",
+        "FromColumn": "DateTimeUTC",
+        "FromCardinality": "Many",
+        "ToTable": "LocalDateTable_70fcd482-0b29-40f7-a58d-fc52dd34bd77",
+        "ToColumn": "Date",
+        "ToCardinality": "One",
+        "IsActive": "true",
+        "CrossFilteringBehavior": "OneDirection",
+        "State": "Ready"
+      },
+      {
+        "Relationship": "'FactForecast'[ForecastOriginUTC] *[<-]1 'LocalDateTable_2b9b404e-7f06-4c4d-b416-f399b82d4816'[Date]",
+        "FromTable": "FactForecast",
+        "FromColumn": "ForecastOriginUTC",
+        "FromCardinality": "Many",
+        "ToTable": "LocalDateTable_2b9b404e-7f06-4c4d-b416-f399b82d4816",
+        "ToColumn": "Date",
+        "ToCardinality": "One",
+        "IsActive": "true",
+        "CrossFilteringBehavior": "OneDirection",
+        "State": "Ready"
+      }
+    ],
+    "automatic_date_relationships_valid": true,
+    "interpretation": "Five hidden auto-date objects and four internal date relationships are generated by the Service. They are additional to, not replacements for, the four canonical tables and three canonical fact-to-dimension relationships. No deletion was attempted or recommended."
+  },
+  "nonblocking_metadata_annotation_differences": [
+    {
+      "table": "DimModel",
+      "column": "Model",
+      "canonical_is_key": true,
+      "actual_is_key": false,
+      "actual_is_unique": true,
+      "actual_is_nullable": false
+    }
+  ],
+  "limitations": [
+    "This independently audits retained real Service export cell contents and operator provenance; it does not itself perform browser queries.",
+    "The actual INFO.VIEW exports contain blank static FormatString cells for all28 measures. This limitation was resolved for the audit by exact comparison of all27 numeric formats to the actual native measure-only TMDL projection, with retained copy/projection provenance.",
+    "Canonical DimModel.Model IsKey annotation differs, but Service reports IsUnique=true/IsNullable=false and the active many-to-one model relationship plus independent import-integrity checks establish the dimension key behavior.",
+    "Passing Service model metadata and DAX does not establish Windows PBIP compatibility, report visual construction/rendering, interactions, screenshots, accessibility or public publication."
+  ],
+  "raw_tsv_parser_note": "Native copied TSV is a literal tab/newline cell stream. Literal quotes in the Boolean column format were preserved with QUOTE_NONE; CSV conversion changes quoting only, not cell contents."
+}

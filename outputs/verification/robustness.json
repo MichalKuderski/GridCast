@@ -1,0 +1,105 @@
+{
+  "audit_time_utc": "2026-10-31T14:09:49.179925+00:00",
+  "status": "post-release diagnostic sensitivity; no model or experiment replacement",
+  "selected_specification_unchanged": "HistGB_small",
+  "source_csv_sha256": "83ee1f5accd837f0f7aadd41637bb0d5bb79607ad54415b0e1b3f21e269ff9f7",
+  "source_manifest_and_audit_hashes_agree": true,
+  "original_workbook_currently_present": true,
+  "original_workbook_sha256": "40086ab24a80b26d816515d7202e6f405ac4bc916396cad9fbb7b64ac3c042fc",
+  "original_workbook_hash_matches_manifest": true,
+  "code_sha256": {
+    "src/gridcast/core.py": "45062787ded16204ee7db38cf9988d0ef3248513422d70b9e0bda9125a920e2e",
+    "scripts/run_pipeline.py": "b2bf8820cafb4622d30599a1dfa68abac144c784692817790b1aa9b469ce2685",
+    "scripts/audit_robustness.py": "b8de8902aa488170180dbafdd4da2102a8a62e9a909941ff1b24564528cd8f1d"
+  },
+  "saved_model_sha256": "69b916ee4be80c686108230d43014526a24abdcf7abb4e50c9ffd171d39bca84",
+  "saved_model_max_export_prediction_difference_MW": 4.999310476705432e-07,
+  "canonical_test": {
+    "N": 8735,
+    "MAE_MW": 4219.447131015733,
+    "RMSE_MW": 5793.435217444046,
+    "WAPE_pct": 4.382002492451437,
+    "MAPE_pct": 4.188363807137752,
+    "Bias_MW": -1464.9710193527667
+  },
+  "manual_exclusion_sensitivity": {
+    "policy": "retain four manual training spikes; retain all source quality exclusions; same frozen selected specification refit through2023; unchanged valid2025truth",
+    "canonical_fit_rows": 43382,
+    "alternative_fit_rows": 43386,
+    "alternative_test": {
+      "N": 8735,
+      "MAE_MW": 4226.225718670097,
+      "RMSE_MW": 5836.22058327462,
+      "WAPE_pct": 4.3890422270598854,
+      "MAPE_pct": 4.195461197203448,
+      "Bias_MW": -1407.0853510456595
+    },
+    "MAE_change_MW": 6.778587654363946
+  },
+  "one_hour_release_delay_sensitivity": {
+    "policy": "fixed saved weights; observations released exactly1hourafterintervalend; unavailable latest input carried forward; future targets unknown",
+    "latest_available_interval_start_relative_origin_hours": -2,
+    "changed_target_rows": 318,
+    "changed_horizons": [
+      24
+    ],
+    "all_valid_test": {
+      "N": 8735,
+      "MAE_MW": 4232.570567684704,
+      "RMSE_MW": 5801.558414996346,
+      "WAPE_pct": 4.395631513128162,
+      "MAPE_pct": 4.20196880761395,
+      "Bias_MW": -1460.7624150329857
+    },
+    "MAE_change_MW": 13.123436668970498,
+    "canonical_horizon24": {
+      "N": 364,
+      "MAE_MW": 4522.071913102299,
+      "RMSE_MW": 6457.394679914097,
+      "WAPE_pct": 4.29322217675313,
+      "MAPE_pct": 4.060839381335749,
+      "Bias_MW": -1913.7223963003669
+    },
+    "delayed_horizon24": {
+      "N": 364,
+      "MAE_MW": 4836.998339760147,
+      "RMSE_MW": 6630.09875237405,
+      "WAPE_pct": 4.592211035169037,
+      "MAPE_pct": 4.387322016389546,
+      "Bias_MW": -1812.7274547253994
+    },
+    "zero_delay_batch_max_feature_difference": 7.036760507617146e-09,
+    "limit": "approximate latency stress, not archived releases, not recalibrated intervals, not operational validation"
+  },
+  "excluded_test_truth": {
+    "count": 25,
+    "first_utc": "2025-11-02T04:00:00+00:00",
+    "last_utc": "2025-11-03T04:00:00+00:00",
+    "contiguous": true,
+    "originals_missing": 25,
+    "provider_estimate_count": 24,
+    "provider_estimate_stress_metrics": {
+      "N": 8759,
+      "MAE_MW": 4213.69679470408,
+      "RMSE_MW": 5786.899629168513,
+      "WAPE_pct": 4.378022970381298,
+      "MAPE_pct": 4.184118909196875,
+      "Bias_MW": -1465.1607628760212
+    },
+    "limit": "provider imputation is estimated truth; stress metrics are not substitute observed accuracy; onehour still unavailable"
+  },
+  "interval_stress_diagnostics": {
+    "nominal_pointwise_level": 0.8,
+    "overall_valid_hour_coverage": 0.7858042358328563,
+    "high_demand_threshold_initial_training_p90_MW": 111972.4,
+    "high_demand_valid_hours": 1487,
+    "high_demand_coverage": 0.47948890383322124,
+    "lowest_month_number": 1,
+    "lowest_month_coverage": 0.6263440860215054,
+    "complete_UTC_days": 363,
+    "complete_day_all_24_hours_covered_fraction": 0.4297520661157025,
+    "limit": "pointwise intervals are not simultaneous path intervals; no new recalibration or guarantee"
+  },
+  "source_quality_flags_retrospective": true,
+  "no_fresh_holdout_claim": true
+}

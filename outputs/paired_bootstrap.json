@@ -1,0 +1,6 @@
+{
+  "method": "paired circular moving-block bootstrap, 7-day blocks, 2000 repetitions, seed42",
+  "mean_MAE_gain_MW": 643.5806881070406,
+  "lower95_MW": 254.86936957999168,
+  "upper95_MW": 1025.6020453921371
+}

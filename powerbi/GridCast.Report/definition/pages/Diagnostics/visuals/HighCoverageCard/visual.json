@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "HighCoverageCard",
+  "position": {
+    "x": 30,
+    "y": 820,
+    "width": 300,
+    "height": 65,
+    "z": 850,
+    "tabOrder": 8200030
+  },
+  "visual": {
+    "visualType": "card",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'High-demand 80% coverage'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'High-demand 80% coverage'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test High Demand Coverage 80"
+                }
+              },
+              "queryRef": "DimModel.Test High Demand Coverage 80",
+              "nativeQueryRef": "Test High Demand Coverage 80"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+// Read-only DAX. Run against the REFRESHED GridCast model; this file has NOT been executed here.
+// Run outside any report visual: queries define their own contexts. CSV blanks are DAX BLANK.
+EVALUATE
+ROW(
+    "Demand MWh", [Demand MWh],
+    "Mean Demand MW", [Mean Demand MW],
+    "Peak Demand MW", [Peak Demand MW],
+    "Observed Hours", [Observed Hours],
+    "Expected Hours", [Expected Hours],
+    "Missing Hours", [Missing Hours],
+    "Observation Completeness", [Observation Completeness]
+)

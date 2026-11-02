@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "TrainingThresholdCard",
+  "position": {
+    "x": 30,
+    "y": 185,
+    "width": 280,
+    "height": 100,
+    "z": 215,
+    "tabOrder": 1850030
+  },
+  "visual": {
+    "visualType": "card",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fixed training p90 threshold | MW'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fixed training p90 threshold | MW'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Training High Demand Threshold MW"
+                }
+              },
+              "queryRef": "DimModel.Training High Demand Threshold MW",
+              "nativeQueryRef": "Training High Demand Threshold MW"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

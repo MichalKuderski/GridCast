@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "MissingCard",
+  "position": {
+    "x": 945,
+    "y": 95,
+    "width": 285,
+    "height": 75,
+    "z": 1040,
+    "tabOrder": 950945
+  },
+  "visual": {
+    "visualType": "card",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Missing actual hours'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Missing actual hours'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Missing Hours"
+                }
+              },
+              "queryRef": "DimModel.Missing Hours",
+              "nativeQueryRef": "Missing Hours"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

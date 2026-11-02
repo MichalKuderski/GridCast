@@ -1,0 +1,28 @@
+{
+  "status": "supplied_native_export_values_match_expected",
+  "checked_at_utc": "2026-11-01T05:28:21.023169+00:00",
+  "contexts": 12,
+  "models": 5,
+  "actual_exports": {
+    "contexts": {
+      "path": "outputs/verification/service_exports/contexts.csv",
+      "sha256": "9cfc13ee30a3f5c2e176363fb2caf21edc6d235dc61666e0db13fed86ee894bf"
+    },
+    "models": {
+      "path": "outputs/verification/service_exports/models.csv",
+      "sha256": "04472075f67d1c082456c0eb20d267ca61ac48658da393cae3f2888c3eb3b87d"
+    },
+    "history": {
+      "path": "outputs/verification/service_exports/history.csv",
+      "sha256": "6b3b639da4389378c49f7decc251391ab9e1ce9371c575117152bf670b704bdb"
+    },
+    "primitives": {
+      "path": "outputs/verification/service_exports/primitives.csv",
+      "sha256": "66e04f3b4190516b705ef3cbf9a0ccc83bd301137b524b6e18192abbba39d886"
+    }
+  },
+  "limitations": [
+    "Export provenance must be recorded by the native operator.",
+    "This comparison does not itself establish Desktop loading, M refresh, visual rendering, screenshots, accessibility, or publication."
+  ]
+}

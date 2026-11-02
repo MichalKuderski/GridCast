@@ -1,0 +1,53 @@
+{
+  "status": "passed_rounded_rendered_ui_parity",
+  "checked_at_utc": "2026-11-01T05:21:02.247216+00:00",
+  "evidence_class": "rounded rendered Power BI Service UI accessibility rows; NOT a native full-precision CSV export",
+  "model": "HistGB_small",
+  "split": "future",
+  "date_convention": "Rendered M/D/YYYY clock values interpreted as UTC per visible table label and report description.",
+  "raw_captures": [
+    {
+      "path": "outputs/verification/service_exports/future_visual_top.raw.ax.txt",
+      "sha256": "2920c6dd4de7943b7d40426a34eabdb2639ea9840c3990bd53627e9182a9eb68",
+      "captured_rows": 20,
+      "first_utc": "2026-01-01T00:00:00Z",
+      "last_utc": "2026-01-01T19:00:00Z"
+    },
+    {
+      "path": "outputs/verification/service_exports/future_visual_bottom.raw.ax.txt",
+      "sha256": "83a60cd60d6d9e563f28880dc0d1390c28083b7a592ddd383ce4db30ecfe693f",
+      "captured_rows": 17,
+      "first_utc": "2026-01-01T07:00:00Z",
+      "last_utc": "2026-01-01T23:00:00Z"
+    }
+  ],
+  "capture_overlap_rows": 13,
+  "overlap_values_consistent": true,
+  "expected_source": {
+    "path": "data/powerbi/FactForecast.csv",
+    "sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f"
+  },
+  "normalized_display": {
+    "path": "outputs/verification/service_exports/future_visual_display.csv",
+    "sha256": "1b9f1cd131c75a68f3590fb4e12463482a52fa8e7a5924e15ff437e5e37920da"
+  },
+  "unique_rows_checked": 24,
+  "numeric_display_cells_checked": 72,
+  "first_utc": "2026-01-01T00:00:00Z",
+  "last_utc": "2026-01-01T23:00:00Z",
+  "all_24_hourly_timestamps_present": true,
+  "timestamp_sets_match": true,
+  "rendered_bound_ordering_passed": true,
+  "source_bound_ordering_passed": true,
+  "integer_rounding_rule": "nearest integer, positive half-up; no half-unit ties occur in these72sourcevalues",
+  "maximum_integer_display_difference": 0,
+  "maximum_absolute_difference_from_full_precision_source_MW": 0.499023,
+  "source_future_actuals_all_blank": true,
+  "failures": [],
+  "limitations": [
+    "This receipt verifies rendered whole-MW values and timestamp coverage, not full-precision native per-hour visual export parity.",
+    "The rendered table contains forecast/bound measures, not an actual-demand column. Future actual nulls are supported by the canonical source and separate native05import-integrity query, not established from these three rendered values alone.",
+    "The full-precision actual Service DAX query context already reconciles future mean forecast/bounds and test isolation; it does not replace this per-hour rendered check.",
+    "A timed-out browser CSV download is not represented as a successful export. No future_visual.csv was created or synthesized."
+  ]
+}

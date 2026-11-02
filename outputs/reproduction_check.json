@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checks": {
+    "data/powerbi/FactDemand.csv": {
+      "sha256": "19edc154038e9f2310edea2f5f95bffafb7d527e3893bda1a97e0597e9aa426b",
+      "identical_to_previous_run": true
+    },
+    "data/powerbi/FactForecast.csv": {
+      "sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
+      "identical_to_previous_run": true
+    },
+    "models/champion.joblib": {
+      "sha256": "69b916ee4be80c686108230d43014526a24abdcf7abb4e50c9ffd171d39bca84",
+      "identical_to_previous_run": true
+    },
+    "outputs/model_metrics.csv": {
+      "sha256": "74aef53ae2415c75c101cc9d8ce8a630f66e0863956b622dc90880ac57103ec2",
+      "identical_to_previous_run": true
+    }
+  },
+  "scope": "Two full fits in the same pinned local environment; run timestamps intentionally differ."
+}

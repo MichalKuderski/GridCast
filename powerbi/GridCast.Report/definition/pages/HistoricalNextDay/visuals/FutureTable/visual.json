@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "FutureTable",
+  "position": {
+    "x": 30,
+    "y": 560,
+    "width": 1200,
+    "height": 285,
+    "z": 590,
+    "tabOrder": 5600030
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Forecast review | UTC hour'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Forecast review | UTC hour'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactForecast"
+                    }
+                  },
+                  "Property": "DateTimeUTC"
+                }
+              },
+              "queryRef": "FactForecast.DateTimeUTC",
+              "nativeQueryRef": "DateTimeUTC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Forecast MW"
+                }
+              },
+              "queryRef": "DimModel.Future Forecast MW",
+              "nativeQueryRef": "Future Forecast MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Lower 80 MW"
+                }
+              },
+              "queryRef": "DimModel.Future Lower 80 MW",
+              "nativeQueryRef": "Future Lower 80 MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Upper 80 MW"
+                }
+              },
+              "queryRef": "DimModel.Future Upper 80 MW",
+              "nativeQueryRef": "Future Upper 80 MW"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactForecast"
+                  }
+                },
+                "Property": "DateTimeUTC"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+// Prepared from the current model.bim. Native DAX execution has NOT been performed.
+// These DEFINE MEASURE declarations are QUERY-SCOPED until the explicit
+// "Update model with changes" action commits them in the supported DAX UI.
+// Running EVALUATE alone does not establish persistence or native validation.
+// The target four-table model must already exist with the canonical table names.
+// After committing, run 01..04 WITHOUT this DEFINE block to test real model measures.
+DEFINE
+    MEASURE 'DimModel'[Demand MWh] =
+        SUM(FactDemand[ActualMW])
+
+    MEASURE 'DimModel'[Mean Demand MW] =
+        AVERAGE(FactDemand[ActualMW])
+
+    MEASURE 'DimModel'[Peak Demand MW] =
+        MAX(FactDemand[ActualMW])
+
+    MEASURE 'DimModel'[Observed Hours] =
+        COALESCE(COUNT(FactDemand[ActualMW]), 0)
+
+    MEASURE 'DimModel'[Expected Hours] =
+        COALESCE(COUNTROWS(FactDemand), 0)
+
+    MEASURE 'DimModel'[Missing Hours] =
+        [Expected Hours] - [Observed Hours]
+
+    MEASURE 'DimModel'[Observation Completeness] =
+        DIVIDE([Observed Hours], [Expected Hours])
+
+    MEASURE 'DimModel'[Model Selection] =
+        IF(HASONEVALUE(DimModel[Model]), SELECTEDVALUE(DimModel[Model]), "Select one model to view forecast KPIs")
+
+    MEASURE 'DimModel'[Test Hours] =
+        IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]))), 0))
+
+    MEASURE 'DimModel'[Test Actual MWh] =
+        IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+
+    MEASURE 'DimModel'[Test Forecast MWh] =
+        IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+
+    MEASURE 'DimModel'[Test Actual MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+
+    MEASURE 'DimModel'[Test Forecast MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+
+    MEASURE 'DimModel'[Test MAE MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+
+    MEASURE 'DimModel'[Test RMSE MW] =
+        IF(HASONEVALUE(DimModel[Model]), SQRT(AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), POWER(FactForecast[ForecastMW] - FactForecast[ActualMW], 2))))
+
+    MEASURE 'DimModel'[Test WAPE] =
+        IF(HASONEVALUE(DimModel[Model]), DIVIDE(SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ActualMW]))))
+
+    MEASURE 'DimModel'[Test Bias MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+
+    MEASURE 'DimModel'[Test Interval Hours] =
+        IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW]))), 0))
+
+    MEASURE 'DimModel'[Test Coverage 80] =
+        IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])))))
+
+    MEASURE 'DimModel'[Test Mean Interval Width MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[Upper80MW] - FactForecast[Lower80MW]))
+
+    MEASURE 'DimModel'[Training High Demand Threshold MW] =
+        111972.4
+
+    MEASURE 'DimModel'[Test High Demand Hours] =
+        IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))
+
+    MEASURE 'DimModel'[Test High Demand MAE MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+
+    MEASURE 'DimModel'[Test High Demand Bias MW] =
+        IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+
+    MEASURE 'DimModel'[Test High Demand Coverage 80] =
+        IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))
+
+    MEASURE 'DimModel'[Future Forecast MW] =
+        IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[ForecastMW]), KEEPFILTERS(FactForecast[Split] = "future")))
+
+    MEASURE 'DimModel'[Future Lower 80 MW] =
+        IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Lower80MW]), KEEPFILTERS(FactForecast[Split] = "future")))
+
+    MEASURE 'DimModel'[Future Upper 80 MW] =
+        IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Upper80MW]), KEEPFILTERS(FactForecast[Split] = "future")))
+
+EVALUATE
+ROW("PreparedMeasures", 28)

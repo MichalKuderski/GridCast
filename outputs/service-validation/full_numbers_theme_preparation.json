@@ -1,0 +1,17 @@
+{
+  "status": "prepared_schema_validated_not_imported",
+  "artifact": "outputs/service-validation/GridCastServiceTheme.json",
+  "artifact_sha256": "6fac0144b5682a690b049fcdbf956a2806db9883385d6d6c92daadef2708fb4c",
+  "canonical_theme_sha256": "9075e18a421e72b0240abc2c777a084f669e93d0149735fbac326eb65a97e747",
+  "primary_schema": "https://raw.githubusercontent.com/microsoft/powerbi-desktop-samples/main/Report%20Theme%20JSON%20Schema/reportThemeSchema-2.149.json",
+  "schema_sha256": "329a27a083c020b156f99c81331234ab627cf1cc98be099ef5e0eef7d435009b",
+  "schema_validation": "passed",
+  "property": "visualStyles.cardVisual.*.value[0].labelDisplayUnits",
+  "value": 1,
+  "schema_value_meaning": "None",
+  "schema_zero_meaning": "Auto",
+  "purpose": "Use the existing supported report Theme import UI to set new-card full-number defaults without changing sensitivity labels or report settings.",
+  "limitation": "An explicit per-visual display-unit override may take precedence over theme defaults; verify the actual existing card or a new card after import. No report mutation or render proof is claimed.",
+  "theme_name_preserved": true,
+  "only_added_style": "cardVisual.*.value labelDisplayUnits=1"
+}

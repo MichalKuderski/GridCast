@@ -1,0 +1,10 @@
+// Read-only format diagnostic. FormatStringDefinition is a documented INFO.VIEW field.
+// This exports measure metadata only; no partition, M, connection or cloud source path.
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(INFO.VIEW.MEASURES(), [Table] = "DimModel"),
+    "Measure", [Name],
+    "FormatString", [FormatString],
+    "FormatStringDefinition", [FormatStringDefinition]
+)
+ORDER BY [Measure]

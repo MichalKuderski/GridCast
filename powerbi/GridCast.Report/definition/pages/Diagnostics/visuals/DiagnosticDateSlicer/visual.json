@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "DiagnosticDateSlicer",
+  "position": {
+    "x": 360,
+    "y": 95,
+    "width": 530,
+    "height": 75,
+    "z": 455,
+    "tabOrder": 950360
+  },
+  "visual": {
+    "visualType": "slicer",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'UTC date range (intersected with 2025)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'UTC date range (intersected with 2025)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "DimDate.Date",
+              "nativeQueryRef": "Date"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

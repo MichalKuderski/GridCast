@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "WeekdayDemand",
+  "position": {
+    "x": 30,
+    "y": 610,
+    "width": 570,
+    "height": 245,
+    "z": 640,
+    "tabOrder": 6100030
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean demand by local weekday | MW'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean demand by local weekday | MW'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDemand"
+                    }
+                  },
+                  "Property": "DayOfWeekNameLocal"
+                }
+              },
+              "queryRef": "FactDemand.DayOfWeekNameLocal",
+              "nativeQueryRef": "DayOfWeekNameLocal"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Mean Demand MW"
+                }
+              },
+              "queryRef": "DimModel.Mean Demand MW",
+              "nativeQueryRef": "Mean Demand MW"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactDemand"
+                  }
+                },
+                "Property": "DayOfWeekNameLocal"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "checks": {
+    "official_json_schema_files": 45,
+    "pbir_visuals": 35,
+    "model_tables": 4,
+    "measures": 28,
+    "relationship_and_field_references": "passed",
+    "measure_guards_and_missing_actual_filters": "passed",
+    "explicit_category_sorts_and_shared_forecast_axis": "passed",
+    "layout_bounds_alt_text_and_tab_order": "passed",
+    "model_comparison_interaction": "passed"
+  },
+  "limitations": [
+    "Power BI Desktop unavailable on this macOS workspace.",
+    "Native model.bim loading, M refresh, DAX execution, and visual rendering have not been executed.",
+    "No claim of a refreshed PBIX or a published Power BI report."
+  ],
+  "validated_files": [
+    "GridCast.pbip",
+    "GridCast.Report/definition.pbir",
+    "GridCast.SemanticModel/definition.pbism",
+    "GridCast.Report/definition/pages/DemandHistory/page.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/CompletenessCard/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/DateSlicer/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/DemandTrend/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/EnergyCard/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/HistoryTitle/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/HourlyDemand/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/MeanCard/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/MissingCard/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/PeakCard/visual.json",
+    "GridCast.Report/definition/pages/DemandHistory/visuals/WeekdayDemand/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/page.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/DiagnosticDateSlicer/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/DiagnosticModelSlicer/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/DiagnosticsTitle/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HighBiasCard/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HighCoverageCard/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HighHoursCard/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HighMAECard/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HighRiskNote/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/HourBias/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/MonthlyMAE/visual.json",
+    "GridCast.Report/definition/pages/Diagnostics/visuals/TrainingThresholdCard/visual.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/page.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/visuals/FutureModelSlicer/visual.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/visuals/FutureTable/visual.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/visuals/FutureTitle/visual.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/visuals/FutureTrend/visual.json",
+    "GridCast.Report/definition/pages/HistoricalNextDay/visuals/IntervalNote/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/page.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/BiasCard/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/CoverageCard/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/ForecastTrend/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/MAECard/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/ModelComparison/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/TestDateSlicer/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/TestModelSlicer/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/TestTitle/visual.json",
+    "GridCast.Report/definition/pages/TestScorecard/visuals/WAPECard/visual.json",
+    "GridCast.Report/definition/pages/pages.json",
+    "GridCast.Report/definition/report.json",
+    "GridCast.Report/definition/version.json"
+  ],
+  "schemas": {
+    "https://developer.microsoft.com/json-schemas/fabric/pbip/pbipProperties/1.0.0/schema.json": {
+      "cache": "validation/schemas/ceaec1e19ff71f742c33.json",
+      "sha256": "af66cd9850f8f99373c4ebc991e3c1612e74aebdcdc67a9f564d6122c313250d"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json": {
+      "cache": "validation/schemas/b0f4d20273f04f465ae2.json",
+      "sha256": "e46b78fce6f2107a005f27acce1d12f7bd03714c1f0ea4b41e11b0720e478cc1"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json": {
+      "cache": "validation/schemas/4e00ed342fd7963f9f68.json",
+      "sha256": "4ba062788ea423978642bfeead3f9fb6385a3598fe50331c99ed03ec3a80e0fc"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json": {
+      "cache": "validation/schemas/ff91d2fd85c4b04e28c2.json",
+      "sha256": "fc2fba11b040f581f4f57f60c7acec108775bcf147429d6edbe183645238b404"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json": {
+      "cache": "validation/schemas/88b8efaad7669e5c96ba.json",
+      "sha256": "216d49e60582f8b177ec8a622d27df0422b15ac8a994b5cbe321d2354accb8d8"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualConfiguration/2.2.0/schema-embedded.json": {
+      "cache": "validation/schemas/b7a694b5a97377fa0198.json",
+      "sha256": "c6a8bfc57b8ae36e8a7f0d8207aa5f11bc9dfa0171184fcdff46489ea609c188"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/semanticQuery/1.3.0/schema.json": {
+      "cache": "validation/schemas/f1d7ab08cc3454567299.json",
+      "sha256": "106e726a65e1e5c3b00fbe987fc0d4982eb68c0b311689c5e1845ac08f3e28f4"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/formattingObjectDefinitions/1.4.0/schema.json": {
+      "cache": "validation/schemas/7985f86e688008f43366.json",
+      "sha256": "711133a013a1aa5a8586a8488fca857449985ca96eee04726281f5b57a16429c"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json": {
+      "cache": "validation/schemas/d978f94784533b37ad4b.json",
+      "sha256": "3281fda0f3979dfb968ca094e0f984f705985c669a659ba186df316a414bab13"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json": {
+      "cache": "validation/schemas/0ab1e8d2ce3efda138de.json",
+      "sha256": "6a88b6ecdfc7c4ef6a07ce645ddc33ea150a6e5ecd45d285cee0f7c8ce578a90"
+    },
+    "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/versionMetadata/1.0.0/schema.json": {
+      "cache": "validation/schemas/bfc24a400e44c23bf46f.json",
+      "sha256": "2c77c510cb12e11f10172174422d0efb1d4e97da06b8d453b2abdf81537e68b2"
+    }
+  }
+}

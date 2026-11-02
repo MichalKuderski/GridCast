@@ -1,0 +1,32 @@
+// Read-only import diagnostics; expected values are not native execution evidence.
+// Run standalone against the refreshed four-table model, without DEFINE measures.
+// All result columns are integer counts. Empty failure sets normalize to zero.
+// These checks cannot recover timezone metadata stripped during M conversion or
+// distinguish double from fixed-decimal storage; inspect model types separately.
+EVALUATE
+ROW(
+    "FactDemandRows", COUNTROWS(FactDemand),
+    "FactForecastRows", COUNTROWS(FactForecast),
+    "DimDateRows", COUNTROWS(DimDate),
+    "DimModelRows", COUNTROWS(DimModel),
+    "ValidationRows", COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "validation")), 0),
+    "CalibrationRows", COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "calibration")), 0),
+    "TestRows", COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test")), 0),
+    "FutureRows", COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "future")), 0),
+    "FutureActualNonBlank", COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "future" && NOT ISBLANK(FactForecast[ActualMW]))), 0),
+    "DimDateDistinctDates", DISTINCTCOUNT(DimDate[Date]),
+    "DimModelDistinctModels", DISTINCTCOUNT(DimModel[Model]),
+    "DemandDistinctDateTimes", DISTINCTCOUNT(FactDemand[DateTimeUTC]),
+    "ForecastDistinctKeys", COUNTROWS(SUMMARIZE(FactForecast, FactForecast[DateTimeUTC], FactForecast[Model], FactForecast[Split])),
+    "DemandBlankDateTimeRows", COALESCE(COUNTROWS(FILTER(FactDemand, ISBLANK(FactDemand[DateTimeUTC]))), 0),
+    "ForecastBlankDateTimeRows", COALESCE(COUNTROWS(FILTER(FactForecast, ISBLANK(FactForecast[DateTimeUTC]))), 0),
+    "DimDateBlankDateRows", COALESCE(COUNTROWS(FILTER(DimDate, ISBLANK(DimDate[Date]))), 0),
+    "DimModelBlankModelRows", COALESCE(COUNTROWS(FILTER(DimModel, ISBLANK(DimModel[Model]))), 0),
+    "DemandDateKeyMismatchRows", COALESCE(COUNTROWS(FILTER(FactDemand, ISBLANK(FactDemand[Date]) || FactDemand[Date] <> DATE(YEAR(FactDemand[DateTimeUTC]), MONTH(FactDemand[DateTimeUTC]), DAY(FactDemand[DateTimeUTC])))), 0),
+    "ForecastDateKeyMismatchRows", COALESCE(COUNTROWS(FILTER(FactForecast, ISBLANK(FactForecast[Date]) || FactForecast[Date] <> DATE(YEAR(FactForecast[DateTimeUTC]), MONTH(FactForecast[DateTimeUTC]), DAY(FactForecast[DateTimeUTC])))), 0),
+    "DimDateNonMidnightRows", COALESCE(COUNTROWS(FILTER(DimDate, NOT ISBLANK(DimDate[Date]) && DimDate[Date] <> DATE(YEAR(DimDate[Date]), MONTH(DimDate[Date]), DAY(DimDate[Date])))), 0),
+    "DemandHourMismatchRows", COALESCE(COUNTROWS(FILTER(FactDemand, ISBLANK(FactDemand[HourUTC]) || FactDemand[HourUTC] <> HOUR(FactDemand[DateTimeUTC]))), 0),
+    "ForecastHourMismatchRows", COALESCE(COUNTROWS(FILTER(FactForecast, ISBLANK(FactForecast[HourUTC]) || FactForecast[HourUTC] <> HOUR(FactForecast[DateTimeUTC]))), 0),
+    "ForecastOriginMismatchRows", COALESCE(COUNTROWS(FILTER(FactForecast, ISBLANK(FactForecast[ForecastOriginUTC]) || FactForecast[ForecastOriginUTC] <> DATE(YEAR(FactForecast[DateTimeUTC]), MONTH(FactForecast[DateTimeUTC]), DAY(FactForecast[DateTimeUTC])))), 0),
+    "ForecastHorizonMismatchRows", COALESCE(COUNTROWS(FILTER(FactForecast, ISBLANK(FactForecast[HorizonHours]) || FactForecast[HorizonHours] <> HOUR(FactForecast[DateTimeUTC]) + 1)), 0)
+)

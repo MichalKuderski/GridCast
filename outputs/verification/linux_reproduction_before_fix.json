@@ -1,0 +1,39 @@
+{
+  "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+  "python": "3.12.16",
+  "machine": "aarch64",
+  "native_powerbi_verified": false,
+  "status": "passed",
+  "checks": {
+    "pipeline": {
+      "exit_code": 0
+    },
+    "unit_tests": {
+      "exit_code": 0
+    },
+    "notebook": {
+      "exit_code": 0
+    },
+    "metric_parity": {
+      "max_absolute_difference": 3.497007128316909e-10,
+      "absolute_tolerance": 0.0001,
+      "candidate_split_rows": 15
+    },
+    "forecast_parity": {
+      "rows": 131544,
+      "columns": [
+        "ActualMW",
+        "ForecastMW",
+        "Lower80MW",
+        "Upper80MW"
+      ],
+      "absolute_tolerance": 0.0001
+    },
+    "notebook_outputs": {
+      "cells": 16,
+      "embedded_figures": 0
+    }
+  },
+  "source_csv_sha256": "83ee1f5accd837f0f7aadd41637bb0d5bb79607ad54415b0e1b3f21e269ff9f7",
+  "review_status": "Notebook execution succeeded but embedded chart outputs were missing; original success gate was insufficient. Superseded by rerun after explicit inline-backend fix."
+}

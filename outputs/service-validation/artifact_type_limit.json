@@ -1,0 +1,14 @@
+{
+  "status": "required_type_preservation_unavailable",
+  "required_capability": "Preserve exact ISO UTC timestamp identifiers as strings in the saved XLSX",
+  "attempt": "Full artifact-tool build populated four sheets at approximately two million cells; export was interrupted before an incorrect workbook was produced.",
+  "probe_input": "2019-01-01T00:00:00Z",
+  "probe_results": [
+    {"method": "range.values plain string", "saved_type": "datetime", "exact_identifier_preserved": false},
+    {"method": "number format @ before range.values string", "saved_type": "datetime", "exact_identifier_preserved": false},
+    {"method": "apostrophe-prefixed string", "saved_type": "string including literal apostrophe", "exact_identifier_preserved": false}
+  ],
+  "documentation_check": "One targeted range.values help query: accepts string/number/boolean/Date/null, with no supported force-text option.",
+  "fallback": "Bundled openpyxl write_only authoring of exactly four typed Excel Tables; independent every-cell read-only round-trip validation required.",
+  "data_scope": "No source CSV, model, metric, or other project data was modified. No upload or publication was performed by this builder."
+}

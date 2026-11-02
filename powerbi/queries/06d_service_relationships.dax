@@ -1,0 +1,17 @@
+// Read-only Service metadata audit. No model changes and no partition/M/source-path export.
+// Prepared from Microsoft INFO.VIEW documentation; these new queries have not been executed here.
+EVALUATE
+SELECTCOLUMNS(
+    INFO.VIEW.RELATIONSHIPS(),
+    "Relationship", [Relationship],
+    "FromTable", [FromTable],
+    "FromColumn", [FromColumn],
+    "FromCardinality", [FromCardinality],
+    "ToTable", [ToTable],
+    "ToColumn", [ToColumn],
+    "ToCardinality", [ToCardinality],
+    "IsActive", [IsActive],
+    "CrossFilteringBehavior", [CrossFilteringBehavior],
+    "State", [State]
+)
+ORDER BY [FromTable], [FromColumn], [ToTable], [ToColumn]

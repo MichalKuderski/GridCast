@@ -1,0 +1,87 @@
+{
+  "status": "expected_only_native_unexecuted",
+  "cases": [
+    {
+      "Case": "no_model_filter"
+    },
+    {
+      "Case": "multiple_models",
+      "models": [
+        "HistGB_small",
+        "DailyNaive"
+      ]
+    },
+    {
+      "Case": "zero_models",
+      "models": [
+        "__not_a_model__"
+      ]
+    },
+    {
+      "Case": "champion_all",
+      "models": [
+        "HistGB_small"
+      ]
+    },
+    {
+      "Case": "baseline_no_intervals",
+      "models": [
+        "DailyNaive"
+      ]
+    },
+    {
+      "Case": "champion_june",
+      "models": [
+        "HistGB_small"
+      ],
+      "date_from": "2025-06-01",
+      "date_to": "2025-06-30"
+    },
+    {
+      "Case": "champion_empty_date",
+      "models": [
+        "HistGB_small"
+      ],
+      "date_from": "2030-01-01",
+      "date_to": "2030-01-01"
+    },
+    {
+      "Case": "champion_missing_actual_hour",
+      "models": [
+        "HistGB_small"
+      ],
+      "timestamp": "2025-11-02T04:00:00Z"
+    },
+    {
+      "Case": "champion_zero_coverage_hour",
+      "models": [
+        "HistGB_small"
+      ],
+      "timestamp": "2025-01-01T11:00:00Z"
+    },
+    {
+      "Case": "champion_high_demand_zero_coverage_hour",
+      "models": [
+        "HistGB_small"
+      ],
+      "timestamp": "2025-01-04T01:00:00Z"
+    },
+    {
+      "Case": "champion_future_date",
+      "models": [
+        "HistGB_small"
+      ],
+      "date_from": "2026-01-01",
+      "date_to": "2026-01-01"
+    },
+    {
+      "Case": "champion_validation_date",
+      "models": [
+        "HistGB_small"
+      ],
+      "date_from": "2023-01-01",
+      "date_to": "2023-01-01"
+    }
+  ],
+  "blank_contract": "CSV empty values represent DAX BLANK, not zero. Counts normalize to 0 only when exactly one model is in context; accuracy measures remain blank for empty pairs. History counts normalize to0."
+}

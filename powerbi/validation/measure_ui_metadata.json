@@ -1,0 +1,206 @@
+{
+  "status": "prepared_only_native_unexecuted_uncommitted",
+  "source_model": "powerbi/GridCast.SemanticModel/model.bim",
+  "source_model_sha256": "e1c2d779839c2121da2e27187f29d7b004ff33ec64605292b670a999d88d407b",
+  "measure_count": 28,
+  "persistence_requirement": "Use the supported DAX UI Update model with changes action, then verify persistence by executing the other query files without DEFINE. Query execution alone does not persist these measures.",
+  "formatting_requirement": "Apply or verify these format strings, descriptions and display folders in the model UI; query-scoped DEFINE MEASURE alone does not establish that this metadata persisted.",
+  "measures": [
+    {
+      "table": "DimModel",
+      "name": "Demand MWh",
+      "formatString": "#,0",
+      "description": "Sum of hourly mean MW multiplied by each one-hour interval.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Mean Demand MW",
+      "formatString": "#,0",
+      "description": "Mean hourly PJM balancing authority demand over the selected UTC dates.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Peak Demand MW",
+      "formatString": "#,0",
+      "description": "Maximum observed hourly mean demand; not an instantaneous peak.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Observed Hours",
+      "formatString": "#,0",
+      "description": "Number of nonblank one-hour observations; zero when no observations exist. Missing demand is not counted as zero.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Expected Hours",
+      "formatString": "#,0",
+      "description": "Number of expected one-hour slots on the complete UTC grid; zero for an empty date selection.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Missing Hours",
+      "formatString": "#,0",
+      "description": "Expected hourly slots without a valid observed actual.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Observation Completeness",
+      "formatString": "0.00%",
+      "description": "Observed valid hours divided by expected hourly slots.",
+      "displayFolder": "History"
+    },
+    {
+      "table": "DimModel",
+      "name": "Model Selection",
+      "formatString": null,
+      "description": "Model safeguard for cards and lines; comparison tables supply row context.",
+      "displayFolder": "Controls"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Hours",
+      "formatString": "#,0",
+      "description": "Scored 2025 hourly pairs for exactly one model; zero for an empty scored subset.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Actual MWh",
+      "formatString": "#,0",
+      "description": "Actual one-hour energy on scored test pairs; excludes future rows.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Forecast MWh",
+      "formatString": "#,0",
+      "description": "Forecast one-hour energy on the same scored test pairs.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Actual MW",
+      "formatString": "#,0",
+      "description": "Mean actual hourly demand MW, at the current axis grain, on scored test pairs.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Forecast MW",
+      "formatString": "#,0",
+      "description": "Mean forecast MW, at the current axis grain, on scored test pairs.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test MAE MW",
+      "formatString": "#,0.0",
+      "description": "Mean absolute hourly error; lower is better.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test RMSE MW",
+      "formatString": "#,0.0",
+      "description": "Root mean squared hourly error, emphasizing large errors.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test WAPE",
+      "formatString": "0.00%",
+      "description": "Ratio of aggregate absolute error to aggregate absolute actual demand. Never average daily WAPE.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Bias MW",
+      "formatString": "+#,0.0;-#,0.0;0.0",
+      "description": "Forecast minus actual; positive means overforecasting.",
+      "displayFolder": "Test"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Interval Hours",
+      "formatString": "#,0",
+      "description": "Number of scored test observations with both interval bounds; zero when none exist.",
+      "displayFolder": "Intervals"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Coverage 80",
+      "formatString": "0.0%",
+      "description": "Observed empirical coverage of nominal 80% hourly prediction intervals. Zero when no actual is covered, blank when no interval pairs exist.",
+      "displayFolder": "Intervals"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test Mean Interval Width MW",
+      "formatString": "#,0",
+      "description": "Mean width on test rows with interval bounds.",
+      "displayFolder": "Intervals"
+    },
+    {
+      "table": "DimModel",
+      "name": "Training High Demand Threshold MW",
+      "formatString": "#,0.0",
+      "description": "Fixed 90th percentile of valid initial training demand (2019\u20132022, after 336-hour warmup). Generated from outputs/run_summary.json; never derived from test demand.",
+      "displayFolder": "Diagnostics"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test High Demand Hours",
+      "formatString": "#,0",
+      "description": "Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.",
+      "displayFolder": "Diagnostics"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test High Demand MAE MW",
+      "formatString": "#,0.0",
+      "description": "Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.",
+      "displayFolder": "Diagnostics"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test High Demand Bias MW",
+      "formatString": "+#,0.0;-#,0.0;0.0",
+      "description": "Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.",
+      "displayFolder": "Diagnostics"
+    },
+    {
+      "table": "DimModel",
+      "name": "Test High Demand Coverage 80",
+      "formatString": "0.0%",
+      "description": "Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.",
+      "displayFolder": "Diagnostics"
+    },
+    {
+      "table": "DimModel",
+      "name": "Future Forecast MW",
+      "formatString": "#,0",
+      "description": "Historical next-day forecast from the end of the frozen 2025 source; not today's live forecast.",
+      "displayFolder": "Future"
+    },
+    {
+      "table": "DimModel",
+      "name": "Future Lower 80 MW",
+      "formatString": "#,0",
+      "description": "Pointwise lower 80% bound; displayed at hourly grain only.",
+      "displayFolder": "Future"
+    },
+    {
+      "table": "DimModel",
+      "name": "Future Upper 80 MW",
+      "formatString": "#,0",
+      "description": "Pointwise upper 80% bound; displayed at hourly grain only.",
+      "displayFolder": "Future"
+    }
+  ]
+}

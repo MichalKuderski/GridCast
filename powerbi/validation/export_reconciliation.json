@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "input_folder": "data/powerbi",
+  "demand_rows": 61368,
+  "forecast_rows": 131544,
+  "model_count": 5,
+  "expected_hours": 61368,
+  "observed_hours": 61190,
+  "missing_hours": 178,
+  "observation_completeness": 0.997099465519489,
+  "demand_mwh": 5604798058.0,
+  "mean_demand_mw": 91596.63438470339,
+  "peak_demand_mw": 160560.0,
+  "checks": [
+    "unique fact grain and dimension keys",
+    "one-hour UTC grid",
+    "UTC date/hour fields",
+    "America/New_York local date/hour fields",
+    "referential integrity",
+    "forecast actuals equal history actuals, including nulls",
+    "non-null predictions",
+    "origin no later than target and horizons 1\u201324",
+    "paired interval bounds contain point prediction",
+    "future rows have no actual"
+  ],
+  "native_runtime_verified": false
+}

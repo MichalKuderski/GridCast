@@ -1,0 +1,16 @@
+// Read-only Service metadata audit. No model changes and no partition/M/source-path export.
+// Prepared from Microsoft INFO.VIEW documentation; these new queries have not been executed here.
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(INFO.VIEW.MEASURES(), [Table] = "DimModel"),
+    "Table", [Table],
+    "Measure", [Name],
+    "Expression", [Expression],
+    "FormatString", [FormatString],
+    "Description", [Description],
+    "DisplayFolder", [DisplayFolder],
+    "DataType", [DataType],
+    "IsHidden", [IsHidden],
+    "State", [State]
+)
+ORDER BY [Table], [Measure]

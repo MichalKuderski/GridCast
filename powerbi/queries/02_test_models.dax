@@ -1,0 +1,24 @@
+// Read-only DAX. Run against the REFRESHED GridCast model; this file has NOT been executed here.
+// Run outside any report visual: queries define their own contexts. CSV blanks are DAX BLANK.
+EVALUATE
+SUMMARIZECOLUMNS(
+    DimModel[Model],
+    "Test Hours", [Test Hours],
+    "Test Actual MWh", [Test Actual MWh],
+    "Test Forecast MWh", [Test Forecast MWh],
+    "Test Actual MW", [Test Actual MW],
+    "Test Forecast MW", [Test Forecast MW],
+    "Test MAE MW", [Test MAE MW],
+    "Test RMSE MW", [Test RMSE MW],
+    "Test WAPE", [Test WAPE],
+    "Test Bias MW", [Test Bias MW],
+    "Test Interval Hours", [Test Interval Hours],
+    "Test Coverage 80", [Test Coverage 80],
+    "Test Mean Interval Width MW", [Test Mean Interval Width MW],
+    "Test High Demand Hours", [Test High Demand Hours],
+    "Test High Demand MAE MW", [Test High Demand MAE MW],
+    "Test High Demand Bias MW", [Test High Demand Bias MW],
+    "Test High Demand Coverage 80", [Test High Demand Coverage 80],
+    "Training High Demand Threshold MW", [Training High Demand Threshold MW]
+)
+ORDER BY DimModel[Model]

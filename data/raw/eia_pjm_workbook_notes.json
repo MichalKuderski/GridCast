@@ -1,0 +1,882 @@
+[
+  {
+    "column": "Column",
+    "description": "Description"
+  },
+  {
+    "column": "BA",
+    "description": "2-4 letter code that identifies the balancing authority"
+  },
+  {
+    "column": "UTC time",
+    "description": "The end of the hour in Coordinated Universal Time (UTC)"
+  },
+  {
+    "column": "Local date",
+    "description": "The date (using local time zone) for which data has been reported"
+  },
+  {
+    "column": "Hour",
+    "description": "The hour number for the day.  Hour 1 corresponds to the time period 12:00 AM - 1:00 AM"
+  },
+  {
+    "column": "Data issue",
+    "description": "1 indicates there is a data issue that has been flagged that requires attention.\n0 indicates no issues have been flagged."
+  },
+  {
+    "column": "Local time",
+    "description": "The end of the hour in local time"
+  },
+  {
+    "column": "Time zone",
+    "description": "The local time zone"
+  },
+  {
+    "column": "Generation only?",
+    "description": "Y indicates the balancing authority is a generation-only BA. Generation-only BAs consist of a power plant or group of power plants and do not directly serve retail customers. Therefore, they only report net generation and interchange and do not report demand or demand forecasts."
+  },
+  {
+    "column": "Demand forecast",
+    "description": "Each BA produces a day-ahead electricity demand forecast for every hour of the next day. These forecasts help BAs plan for and coordinate the reliable operation of their electric system on the following day. This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "Demand",
+    "description": "Demand is a calculated value representing the amount of electricity load within the balancing authority\u2019s electric system. A BA derives its demand value by taking the total metered net electricity generation within its electric system and subtracting the total metered net electricity interchange occurring between the BA and its neighboring BAs; electricity that is stored using an energy storage technology is reported as negative generation resulting in a reduced demand.  This column reflects the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "Net generation",
+    "description": "The metered output of electric generating units in the balancing authority\u2019s electric system. This generation only includes generating units that are managed by the balancing authority or whose operations are visible to the balancing authority; electricity that is stored using an energy storage technology is reported as negative generation.  This column reflects the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "Total interchange",
+    "description": "The net metered tie line flow from one BA to another directly interconnected BA. Total net interchange is the net sum of all interchange occurring between a BA and it's directly interconnected neighboring BAs.  Negative interchange values indicate net inflows, and positive interchange values indicate net outflows.  This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "Imputed demand",
+    "description": "EIA imputes for anomalous values for total demand if the value is missing or reported as negative, zero, or at least 1.5 times greater than the maximum of past total demand values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Imputed net generation",
+    "description": "EIA imputes for anomalous values for total net generation (NG) if the value is missing or if the value is as at least 1.5 times greater than the maximum of past positive net generation values reported by that BA or at least 1.5 times less than the minimum of past negative net generation values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Imputed total interchange",
+    "description": "EIA imputes for anomalous values for total interchange if the value is as at least 1.5 times greater than the maximum of past positive total interchange values reported by that BA or at least 1.5 times less than the minimum of past negative total interchange values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Adjusted demand",
+    "description": "This column displays the demand reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed demand."
+  },
+  {
+    "column": "Adjusted net generation",
+    "description": "This column displays the net generation reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed net generation."
+  },
+  {
+    "column": "Adjusted total interchange",
+    "description": "This column displays the total interchange reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed total interchange."
+  },
+  {
+    "column": "DF",
+    "description": "Demand forecast (DF): Each BA produces a day-ahead electricity demand forecast for every hour of the next day. These forecasts help BAs plan for and coordinate the reliable operation of their electric system on the following day. This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "D",
+    "description": "Demand (D): A calculated value representing the amount of electricity load within the balancing authority\u2019s electric system. A BA derives its demand value by taking the total metered net electricity generation within its electric system and subtracting the total metered net electricity interchange occurring between the BA and its neighboring BAs. This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "NG",
+    "description": "Net generation (NG): the metered output of electric generating units in the balancing authority\u2019s electric system. This generation only includes generating units that are managed by the balancing authority or whose operations are visible to the balancing authority.  This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "TI",
+    "description": "Total interchange (TI): the net metered tie line flow from one BA to another directly interconnected BA. Total net interchange is the net sum of all interchange occurring between a BA and it's directly interconnected neighboring BAs.  Negative interchange values indicate net inflows, and positive interchange values indicate net outflows.  This column displays the actual data reported to EIA in MWh."
+  },
+  {
+    "column": "DS",
+    "description": "Demand used to store energy (DS): This value represents the portion of total hourly demand that was used to store energy.  Respondents are not required to report this field.  EIA encourages respondents to report the energy storage as a negative contribution to net generation, but when respondents are unable to account for energy as negative generation, they must report the portion of total hourly demand that was used to store energy."
+  },
+  {
+    "column": "Missing DIBA",
+    "description": "1 indicates that interchange with at least one directly interconnected balancing authority (DIBA) was not reported.\n0 indicates there is no missing interchange."
+  },
+  {
+    "column": "Missing NG by energy source",
+    "description": "1 indicates that the detailed mix of net generation (NG) by energy source was required to be reported but is missing.\n0 indicates there is no missing generation data.  \n(Note: Balancing authorities were not required to report generation by energy source prior to July 1, 2018.)"
+  },
+  {
+    "column": "Missing D by subregion",
+    "description": "1 indicates that subregional demand (D) was required to be reported but is missing.\n0 indicates there is no missing subregional data.\n(Note: Only balancing authorities that calculate subregional demand during the normal course of business are required to report subregional demand.  Balancing authorities were not required to report subregional demand prior to July 1, 2018.)"
+  },
+  {
+    "column": "DF range error",
+    "description": "This column indicates hours in which the demand forecast (DF) appears to be out of a reasonable range of expected values."
+  },
+  {
+    "column": "D range error",
+    "description": "This column indicates hours in which the demand (D) appears to be out of a reasonable range of expected values."
+  },
+  {
+    "column": "NG range error",
+    "description": "This column indicates hours in which the net generation (NG) appears to be out of a reasonable range of expected values."
+  },
+  {
+    "column": "TI range error",
+    "description": "This column indicates hours in which the total interchange (TI) appears to be out of a reasonable range of expected values."
+  },
+  {
+    "column": "DS range error",
+    "description": "This column indicates hours in which the demand used to store energy (DS) appears to be out of a reasonable range of expected values."
+  },
+  {
+    "column": "Imputed D",
+    "description": "EIA imputes for anomalous values for total demand (D) if the value is missing or reported as negative, zero, or at least 1.5 times greater than the maximum of past total demand values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Imputed NG",
+    "description": "EIA imputes for anomalous values for total net generation (NG) if the value is missing or if the value is at least 1.5 times greater than the maximum of past positive net generation values reported by that BA or at least 1.5 times less than the minimum of past negative net generation values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Imputed TI",
+    "description": "EIA imputes for anomalous values for total interchange (TI) if the value is as at least 1.5 times greater than the maximum of past positive total interchange values reported by that BA or at least 1.5 times less than the minimum of past negative total interchange values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Imputed DS",
+    "description": "EIA imputes for anomalous values for demand used to store energy (DS) if the value is at least 1.5 times greater than the maximum of past total demand values reported by that BA. This column displays imputed values in MWh when they are made."
+  },
+  {
+    "column": "Adjusted D",
+    "description": "This column displays the demand (D) reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed demand."
+  },
+  {
+    "column": "Adjusted NG",
+    "description": "This column displays the net generation (NG) reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed net generation."
+  },
+  {
+    "column": "Adjusted TI",
+    "description": "This column displays the total interchange (TI) reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed total interchange."
+  },
+  {
+    "column": "Adjusted DS",
+    "description": "This column displays the demand used to store energy (DS) reported by the balancing authority in MWh unless imputation was required. When imputation was required, this column displays the imputed total interchange."
+  },
+  {
+    "column": "Balance NG D TI",
+    "description": "This column indicates when there is an imbalance between the reported net generation (NG), demand (D), and total interchange (TI).  Normally NG = D + TI. When there is an imbalance, this column displays NG - (D + TI). When the reported data balances, this column displays 0."
+  },
+  {
+    "column": "Balance TI DIBA",
+    "description": "This column indicates when there is an imbalance between the reported total interchange (TI) and the sum of interchange with all directly interconnected balancing authorities (DIBAs). When there is an imbalance, this column displays TI - Sum (DIBAs). When the reported data balances, this column displays 0."
+  },
+  {
+    "column": "Balance NG",
+    "description": "This column indicates when there is an imbalance between the reported total net generation (NG) and the sum of net generation from individual energy sources When there is an imbalance, this column displays (total net generation) - Sum (net generation by energy source). When the reported data balances, this column displays 0."
+  },
+  {
+    "column": "Balance D",
+    "description": "This column indicates when there is an imbalance between the reported total demand (D) and the sum of demand for each individual subregion. When there is an imbalance, this column displays (total demand) - Sum (demand by subregion). When the reported data balances, this column displays 0."
+  },
+  {
+    "column": "Sum (NG) over energy sources",
+    "description": "The sum of net generation from individual energy sources in MWh"
+  },
+  {
+    "column": "NG: COL",
+    "description": "Net generation (NG) from coal (COL) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: NG",
+    "description": "Net generation (NG) from natural gas (NG) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: NUC",
+    "description": "Net generation (NG) from nuclear energy (NUC) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: OIL",
+    "description": "Net generation (NG) from petroleum products (OIL) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: GEO",
+    "description": "Net generation (NG) from geothermal (GEO) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: WAT",
+    "description": "Net generation (NG) from hydro (WAT) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: PS",
+    "description": "Net generation (NG) from pumped storage (PS) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: SUN",
+    "description": "Net generation (NG) from solar energy (SUN) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: SNB",
+    "description": "Net generation (NG) from solar with integrated battery storage (SNB) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: WND",
+    "description": "Net generation (NG) from wind (WND) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: WNB",
+    "description": "Net generation (NG) from wind with integrated battery storage (WNB) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: BAT",
+    "description": "Net generation (NG) from battery storage (BAT) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: OES",
+    "description": "Net generation (NG) from other energy storage (OES) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: UES",
+    "description": "Net generation (NG) from unknown energy storage (UES).  This value is calculated as the negative of any demand used to store energy in MWh reported by the balancing authority"
+  },
+  {
+    "column": "NG: OTH",
+    "description": "Net generation (NG) from other energy sources (OTH) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "NG: UNK",
+    "description": "Net generation (NG) from unknown energy sources (UNK) reported by the balancing authority in MWh"
+  },
+  {
+    "column": "COL   Gen Range Error",
+    "description": "This column indicates hours in which generation from coal appears to be out of a reasonable range."
+  },
+  {
+    "column": "NG    Gen Range Error",
+    "description": "This column indicates hours in which generation from natural gas appears to be out of a reasonable range."
+  },
+  {
+    "column": "NUC   Gen Range Error",
+    "description": "This column indicates hours in which generation from nuclear energy appears to be out of a reasonable range."
+  },
+  {
+    "column": "OIL   Gen Range Error",
+    "description": "This column indicates hours in which generation from petroleum products appears to be out of a reasonable range."
+  },
+  {
+    "column": "GEO   Gen Range Error",
+    "description": "This column indicates hours in which generation from geothermal appears to be out of a reasonable range."
+  },
+  {
+    "column": "WAT   Gen Range Error",
+    "description": "This column indicates hours in which generation from hydro appears to be out of a reasonable range."
+  },
+  {
+    "column": "PS    Gen Range Error",
+    "description": "This column indicates hours in which generation from pumped storage appears to be out of a reasonable range."
+  },
+  {
+    "column": "SUN   Gen Range Error",
+    "description": "This column indicates hours in which generation from solar energy appears to be out of a reasonable range."
+  },
+  {
+    "column": "SNB   Gen Range Error",
+    "description": "This column indicates hours in which generation from solar with integrated battery storage appears to be out of a reasonable range."
+  },
+  {
+    "column": "WND   Gen Range Error",
+    "description": "This column indicates hours in which generation from wind appears to be out of a reasonable range."
+  },
+  {
+    "column": "WNB   Gen Range Error",
+    "description": "This column indicates hours in which generation from wind with integrated battery storage appears to be out of a reasonable range."
+  },
+  {
+    "column": "BAT   Gen Range Error",
+    "description": "This column indicates hours in which generation from battery storage appears to be out of a reasonable range."
+  },
+  {
+    "column": "OES   Gen Range Error",
+    "description": "This column indicates hours in which generation from other energy storage appears to be out of a reasonable range."
+  },
+  {
+    "column": "OTH   Gen Range Error",
+    "description": "This column indicates hours in which generation from other energy sources appears to be out of a reasonable range."
+  },
+  {
+    "column": "UNK   Gen Range Error",
+    "description": "This column indicates hours in which generation from unknown energy sources appears to be out of a reasonable range."
+  },
+  {
+    "column": "Imputed COL Gen",
+    "description": "This column displays imputed coal generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed NG Gen",
+    "description": "This column displays imputed natural gas generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed NUC Gen",
+    "description": "This column displays imputed nuclear generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed OIL Gen",
+    "description": "This column displays imputed petroleum generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed GEO Gen",
+    "description": "This column displays imputed geothermal generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed WAT Gen",
+    "description": "This column displays imputed hydro storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed PS Gen",
+    "description": "This column displays imputed pumped storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed SUN Gen",
+    "description": "This column displays imputed solar generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed SNB Gen",
+    "description": "This column displays imputed solar with integrated battery storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed WND Gen",
+    "description": "This column displays imputed wind generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed WNB Gen",
+    "description": "This column displays imputed solar with integrated battery storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed BAT Gen",
+    "description": "This column displays imputed battery storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed OES Gen",
+    "description": "This column displays imputed other energy storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed UES Gen",
+    "description": "This column displays imputed unknown energy storage generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed OTH Gen",
+    "description": "This column displays imputed other generation in MWh when imputations are made."
+  },
+  {
+    "column": "Imputed UNK Gen",
+    "description": "This column displays imputed unknown generation in MWh when imputations are made."
+  },
+  {
+    "column": "Adjusted COL Gen",
+    "description": "This column displays the coal generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted NG Gen",
+    "description": "This column displays the natural gas generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted NUC Gen",
+    "description": "This column displays the nuclear generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted OIL Gen",
+    "description": "This column displays the petroleum generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted GEO Gen",
+    "description": "This column displays the geothermal generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted WAT Gen",
+    "description": "This column displays the hydro generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted PS Gen",
+    "description": "This column displays the pumped storage generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted SUN Gen",
+    "description": "This column displays the solar generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted SNB Gen",
+    "description": "This column displays the solar with integrated battery storage generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted WND Gen",
+    "description": "This column displays the wind generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted WNB Gen",
+    "description": "This column displays the wind with integrated battery storage generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted BAT Gen",
+    "description": "This column displays the battery storage generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted OES Gen",
+    "description": "This column displays the other energy storage generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted UES Gen",
+    "description": "This column displays the unknown energy storage generation calculated as the negative of any demand used to store energy in MWh reported by the balancing authority unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted OTH Gen",
+    "description": "This column displays the other generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Adjusted UNK Gen",
+    "description": "This column displays the unknown generation reported by the balancing authority in MWh unless imputation was required in which case the imputed generation is displayed."
+  },
+  {
+    "column": "Sum (DIBA)",
+    "description": "The sum of interchange in MWh with all directly interconnected balancing authorities (DIBAs)"
+  },
+  {
+    "column": "CPLE",
+    "description": "The interchange from PJM to CPLE in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "CPLW",
+    "description": "The interchange from PJM to CPLW in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "DUK",
+    "description": "The interchange from PJM to DUK in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "LGEE",
+    "description": "The interchange from PJM to LGEE in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "MISO",
+    "description": "The interchange from PJM to MISO in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "NYIS",
+    "description": "The interchange from PJM to NYIS in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "OVEC",
+    "description": "The interchange from PJM to OVEC in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "TVA",
+    "description": "The interchange from PJM to TVA in MWh (reported by PJM). Negative interchange values indicate net inflows into PJM, and positive interchange values indicate net outflows from PJM."
+  },
+  {
+    "column": "Active CPLE",
+    "description": "1 indicates there is an active interconnection between PJM and CPLE for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active CPLW",
+    "description": "1 indicates there is an active interconnection between PJM and CPLW for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active DUK",
+    "description": "1 indicates there is an active interconnection between PJM and DUK for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active LGEE",
+    "description": "1 indicates there is an active interconnection between PJM and LGEE for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active MISO",
+    "description": "1 indicates there is an active interconnection between PJM and MISO for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active NYIS",
+    "description": "1 indicates there is an active interconnection between PJM and NYIS for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active OVEC",
+    "description": "1 indicates there is an active interconnection between PJM and OVEC for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "Active TVA",
+    "description": "1 indicates there is an active interconnection between PJM and TVA for the specified hour.\n0 indicates there is not an active interconnection.\nRespondents are required to report interchange for all active interconnections."
+  },
+  {
+    "column": "From CPLE",
+    "description": "The interchange from CPLE to PJM in MWh (reported by CPLE). Negative interchange values indicate net inflows into CPLE, and positive interchange values indicate net outflows from CPLE."
+  },
+  {
+    "column": "From CPLW",
+    "description": "The interchange from CPLW to PJM in MWh (reported by CPLW). Negative interchange values indicate net inflows into CPLW, and positive interchange values indicate net outflows from CPLW."
+  },
+  {
+    "column": "From DUK",
+    "description": "The interchange from DUK to PJM in MWh (reported by DUK). Negative interchange values indicate net inflows into DUK, and positive interchange values indicate net outflows from DUK."
+  },
+  {
+    "column": "From LGEE",
+    "description": "The interchange from LGEE to PJM in MWh (reported by LGEE). Negative interchange values indicate net inflows into LGEE, and positive interchange values indicate net outflows from LGEE."
+  },
+  {
+    "column": "From MISO",
+    "description": "The interchange from MISO to PJM in MWh (reported by MISO). Negative interchange values indicate net inflows into MISO, and positive interchange values indicate net outflows from MISO."
+  },
+  {
+    "column": "From NYIS",
+    "description": "The interchange from NYIS to PJM in MWh (reported by NYIS). Negative interchange values indicate net inflows into NYIS, and positive interchange values indicate net outflows from NYIS."
+  },
+  {
+    "column": "From OVEC",
+    "description": "The interchange from OVEC to PJM in MWh (reported by OVEC). Negative interchange values indicate net inflows into OVEC, and positive interchange values indicate net outflows from OVEC."
+  },
+  {
+    "column": "From TVA",
+    "description": "The interchange from TVA to PJM in MWh (reported by TVA). Negative interchange values indicate net inflows into TVA, and positive interchange values indicate net outflows from TVA."
+  },
+  {
+    "column": "Balance CPLE",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to CPLE (reported by PJM) and the interchange from CPLE to PJM (reported by CPLE). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance CPLW",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to CPLW (reported by PJM) and the interchange from CPLW to PJM (reported by CPLW). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance DUK",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to DUK (reported by PJM) and the interchange from DUK to PJM (reported by DUK). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance LGEE",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to LGEE (reported by PJM) and the interchange from LGEE to PJM (reported by LGEE). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance MISO",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to MISO (reported by PJM) and the interchange from MISO to PJM (reported by MISO). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance NYIS",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to NYIS (reported by PJM) and the interchange from NYIS to PJM (reported by NYIS). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance OVEC",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to OVEC (reported by PJM) and the interchange from OVEC to PJM (reported by OVEC). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Balance TVA",
+    "description": "This column indicates when there is an imbalance between the interchange from PJM to TVA (reported by PJM) and the interchange from TVA to PJM (reported by TVA). Normally, the interchanges should sum to zero. When the reported data balances, this column displays 0. When there is an imbalance, this column displays the non-zero sum."
+  },
+  {
+    "column": "Pair mismatch",
+    "description": "1 indicates there was an interchange imbalance with at least one directly interconnected balancing authority.\n0 indicates there were no interchange imbalances with any directly interconnected balancing authorities."
+  },
+  {
+    "column": "Sum (D) over subregions",
+    "description": "The sum of demand in MWh for all subregions"
+  },
+  {
+    "column": "Subregion AP",
+    "description": "Demand for Subregion AP reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion AEP",
+    "description": "Demand for Subregion AEP reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion ATSI",
+    "description": "Demand for Subregion ATSI reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion AE",
+    "description": "Demand for Subregion AE reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion BC",
+    "description": "Demand for Subregion BC reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion CE",
+    "description": "Demand for Subregion CE reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion DAY",
+    "description": "Demand for Subregion DAY reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion DPL",
+    "description": "Demand for Subregion DPL reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion DOM",
+    "description": "Demand for Subregion DOM reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion DEOK",
+    "description": "Demand for Subregion DEOK reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion DUQ",
+    "description": "Demand for Subregion DUQ reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion EKPC",
+    "description": "Demand for Subregion EKPC reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion JC",
+    "description": "Demand for Subregion JC reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion ME",
+    "description": "Demand for Subregion ME reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion PE",
+    "description": "Demand for Subregion PE reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion PN",
+    "description": "Demand for Subregion PN reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion PL",
+    "description": "Demand for Subregion PL reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion PEP",
+    "description": "Demand for Subregion PEP reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion PS",
+    "description": "Demand for Subregion PS reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Subregion RECO",
+    "description": "Demand for Subregion RECO reported by the balancing authority in MWh"
+  },
+  {
+    "column": "Active Subregion AP",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion AP\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion AEP",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion AEP\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion ATSI",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion ATSI\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion AE",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion AE\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion BC",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion BC\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion CE",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion CE\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion DAY",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion DAY\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion DPL",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion DPL\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion DOM",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion DOM\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion DEOK",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion DEOK\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion DUQ",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion DUQ\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion EKPC",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion EKPC\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion JC",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion JC\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion ME",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion ME\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion PE",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion PE\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion PN",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion PN\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion PL",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion PL\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion PEP",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion PEP\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion PS",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion PS\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "Active Subregion RECO",
+    "description": "1 indicates the balancing authority is required to report demand for Subregion RECO\n0 indicates the balancing authority is not required to report demand for the subregion."
+  },
+  {
+    "column": "UTC0  reported",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 0"
+  },
+  {
+    "column": "UTC1  reported",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 1"
+  },
+  {
+    "column": "UTC2 reported",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 2"
+  },
+  {
+    "column": "UTCD reported",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File D"
+  },
+  {
+    "column": "UTC0 mismatch",
+    "description": "1 indicates an incorrect UTC timestamp was reported by the balancing authority in daily submission File 0.\n0 indicates the UTC timestamp was correctly reported."
+  },
+  {
+    "column": "UTC1 mismatch",
+    "description": "1 indicates an incorrect UTC timestamp was reported by the balancing authority in daily submission File 1.\n0 indicates the UTC timestamp was correctly reported."
+  },
+  {
+    "column": "UTC2 mismatch",
+    "description": "1 indicates an incorrect UTC timestamp was reported by the balancing authority in daily submission File 2.\n0 indicates the UTC timestamp was correctly reported."
+  },
+  {
+    "column": "UTCD mismatch",
+    "description": "1 indicates an incorrect UTC timestamp was reported by the balancing authority in daily submission File D.\n0 indicates the UTC timestamp was correctly reported."
+  },
+  {
+    "column": "UTC offset calculated",
+    "description": "The expected Coordinated Universal Time (UTC) offset based on the balancing authority's reporting time zone and the current time of year. Note: The UTC offset may change during daylight savings time."
+  },
+  {
+    "column": "UTC0 offset",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 0"
+  },
+  {
+    "column": "UTC1 offset",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 1"
+  },
+  {
+    "column": "UTC2 offset",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File 2"
+  },
+  {
+    "column": "UTCD offset",
+    "description": "The Coordinated Universal Time (UTC) timestamp reported by the balancing authority in daily submission File D"
+  },
+  {
+    "column": "UTC offset mismatch",
+    "description": "1 indicates an incorrect UTC offset reported by the balancing authority.\n0 indicates the UTC offset was correctly reported."
+  },
+  {
+    "column": "File 0",
+    "description": "The file name of daily submission file 0"
+  },
+  {
+    "column": "File 1",
+    "description": "The file name of daily submission file 1"
+  },
+  {
+    "column": "File 2",
+    "description": "The file name of daily submission file 2"
+  },
+  {
+    "column": "File D",
+    "description": "The file name of daily submission file D"
+  },
+  {
+    "column": "File 0 Processed Date",
+    "description": "The date file 0 was processed by EIA"
+  },
+  {
+    "column": "File 1 Processed Date",
+    "description": "The date file 1 was processed by EIA"
+  },
+  {
+    "column": "File 2 Processed Date",
+    "description": "The date file 2 was processed by EIA"
+  },
+  {
+    "column": "File D Processed Date",
+    "description": "The date file D was processed by EIA"
+  },
+  {
+    "column": "CO2 Factor: COL",
+    "description": "Selected CO2 emissions factor for coal (lbs/kWh). Selection method described in EIA's FAQ: https://www.eia.gov/tools/faqs/faq.php?id=74&t=11. For balancing authorities having insufficient historical data, a U.S. factor is used."
+  },
+  {
+    "column": "CO2 Factor: NG",
+    "description": "Selected CO2 emissions factor for natural gas (lbs/kWh). Selection method described in EIA's FAQ: https://www.eia.gov/tools/faqs/faq.php?id=74&t=11. For balancing authorities having insufficient historical data, a U.S. factor is used."
+  },
+  {
+    "column": "CO2 Factor: OIL",
+    "description": "Selected CO2 emissions factor for petroleum (lbs/kWh). Selection method described in EIA's FAQ: https://www.eia.gov/tools/faqs/faq.php?id=74&t=11. For balancing authorities having insufficient historical data, a U.S. factor is used."
+  },
+  {
+    "column": "CO2 Emissions: COL",
+    "description": "CO2 emissions from coal (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions: NG",
+    "description": "CO2 emissions from natural gas (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions: OIL",
+    "description": "CO2 emissions from petroleum (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions: Other",
+    "description": "CO2 emissions from sources other than coal, natural gas, and petroleum (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions Generated",
+    "description": "CO2 emissions generated from all sources (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions Imported",
+    "description": "CO2 emissions imported (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions Exported",
+    "description": "CO2 emissions exported (metric tons)"
+  },
+  {
+    "column": "CO2 Emissions Consumed",
+    "description": "CO2 emissions consumed by balancing authority (metric tons)"
+  },
+  {
+    "column": "Positive Generation",
+    "description": "The sum of reported generation (MWh) by energy source for energy sources having non-negative generation."
+  },
+  {
+    "column": "Consumed Electricity",
+    "description": "Consumed electricity (MWh) is calculated as the sum of reported generation by energy source plus the sum of imports from neighboring balancing authorities minus the sum of exports to neighboring balancing authorities."
+  },
+  {
+    "column": "CO2 Emissions Intensity for Generated Electricity",
+    "description": "CO2 emissions intensity for total generation (lbs/kWh)"
+  },
+  {
+    "column": "CO2 Emissions Intensity for Consumed Electricity",
+    "description": "CO2 emissions intensity for total consumption (lbs/kWh)"
+  }
+]

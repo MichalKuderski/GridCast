@@ -1,0 +1,27 @@
+{
+  "source_sheet": "Published Hourly Data",
+  "target_source_column": "Demand",
+  "source_utc_time_convention": "hour ending; subtract one hour for interval start",
+  "source_units": "MWh per one-hour interval; numerically equivalent to average MW",
+  "rows": 61368,
+  "unique_utc_starts": 61368,
+  "first_interval_start_utc": "2019-01-01T00:00:00+00:00",
+  "last_interval_start_utc": "2025-12-31T23:00:00+00:00",
+  "missing_demand": 167,
+  "nonpositive_demand": 0,
+  "imputed_demand_present": 171,
+  "adjusted_differs_from_reported": 7,
+  "min_demand_mwh": 56260.0,
+  "max_demand_mwh": 2147480000.0,
+  "non_hourly_gaps": 0,
+  "csv_sha256": "83ee1f5accd837f0f7aadd41637bb0d5bb79607ad54415b0e1b3f21e269ff9f7",
+  "annual_rows": {
+    "2019": 8760,
+    "2020": 8784,
+    "2021": 8760,
+    "2022": 8760,
+    "2023": 8760,
+    "2024": 8784,
+    "2025": 8760
+  }
+}

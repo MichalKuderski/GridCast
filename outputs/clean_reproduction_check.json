@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "environment": "separate fresh Python3.12 virtual environment, installed from requirements-lock.txt; same host/platform",
+  "checks": {
+    "data/powerbi/FactDemand.csv": true,
+    "data/powerbi/FactForecast.csv": true,
+    "models/champion.joblib": true,
+    "outputs/model_metrics.csv": true
+  },
+  "scope": "Full independent local environment installation and model fit; hosted CI and Windows Desktop are not included."
+}

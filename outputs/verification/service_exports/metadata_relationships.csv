@@ -1,0 +1,8 @@
+"[Relationship]","[FromTable]","[FromColumn]","[FromCardinality]","[ToTable]","[ToColumn]","[ToCardinality]","[IsActive]","[CrossFilteringBehavior]","[State]"
+"'FactDemand'[Date] *[<-]1 'DimDate'[Date]","FactDemand","Date","Many","DimDate","Date","One","true","OneDirection","Ready"
+"'FactDemand'[DateLocal] *[<-]1 'LocalDateTable_ce0e8501-e370-42cc-8393-c922957d42e8'[Date]","FactDemand","DateLocal","Many","LocalDateTable_ce0e8501-e370-42cc-8393-c922957d42e8","Date","One","true","OneDirection","Ready"
+"'FactDemand'[DateTimeUTC] *[<-]1 'LocalDateTable_0b2798d6-d5b3-4d8e-9373-34030f5c8bec'[Date]","FactDemand","DateTimeUTC","Many","LocalDateTable_0b2798d6-d5b3-4d8e-9373-34030f5c8bec","Date","One","true","OneDirection","Ready"
+"'FactForecast'[Date] *[<-]1 'DimDate'[Date]","FactForecast","Date","Many","DimDate","Date","One","true","OneDirection","Ready"
+"'FactForecast'[DateTimeUTC] *[<-]1 'LocalDateTable_70fcd482-0b29-40f7-a58d-fc52dd34bd77'[Date]","FactForecast","DateTimeUTC","Many","LocalDateTable_70fcd482-0b29-40f7-a58d-fc52dd34bd77","Date","One","true","OneDirection","Ready"
+"'FactForecast'[ForecastOriginUTC] *[<-]1 'LocalDateTable_2b9b404e-7f06-4c4d-b416-f399b82d4816'[Date]","FactForecast","ForecastOriginUTC","Many","LocalDateTable_2b9b404e-7f06-4c4d-b416-f399b82d4816","Date","One","true","OneDirection","Ready"
+"'FactForecast'[Model] *[<-]1 'DimModel'[Model]","FactForecast","Model","Many","DimModel","Model","One","true","OneDirection","Ready"

@@ -1,0 +1,170 @@
+createOrReplace
+	ref table 'DimModel'
+
+		/// Sum of hourly mean MW multiplied by each one-hour interval.
+		measure 'Demand MWh' = SUM(FactDemand[ActualMW])
+			formatString: #,0
+			displayFolder: History
+			lineageTag: 49c1524d-d0b4-4076-9e21-26bec4509ae6
+
+		/// Mean hourly PJM balancing authority demand over the selected UTC dates.
+		measure 'Mean Demand MW' = AVERAGE(FactDemand[ActualMW])
+			formatString: #,0
+			displayFolder: History
+			lineageTag: 8229e38b-ff37-409d-a860-f3769ddbf9fe
+
+		/// Maximum observed hourly mean demand; not an instantaneous peak.
+		measure 'Peak Demand MW' = MAX(FactDemand[ActualMW])
+			formatString: #,0
+			displayFolder: History
+			lineageTag: 08a63fc5-09f5-4acf-bd7c-d9e7829ca40f
+
+		/// Number of nonblank one-hour observations; zero when no observations exist. Missing demand is not counted as zero.
+		measure 'Observed Hours' = COALESCE(COUNT(FactDemand[ActualMW]), 0)
+			formatString: #,0
+			displayFolder: History
+			lineageTag: 7e4bb91b-d8f0-47e7-95c4-345a01cb7cb9
+
+		/// Number of expected one-hour slots on the complete UTC grid; zero for an empty date selection.
+		measure 'Expected Hours' = COALESCE(COUNTROWS(FactDemand), 0)
+			formatString: #,0
+			displayFolder: History
+			lineageTag: 81ed0d27-93ce-4b58-ab1d-57af431bd0eb
+
+		/// Expected hourly slots without a valid observed actual.
+		measure 'Missing Hours' = [Expected Hours] - [Observed Hours]
+			formatString: #,0
+			displayFolder: History
+			lineageTag: c8b00583-da39-4bef-942c-471cbb71cf30
+
+		/// Observed valid hours divided by expected hourly slots.
+		measure 'Observation Completeness' = DIVIDE([Observed Hours], [Expected Hours])
+			formatString: 0.00%
+			displayFolder: History
+			lineageTag: 0050fb79-fafa-48bb-b2bd-1fcadc6c7b10
+
+		/// Model safeguard for cards and lines; comparison tables supply row context.
+		measure 'Model Selection' = IF(HASONEVALUE(DimModel[Model]), SELECTEDVALUE(DimModel[Model]), "Select one model to view forecast KPIs")
+			displayFolder: Controls
+			lineageTag: 13b80be5-f2f7-4ae7-92b4-968586b596d1
+
+		/// Scored 2025 hourly pairs for exactly one model; zero for an empty scored subset.
+		measure 'Test Hours' = IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]))), 0))
+			formatString: #,0
+			displayFolder: Test
+			lineageTag: 086652fe-6507-48af-87fd-626ea35f4a5b
+
+		/// Actual one-hour energy on scored test pairs; excludes future rows.
+		measure 'Test Actual MWh' = IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+			formatString: #,0
+			displayFolder: Test
+			lineageTag: 957890af-2136-4290-8adb-a69a4a3356c8
+
+		/// Forecast one-hour energy on the same scored test pairs.
+		measure 'Test Forecast MWh' = IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+			formatString: #,0
+			displayFolder: Test
+			lineageTag: 0941598b-bf97-47b3-a702-4d22dbe50178
+
+		/// Mean actual hourly demand MW, at the current axis grain, on scored test pairs.
+		measure 'Test Actual MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))
+			formatString: #,0
+			displayFolder: Test
+			lineageTag: 4d6d426b-6fbf-4287-b5d0-5285c7ddad75
+
+		/// Mean forecast MW, at the current axis grain, on scored test pairs.
+		measure 'Test Forecast MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))
+			formatString: #,0
+			displayFolder: Test
+			lineageTag: 529c4ac0-36b6-4794-b3bc-28df16562c92
+
+		/// Mean absolute hourly error; lower is better.
+		measure 'Test MAE MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+			formatString: #,0.0
+			displayFolder: Test
+			lineageTag: 4fc893d8-3213-4ea4-9c1c-20a5a5e40463
+
+		/// Root mean squared hourly error, emphasizing large errors.
+		measure 'Test RMSE MW' = IF(HASONEVALUE(DimModel[Model]), SQRT(AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), POWER(FactForecast[ForecastMW] - FactForecast[ActualMW], 2))))
+			formatString: #,0.0
+			displayFolder: Test
+			lineageTag: 8faee0df-ad76-46ea-b0e5-79c5264fe0da
+
+		/// Ratio of aggregate absolute error to aggregate absolute actual demand. Never average daily WAPE.
+		measure 'Test WAPE' = IF(HASONEVALUE(DimModel[Model]), DIVIDE(SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])), SUMX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ActualMW]))))
+			formatString: 0.00%
+			displayFolder: Test
+			lineageTag: 10ce3d6d-9052-4f97-9cea-24f269d54261
+
+		/// Forecast minus actual; positive means overforecasting.
+		measure 'Test Bias MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+			formatString: +#,0.0;-#,0.0;0.0
+			displayFolder: Test
+			lineageTag: 02d9a86b-c823-440a-854c-a9d2a1f8c679
+
+		/// Number of scored test observations with both interval bounds; zero when none exist.
+		measure 'Test Interval Hours' = IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW]))), 0))
+			formatString: #,0
+			displayFolder: Intervals
+			lineageTag: 47e719f0-2342-4b76-af84-99c311a398b7
+
+		/// Observed empirical coverage of nominal 80% hourly prediction intervals. Zero when no actual is covered, blank when no interval pairs exist.
+		measure 'Test Coverage 80' = IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])))))
+			formatString: 0.0%
+			displayFolder: Intervals
+			lineageTag: 1716ba3b-9f6a-4954-9b07-043cd2cae5d5
+
+		/// Mean width on test rows with interval bounds.
+		measure 'Test Mean Interval Width MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[Upper80MW] - FactForecast[Lower80MW]))
+			formatString: #,0
+			displayFolder: Intervals
+			lineageTag: f54eb2da-73a8-46bb-8bf9-34792ec54bec
+
+		/// Fixed 90th percentile of valid initial training demand (2019–2022, after 336-hour warmup). Generated from outputs/run_summary.json; never derived from test demand.
+		measure 'Training High Demand Threshold MW' = 111972.4
+			formatString: #,0.0
+			displayFolder: Diagnostics
+			lineageTag: 800f65bd-9d17-4bd6-ae26-8752b16cacd1
+
+		/// Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.
+		measure 'Test High Demand Hours' = IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))
+			formatString: #,0
+			displayFolder: Diagnostics
+			lineageTag: 02fe5310-2f21-479d-96ca-f14fcfdd410f
+
+		/// Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.
+		measure 'Test High Demand MAE MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+			formatString: #,0.0
+			displayFolder: Diagnostics
+			lineageTag: fd50bbcb-a343-417e-8244-1e2103c74427
+
+		/// Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.
+		measure 'Test High Demand Bias MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+			formatString: +#,0.0;-#,0.0;0.0
+			displayFolder: Diagnostics
+			lineageTag: cf0cb83c-7cbc-4593-98d5-fef9b3f284be
+
+		/// Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.
+		measure 'Test High Demand Coverage 80' = IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))
+			formatString: 0.0%
+			displayFolder: Diagnostics
+			lineageTag: 7310a10f-d1f2-4acd-bc7e-2926c5e725e7
+
+		/// Historical next-day forecast from the end of the frozen 2025 source; not today's live forecast.
+		measure 'Future Forecast MW' = IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[ForecastMW]), KEEPFILTERS(FactForecast[Split] = "future")))
+			formatString: #,0
+			displayFolder: Future
+			lineageTag: 94781f5a-048f-468e-95ca-ffc10aa5dd5e
+
+		/// Pointwise lower 80% bound; displayed at hourly grain only.
+		measure 'Future Lower 80 MW' = IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Lower80MW]), KEEPFILTERS(FactForecast[Split] = "future")))
+			formatString: #,0
+			displayFolder: Future
+			lineageTag: 6deadfaf-c669-40d2-bef9-60633933394a
+
+		/// Pointwise upper 80% bound; displayed at hourly grain only.
+		measure 'Future Upper 80 MW' = IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Upper80MW]), KEEPFILTERS(FactForecast[Split] = "future")))
+			formatString: #,0
+			displayFolder: Future
+			lineageTag: 1bc6a7e5-a388-4578-bec1-9946920b491b
+

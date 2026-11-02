@@ -1,0 +1,447 @@
+Browser tab: 5, Title: "04 | Historical next day - GridCast — PJM Demand Validation - Power BI", URL: "https://app.powerbi.com/groups/me/reports/46cec94e-2c83-41b6-9595-22b721e23c78/7be3e5da4a14543a4b02?experience=power-bi".
+0 AXWebArea 04 | Historical next day - GridCast — PJM Demand Validation - Power BI, URL: app.powerbi.com/groups/me/reports/46cec94e-2c83-41b6-9595-22b721e23c78/7be3e5da4a14543a4b02?experience=power-bi
+	1 container
+		2 container pbiThemed0
+			3 content list global-accessibility-menu
+				4 link Show keyboard shortcuts
+					5 text Show keyboard shortcuts
+				6 link Description: Show screen reader tips Opens in new window, Value: go.microsoft.com/fwlink/?linkid=852575
+				7 link Skip to main content
+					8 text Skip to main content
+			9 container
+				10 pop up button (collapsed) Description: App launcher, Secondary Actions: Expand
+					11 image
+				12 pop up button (collapsed) Description: GridCast — PJM Demand Validation, Secondary Actions: Expand
+				13 button Search
+					14 image
+				15 button Description: Settings, ID: tridentMoreActionsMenuButton
+					16 image
+				17 button Account manager for 
+					18 text 
+					19 image
+			20 container
+				21 container
+					22 menu Sidebar
+						23 Home
+							24 text Home
+						25 container navbar-item-copilot
+							26 Power BI Copilot
+								27 text Power BI Copilot
+							28 Unpin Power BI Copilot
+						29 container navbar-item-create
+							30 Create
+								31 text Create
+							32 Unpin Create
+						33 container navbar-item-oneLake
+							34 OneLake catalog
+								35 text OneLake catalog
+							36 Unpin OneLake catalog
+						37 container navbar-item-apps
+							38 Apps
+								39 text Apps
+							40 Unpin Apps
+						41 container navbar-item-metrics
+							42 Scorecards
+								43 text Scorecards
+							44 Unpin Scorecards
+						45 (collapsed) Workspaces, Secondary Actions: Expand
+							46 text Workspaces
+						47 My workspace
+							48 text My workspace
+						49 container navbar-tab-items-group
+							50 GridCast — PJM Demand Validation - My workspace
+								51 button Close
+									52 container Close
+										53 image
+								54 text GridCast — PJM Demand Validation
+							55 GridCastValidation - My workspace
+								56 button Close
+									57 container Close
+										58 image
+								59 text GridCastValidation
+							60 (collapsed) More options, Secondary Actions: Expand
+						61 (collapsed) Power BI, Secondary Actions: Expand
+							62 text Power BI
+					63 container
+						64 container ribbonContainer
+							65 pop up button (collapsed) File, Secondary Actions: Expand
+								66 text File
+							67 container
+								68 container Description: Ribbon tabs, ID: tablist
+									69 tab group
+										70 pop up button (collapsed) Description: More tabs, ID: pivotOverflowButton, Secondary Actions: Expand
+								71 container FarPeripheralControlsContainer
+									72 container
+										73 text Try the new ribbon (preview)
+										74 switch Description: Try the new ribbon (preview), Value: 1
+										75 text On
+									76 button Description: Comments, ID: comments
+										77 text Comments
+							78 container
+								79 pop up button (collapsed) Description: Viewing, ID: viewModeFlyout, Secondary Actions: Expand
+									80 text Viewing
+								81 pop up button (collapsed) Description: Share, ID: odspShareFlyout, Secondary Actions: Expand
+									82 text Share
+									83 text Share
+							84 toolbar
+								85 container
+									86 container innerRibbonContainer
+										87 container
+											88 container Track
+												89 button Subscribe, ID: subscribe
+												90 pop up button (collapsed) Alerts and monitoring, ID: alertsMonitoring, Secondary Actions: Expand
+												91 pop up button (collapsed) Bookmarks, ID: bookmarks, Secondary Actions: Expand
+										92 container
+											93 container View
+												94 button Full screen, ID: fullScreen
+													95 text Open in full-screen mode
+												96 pop up button (collapsed) Zoom, ID: pageLayoutFlyout, Secondary Actions: Expand
+													97 text Choose a page view.
+												98 button Refresh visuals, ID: viewRefreshVisuals
+													99 text Refresh visuals—when the data model has been updated, refreshing will update all visuals with the latest data.
+												100 button (disabled) Reset to default, ID: resetToDefault
+													101 text You're viewing the author's default view of this report.
+										102 container
+											103 container Data
+												104 button View semantic model, ID: viewSemanticModel
+												105 button (disabled) Usage metrics, ID: usageMetrics
+												106 container lineageSplit
+													107 button Lineage
+													108 pop up button (collapsed) Secondary Actions: Expand
+										109 container
+											110 pop up button (collapsed) ID: RibbonOverflowMenu-overflow, Secondary Actions: Expand
+									111 button Switch ribbons, ID: RibbonModeToggle
+						112 container Report pages
+							113 container
+								114 text Pages
+								115 button Description: Hide the Pages pane, ID: collapsePagesPaneBtn
+							116 tab group Pages
+								117 tab (selectable, settable, boolean) Description: 02 | Untouched 2025 test, Value: 0
+02 | Untouched 2025 test
+								118 tab (selectable, settable, boolean) Description: 03 | Error and peak risk, Value: 0
+03 | Error and peak risk
+								119 tab (selectable, settable, boolean) Description: 01 | Demand history, Value: 0
+01 | Demand history
+								120 tab (selected, settable, boolean) Description: 04 | Historical next day Selected, Value: 1
+04 | Historical next day
+						121 container
+							122 container 04 | Historical next day
+								123 container
+									124 container
+										125 container Power BI Report
+											126 heading Description: Power BI Report, Value: 2, ID: defaultTitle
+												127 text Power BI Report
+											128 container GridCast | Historical next-day forecast Historical 24-hour forecast demonstration for 1 January 2026, following the frozen 2019 through 2025 demand data. Not a current live forecast.
+												129 container
+													130 heading GridCast | Historical next-day forecast, Value: 3
+														131 text GridCast | Historical next-day forecast
+													132 container 24 hours after the frozen historical cutoff. This is a historical demonstration for 1 January 2026, not a live forecast for today.
+														133 text 24 hours after the frozen historical cutoff. This is a historical demonstration for 1 January 2026, not a live forecast for today.
+											134 container Select one model Choose one forecast model. The selected model filters the forecast cards and trend. The comparison table retains all five models.
+												135 container
+													136 heading Select one model, Value: 3
+														137 text Select one model
+													138 combo box (collapsed) Description: Model, Value: HistGB_small , Secondary Actions: Expand
+														139 text HistGB_small
+														140 text 
+											141 container Interpret the uncertainty Only HistGB_small has pointwise hourly nominal 80 percent intervals. These do not provide a simultaneous daily guarantee.
+												142 container
+													143 heading Interpret the uncertainty, Value: 3
+														144 text Interpret the uncertainty
+													145 container Only HistGB_small has calibrated intervals. The bounds are pointwise hourly 80% intervals, not a simultaneous guarantee for all 24 hours. Review the 2025 and high-demand coverage results before use.
+														146 text Only HistGB_small has calibrated intervals. The bounds are pointwise hourly 80% intervals, not a simultaneous guarantee for all 24 hours. Review the 2025 and high-demand coverage results before use.
+											147 container Hourly forecast and pointwise 80% bounds | MW Hourly historical forecast for 1 January 2026 in UTC, with pointwise lower and upper nominal 80 percent bounds. All three series share the same megawatt axis.
+												148 container
+													149 heading Hourly forecast and pointwise 80% bounds | MW, Value: 3
+														150 text Hourly forecast and pointwise 80% bounds | MW
+													151 image
+														152 image
+														153 content list
+															154 container 90K
+																155 text 90K
+															156 container 100K
+																157 text 100K
+															158 container 110K
+																159 text 110K
+															160 container 120K
+																161 text 120K
+														162 container
+															163 container 12:00 AM
+																164 text 12:00 AM
+															165 container 3:00 AM
+																166 text 3:00 AM
+															167 container 6:00 AM
+																168 text 6:00 AM
+															169 container 9:00 AM
+																170 text 9:00 AM
+															171 container 12:00 PM
+																172 text 12:00 PM
+															173 container 3:00 PM
+																174 text 3:00 PM
+															175 container 6:00 PM
+																176 text 6:00 PM
+															177 container 9:00 PM
+																178 text 9:00 PM
+															179 list Forecast area
+															180 image
+															181 list Plot area
+																182 image
+																183 image
+																184 image
+																185 DateTimeUTC 1/1/2026 12:00:00 AM. Future Forecast MW 112,518.
+														186 list Series labels
+													187 container Legend
+														188 list Legend
+															189 Future Forecast MW
+																190 image
+																	191 image
+																	192 image Future Forecast MW
+																193 text Future Forecast MW
+															194 Future Lower 80 MW
+																195 image
+																	196 image
+																	197 image Future Lower 80 MW
+																198 text Future Lower 80 MW
+															199 Future Upper 80 MW
+																200 image
+																	201 image
+																	202 image Future Upper 80 MW
+																203 text Future Upper 80 MW
+											204 container 24 forecast hours | UTC timestamps and MW Historical 24-hour point forecast with lower and upper pointwise nominal 80 percent bounds. Timestamps are UTC. No future actual demand is available in the frozen data.
+												205 toolbar Visual container header
+													206 button Pin visual
+														207 text 
+													208 button Copy as image with caption
+														209 text 
+													210 button Add alert
+														211 text 
+													212 pop up button (collapsed) Description: Filters on Visual, Secondary Actions: Expand
+														213 text 
+													214 button Focus mode
+														215 text 
+													216 pop up button (collapsed) Description: More options, Secondary Actions: Expand
+														217 text 
+												218 container
+													219 heading 24 forecast hours | UTC timestamps and MW, Value: 3
+														220 text 24 forecast hours | UTC timestamps and MW
+													221 container
+														222 button Scroll up
+														223 button Scroll down
+														224 button Scroll left
+														225 button Scroll right
+														226 table
+															227 row Row Selection DateTimeUTC Future Forecast MW Future Lower 80 MW Future Upper 80 MW
+																228 cell
+																	229 text Row Selection
+																230 cell
+																	231 text DateTimeUTC
+																232 cell
+																	233 text Future Forecast MW
+																234 cell
+																	235 text Future Lower 80 MW
+																236 cell
+																	237 text Future Upper 80 MW
+															238 container
+																316 row Select Row 1/1/2026 7:00:00 AM 98,124 92,447 103,802
+																	317 cell
+																		318 checkbox (settable, integer) Description: Select Row, Value: 0
+																	319 cell
+																		320 text 1/1/2026 7:00:00 AM
+																	321 cell
+																		322 text 98,124
+																	323 cell
+																		324 text 92,447
+																	325 cell
+																		326 text 103,802
+																327 row Select Row 1/1/2026 8:00:00 AM 97,364 91,689 103,039
+																	328 cell
+																		329 checkbox (settable, integer) Description: Select Row, Value: 0
+																	330 cell
+																		331 text 1/1/2026 8:00:00 AM
+																	332 cell
+																		333 text 97,364
+																	334 cell
+																		335 text 91,689
+																	336 cell
+																		337 text 103,039
+																338 row Select Row 1/1/2026 9:00:00 AM 98,237 92,361 104,113
+																	339 cell
+																		340 checkbox (settable, integer) Description: Select Row, Value: 0
+																	341 cell
+																		342 text 1/1/2026 9:00:00 AM
+																	343 cell
+																		344 text 98,237
+																	345 cell
+																		346 text 92,361
+																	347 cell
+																		348 text 104,113
+																349 row Select Row 1/1/2026 10:00:00 AM 99,262 93,051 105,474
+																	350 cell
+																		351 checkbox (settable, integer) Description: Select Row, Value: 0
+																	352 cell
+																		353 text 1/1/2026 10:00:00 AM
+																	354 cell
+																		355 text 99,262
+																	356 cell
+																		357 text 93,051
+																	358 cell
+																		359 text 105,474
+																360 row Select Row 1/1/2026 11:00:00 AM 104,065 97,477 110,652
+																	361 cell
+																		362 checkbox (settable, integer) Description: Select Row, Value: 0
+																	363 cell
+																		364 text 1/1/2026 11:00:00 AM
+																	365 cell
+																		366 text 104,065
+																	367 cell
+																		368 text 97,477
+																	369 cell
+																		370 text 110,652
+																371 row Select Row 1/1/2026 12:00:00 PM 107,306 100,563 114,049
+																	372 cell
+																		373 checkbox (settable, integer) Description: Select Row, Value: 0
+																	374 cell
+																		375 text 1/1/2026 12:00:00 PM
+																	376 cell
+																		377 text 107,306
+																	378 cell
+																		379 text 100,563
+																	380 cell
+																		381 text 114,049
+																382 row Select Row 1/1/2026 1:00:00 PM 108,046 101,336 114,757
+																	383 cell
+																		384 checkbox (settable, integer) Description: Select Row, Value: 0
+																	385 cell
+																		386 text 1/1/2026 1:00:00 PM
+																	387 cell
+																		388 text 108,046
+																	389 cell
+																		390 text 101,336
+																	391 cell
+																		392 text 114,757
+																393 row Select Row 1/1/2026 2:00:00 PM 105,528 99,017 112,038
+																	394 cell
+																		395 checkbox (settable, integer) Description: Select Row, Value: 0
+																	396 cell
+																		397 text 1/1/2026 2:00:00 PM
+																	398 cell
+																		399 text 105,528
+																	400 cell
+																		401 text 99,017
+																	402 cell
+																		403 text 112,038
+																404 row Select Row 1/1/2026 3:00:00 PM 104,829 98,530 111,129
+																	405 cell
+																		406 checkbox (settable, integer) Description: Select Row, Value: 0
+																	407 cell
+																		408 text 1/1/2026 3:00:00 PM
+																	409 cell
+																		410 text 104,829
+																	411 cell
+																		412 text 98,530
+																	413 cell
+																		414 text 111,129
+																415 row Select Row 1/1/2026 4:00:00 PM 102,205 95,256 109,155
+																	416 cell
+																		417 checkbox (settable, integer) Description: Select Row, Value: 0
+																	418 cell
+																		419 text 1/1/2026 4:00:00 PM
+																	420 cell
+																		421 text 102,205
+																	422 cell
+																		423 text 95,256
+																	424 cell
+																		425 text 109,155
+																426 row Select Row 1/1/2026 5:00:00 PM 104,607 97,385 111,829
+																	427 cell
+																		428 checkbox (settable, integer) Description: Select Row, Value: 0
+																	429 cell
+																		430 text 1/1/2026 5:00:00 PM
+																	431 cell
+																		432 text 104,607
+																	433 cell
+																		434 text 97,385
+																	435 cell
+																		436 text 111,829
+																437 row Select Row 1/1/2026 6:00:00 PM 105,305 97,496 113,114
+																	438 cell
+																		439 checkbox (settable, integer) Description: Select Row, Value: 0
+																	440 cell
+																		441 text 1/1/2026 6:00:00 PM
+																	442 cell
+																		443 text 105,305
+																	444 cell
+																		445 text 97,496
+																	446 cell
+																		447 text 113,114
+																448 row Select Row 1/1/2026 7:00:00 PM 105,241 97,670 112,813
+																	449 cell
+																		450 checkbox (settable, integer) Description: Select Row, Value: 0
+																	451 cell
+																		452 text 1/1/2026 7:00:00 PM
+																	453 cell
+																		454 text 105,241
+																	455 cell
+																		456 text 97,670
+																	457 cell
+																		458 text 112,813
+																473 row Select Row 1/1/2026 8:00:00 PM 105,114 97,339 112,889
+																	474 cell
+																		475 checkbox (settable, integer) Description: Select Row, Value: 0
+																	476 cell
+																		477 text 1/1/2026 8:00:00 PM
+																	478 cell
+																		479 text 105,114
+																	480 cell
+																		481 text 97,339
+																	482 cell
+																		483 text 112,889
+																484 row Select Row 1/1/2026 9:00:00 PM 104,997 97,279 112,714
+																	485 cell
+																		486 checkbox (settable, integer) Description: Select Row, Value: 0
+																	487 cell
+																		488 text 1/1/2026 9:00:00 PM
+																	489 cell
+																		490 text 104,997
+																	491 cell
+																		492 text 97,279
+																	493 cell
+																		494 text 112,714
+																495 row Select Row 1/1/2026 10:00:00 PM 107,105 99,463 114,747
+																	496 cell
+																		497 checkbox (settable, integer) Description: Select Row, Value: 0
+																	498 cell
+																		499 text 1/1/2026 10:00:00 PM
+																	500 cell
+																		501 text 107,105
+																	502 cell
+																		503 text 99,463
+																	504 cell
+																		505 text 114,747
+																506 row Select Row 1/1/2026 11:00:00 PM 107,014 99,770 114,258
+																	507 cell
+																		508 checkbox (settable, integer) Description: Select Row, Value: 0
+																	509 cell
+																		510 text 1/1/2026 11:00:00 PM
+																	511 cell
+																		512 text 107,014
+																	513 cell
+																		514 text 99,770
+																	515 cell
+																		516 text 114,258
+									459 container
+										460 text 
+										461 heading Filters, Value: 2, ID: outspace-pane-title
+											462 text Filters
+									463 button (collapsed) Description: Show/hide filter pane, Secondary Actions: Expand
+						464 button Description: Zoom Out, ID: zoomOutButton
+						465 container
+						466 button Description: Zoom In, ID: zoomInButton
+						467 button Description: Zoom level. Click to open the Zoom dialog box, ID: zoomValueButton
+						468 button Description: Fit to page, ID: fitToPageButton
+							469 text 
+		470 text Report Zoomed To 30%
+		517 text Row 9 to Row 25
+		472 image
+
+The focused UI element is 204 container 24 forecast hours | UTC timestamps and MW Historical 24-hour point forecast with lower and upper pointwise nominal 80 percent bounds. Timestamps are UTC. No future actual demand is available in the frozen data.

@@ -1,0 +1,12 @@
+{
+  "status": "corrected_preparation_not_applied",
+  "source_model": "powerbi/GridCast.SemanticModel/model.bim",
+  "source_sha256": "e1c2d779839c2121da2e27187f29d7b004ff33ec64605292b670a999d88d407b",
+  "measure_count": 28,
+  "script_sha256": "ae3a741fdae69b7735b04fad05bc7d9c48e69d28f43188f30ad0194d968409da",
+  "target": "ref table DimModel",
+  "expected_preview": "28 new or replaced measures only; no column/table/partition deletion",
+  "primary_syntax_example": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-line-chart",
+  "service_tmdl_documentation": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-tmdl-view",
+  "revision_note": "Removed three leading // instruction comments after the actual Service TMDL command parser rejected them. Script now starts with createOrReplace. Instructions remain in this JSON, not at command scope."
+}

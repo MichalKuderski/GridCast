@@ -1,0 +1,108 @@
+{
+  "status": "expected_only_native_unexecuted",
+  "query": "queries/05_import_integrity.dax",
+  "derivation": "Independent standard-library CSV scan of the four frozen exports; this is an oracle, not native Service output.",
+  "expected_row": {
+    "FactDemandRows": 61368,
+    "FactForecastRows": 131544,
+    "DimDateRows": 2558,
+    "DimModelRows": 5,
+    "ValidationRows": 43800,
+    "CalibrationRows": 43920,
+    "TestRows": 43800,
+    "FutureRows": 24,
+    "FutureActualNonBlank": 0,
+    "DimDateDistinctDates": 2558,
+    "DimModelDistinctModels": 5,
+    "DemandDistinctDateTimes": 61368,
+    "ForecastDistinctKeys": 131544,
+    "DemandBlankDateTimeRows": 0,
+    "ForecastBlankDateTimeRows": 0,
+    "DimDateBlankDateRows": 0,
+    "DimModelBlankModelRows": 0,
+    "DemandDateKeyMismatchRows": 0,
+    "ForecastDateKeyMismatchRows": 0,
+    "DimDateNonMidnightRows": 0,
+    "DemandHourMismatchRows": 0,
+    "ForecastHourMismatchRows": 0,
+    "ForecastOriginMismatchRows": 0,
+    "ForecastHorizonMismatchRows": 0
+  },
+  "expected_result_column_types": {
+    "FactDemandRows": "integer count",
+    "FactForecastRows": "integer count",
+    "DimDateRows": "integer count",
+    "DimModelRows": "integer count",
+    "ValidationRows": "integer count",
+    "CalibrationRows": "integer count",
+    "TestRows": "integer count",
+    "FutureRows": "integer count",
+    "FutureActualNonBlank": "integer count",
+    "DimDateDistinctDates": "integer count",
+    "DimModelDistinctModels": "integer count",
+    "DemandDistinctDateTimes": "integer count",
+    "ForecastDistinctKeys": "integer count",
+    "DemandBlankDateTimeRows": "integer count",
+    "ForecastBlankDateTimeRows": "integer count",
+    "DimDateBlankDateRows": "integer count",
+    "DimModelBlankModelRows": "integer count",
+    "DemandDateKeyMismatchRows": "integer count",
+    "ForecastDateKeyMismatchRows": "integer count",
+    "DimDateNonMidnightRows": "integer count",
+    "DemandHourMismatchRows": "integer count",
+    "ForecastHourMismatchRows": "integer count",
+    "ForecastOriginMismatchRows": "integer count",
+    "ForecastHorizonMismatchRows": "integer count"
+  },
+  "required_model_column_types": {
+    "FactDemand": {
+      "DateTimeUTC": "dateTime",
+      "Date": "dateTime",
+      "HourUTC": "int64",
+      "DateLocal": "dateTime",
+      "HourLocal": "int64",
+      "DayOfWeekNumberLocal": "int64",
+      "DayOfWeekNameLocal": "string",
+      "ActualMW": "double"
+    },
+    "FactForecast": {
+      "DateTimeUTC": "dateTime",
+      "Date": "dateTime",
+      "HourUTC": "int64",
+      "Model": "string",
+      "Split": "string",
+      "ForecastOriginUTC": "dateTime",
+      "HorizonHours": "int64",
+      "ActualMW": "double",
+      "ForecastMW": "double",
+      "Lower80MW": "double",
+      "Upper80MW": "double"
+    },
+    "DimDate": {
+      "Date": "dateTime",
+      "Year": "int64",
+      "MonthNumber": "int64",
+      "MonthName": "string",
+      "YearMonth": "string",
+      "DayOfWeekNumber": "int64",
+      "DayOfWeekName": "string",
+      "IsWeekend": "boolean"
+    },
+    "DimModel": {
+      "Model": "string"
+    }
+  },
+  "source_csv_sha256": {
+    "FactDemand": "19edc154038e9f2310edea2f5f95bffafb7d527e3893bda1a97e0597e9aa426b",
+    "FactForecast": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
+    "DimDate": "2c5978537da0d1b699bd6ddf1b5f5e93824edcafef4ca1501db1dd77182f8df2",
+    "DimModel": "05f423afa1c6fb6afb4884f5faf03169d9f698ecda764f1bb80a5a02e0b8d985"
+  },
+  "native_observations": null,
+  "limitations": [
+    "Date/hour/origin consistency checks do not prove original timezone provenance; canonical M explicitly converts to UTC before removing the zone.",
+    "DAX integer diagnostic results do not establish semantic-model column types. Inspect required model types separately; prediction/actual/bound columns must use double/Decimal Number, not rounded currency/fixed decimal.",
+    "Run the read-only query against the refreshed model without query-scoped measure definitions, retain actual full-precision exports and native execution provenance.",
+    "Equality of row counts and keys does not replace the four numerical/context parity queries, refresh evidence, relationship inspection or visual acceptance."
+  ]
+}

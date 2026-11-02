@@ -1,0 +1,430 @@
+{
+  "date": "2026-10-31",
+  "environment": "Power BI Service in local in-app browser on macOS",
+  "workspace": "My workspace",
+  "account_verified": true,
+  "account_identifier_recorded": false,
+  "observed_steps": [
+    "Signed-in account profile and My workspace inspected",
+    "Explicit approval for four CSV contents and validation model creation received",
+    "Exactly four native Excel Tables packaged without additional data; all 2,019,765 data cells independently verified against source CSVs",
+    "Ordinary organizational OneDrive UI uploaded GridCastValidation.xlsx; visible size 8.67 MB, Private label, and details This item is not shared",
+    "Power BI Service Excel Link to file loaded cloud workbook with four Table and four Worksheet entries",
+    "Exactly the four Table checkboxes selected; Worksheet duplicates left unselected",
+    "Power Query editor loaded and four canonical M query transformations were applied without changing the cloud workbook source",
+    "GridCastValidation semantic model created; initial Data refreshed UI label observed",
+    "Exactly three active single-direction many-to-one relationships manually created and verified in the Service relationship list",
+    "28 persistent DimModel measures applied successfully through TMDL at local UI 10/31/2026 10:46:39 PM; source partitions unchanged",
+    "Manual OnDemand refresh Completed from local UI 10:49:34 PM to 10:49:39 PM; actual refresh-history screenshot saved",
+    "Five standalone no-DEFINE queries executed against persistent measures after refresh; exact source text verified through native copy and full-precision result exports retained",
+    "History, model, context and blank/zero exports passed numerical reconciliation; all 24 native import-integrity values also match independent source expectations",
+    "Actual metadata and native measure-only TMDL reconciled definitions, 27 numeric formats, type families, sorts and canonical relationships",
+    "Four-page 35-visual Service report saved, reopened and reviewed; page order history/test/diagnostics/future with history landing page",
+    "Actual DailyNaive and June 2025 filter states checked against Python; comparison retains all five models",
+    "All 24 future hourly timestamps and 72 rounded rendered forecast/bound values independently reconciled; no successful per-hour CSV download claimed",
+    "Manage permissions UI showed one owner direct-access result for report and model, no sharing links and no ACL mutations",
+    "Unexpected automatic Service trial notice dismissed with Close; no Start trial, upgrade, billing or terms action taken; post-expiry access unverified"
+  ],
+  "upload_status": "Verified private organizational OneDrive workbook transfer; Power BI Service cloud Link to file route created GridCastValidation from the four selected tables.",
+  "model_created": true,
+  "refresh_verified": true,
+  "dax_executed": true,
+  "report_render_verified": true,
+  "report_screenshots_verified": true,
+  "public_sharing_authorized": false,
+  "upload_approval": "Explicit approval received for the four CSV contents and validation model creation, conditional on completed accuracy/robustness/consistency checks.",
+  "updated_at_utc": "2026-11-01T05:28:51.684259+00:00",
+  "workspace_url_recorded": false,
+  "personal_cloud_path_recorded": false,
+  "observation_source": "Actual browser observations reported by the primary agent; no browser actions were performed by this documentation update.",
+  "upload_verified": true,
+  "upload_target": "Private organizational OneDrive for Business storage; no personal cloud URL recorded",
+  "upload_privacy_observed": {
+    "list_label": "Private",
+    "details_text": "This item is not shared",
+    "public_sharing_performed": false
+  },
+  "workbook_roundtrip_verified": true,
+  "workbook_roundtrip_receipt": "outputs/service-validation/workbook_roundtrip.json",
+  "workbook_data_cells_compared": 2019765,
+  "navigator_verified": true,
+  "navigator_entry_count": 8,
+  "navigator_selected_tables": [
+    {
+      "source_table": "FactDemand",
+      "navigator_label": "FactDemand1",
+      "item_kind": "Table",
+      "selected": true
+    },
+    {
+      "source_table": "FactForecast",
+      "navigator_label": "FactForecast2",
+      "item_kind": "Table",
+      "selected": true
+    },
+    {
+      "source_table": "DimDate",
+      "navigator_label": "DimDate3",
+      "item_kind": "Table",
+      "selected": true
+    },
+    {
+      "source_table": "DimModel",
+      "navigator_label": "DimModel4",
+      "item_kind": "Table",
+      "selected": true
+    }
+  ],
+  "navigator_unselected_worksheets": [
+    "FactDemand",
+    "FactForecast",
+    "DimDate",
+    "DimModel"
+  ],
+  "power_query_editor_status": "Four canonical transformations retained the cloud source. Imported counts/key-time integrity and real DAX parity pass; actual metadata exports confirm compatible canonical type families.",
+  "technical_route_notes": [
+    {
+      "route": "Legacy local Excel import",
+      "result": "Service backend rejected local Excel import as no longer supported",
+      "screenshot": "outputs/verification/screenshots/02_local_excel_upload_rejected.jpg"
+    },
+    {
+      "route": "Modern CSV/Excel iframe chooser",
+      "result": "File chooser timed out; no successful transfer claimed through that route"
+    },
+    {
+      "route": "Organizational OneDrive UI followed by Excel Link to file",
+      "result": "Workbook upload and Navigator table selection succeeded; Transform data requested"
+    }
+  ],
+  "semantic_model": {
+    "name": "GridCastValidation",
+    "id": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "created_in_service": true
+  },
+  "query_transforms_applied": true,
+  "cloud_query_source_preserved": true,
+  "query_column_counts_verified": {
+    "FactDemand": 8,
+    "FactForecast": 11,
+    "DimDate": 8,
+    "DimModel": 1
+  },
+  "imported_row_counts_verified": true,
+  "initial_data_refreshed_label": {
+    "observed": true,
+    "display_text": "10/31/2026 10:40:29 PM",
+    "time_basis": "Local Service UI display, retained verbatim",
+    "scope": "Initial model load timestamp only; not a confirmed manual refresh"
+  },
+  "manual_refresh_confirmed": true,
+  "relationships_verified": true,
+  "relationship_count": 3,
+  "relationships": [
+    {
+      "from_table": "FactDemand",
+      "from_column": "Date",
+      "to_table": "DimDate",
+      "to_column": "Date",
+      "from_cardinality": "many",
+      "to_cardinality": "one",
+      "active": true,
+      "filter_direction": "single from dimension to fact"
+    },
+    {
+      "from_table": "FactForecast",
+      "from_column": "Date",
+      "to_table": "DimDate",
+      "to_column": "Date",
+      "from_cardinality": "many",
+      "to_cardinality": "one",
+      "active": true,
+      "filter_direction": "single from dimension to fact"
+    },
+    {
+      "from_table": "FactForecast",
+      "from_column": "Model",
+      "to_table": "DimModel",
+      "to_column": "Model",
+      "from_cardinality": "many",
+      "to_cardinality": "one",
+      "active": true,
+      "filter_direction": "single from dimension to fact"
+    }
+  ],
+  "relationship_evidence": {
+    "method": "Actual Service relationship list; three results inspected after manual creation",
+    "screenshot": "outputs/verification/screenshots/03_service_relationships.jpg",
+    "screenshot_dimensions": "1280x720"
+  },
+  "dax_execution_scope": "Five real standalone queries against persistent Service model measures, without DEFINE declarations; first four numerical/context exports reconciled and fifth import-integrity values match oracle",
+  "dax_syntax_probe": {
+    "status": "Success",
+    "engine": "Actual Power BI Service DAX engine",
+    "query_scope": "Temporary DEFINE declarations",
+    "prepared_measures": 28,
+    "elapsed_ms": 1261.1,
+    "metric_parity_verified": false,
+    "historical_preparatory_probe": true,
+    "persistent_measures_created_by_probe": false,
+    "scope_note": "This earlier query-scoped probe did not persist measures; subsequent TMDL application and standalone queries establish current persistence and parity."
+  },
+  "persistent_measures_verified": true,
+  "dax_metric_parity_verified": true,
+  "tmdl_patch_status": "Applied successfully; 28 persistent DimModel measures, with source partitions unchanged",
+  "remaining_checks": [
+    "Public release authorization and unauthenticated link checks if publication is requested",
+    "Windows Desktop compatibility only if claiming that separate artifact/runtime scope"
+  ],
+  "manual_refresh": {
+    "status": "Completed",
+    "type": "OnDemand",
+    "start_local_ui": "10/31/2026 10:49:34 PM",
+    "end_local_ui": "10/31/2026 10:49:39 PM",
+    "time_basis": "Local Service UI labels, retained verbatim",
+    "screenshot": "outputs/verification/screenshots/04_service_refresh_completed.jpg"
+  },
+  "persistent_measure_count": 28,
+  "persistent_measure_table": "DimModel",
+  "tmdl_application": {
+    "status": "Success",
+    "local_ui_time": "10/31/2026 10:46:39 PM",
+    "measure_count": 28,
+    "target_table": "DimModel",
+    "source_partitions_changed": false,
+    "format_metadata_applied": true,
+    "format_metadata_verified": true,
+    "format_metadata_verification_receipt": "outputs/verification/service_exports/metadata_reconciliation.json"
+  },
+  "native_query_exports": [
+    {
+      "query_source": "powerbi/queries/02_test_models.dax",
+      "query_sha256": "885e3155a866d831567bebfc8306a2bbf225407621dff668a1dac31bd9bdf73d",
+      "result_csv": "outputs/verification/service_exports/models.csv",
+      "result_sha256": "04472075f67d1c082456c0eb20d267ca61ac48658da393cae3f2888c3eb3b87d",
+      "raw_tsv": "outputs/verification/service_exports/models.raw.tsv",
+      "rows": 5,
+      "columns": 18,
+      "native_status": "generic: Success (516.8 ms)",
+      "source_text_verified_via_native_copy": true,
+      "temporary_measure_definitions": false
+    },
+    {
+      "query_source": "powerbi/queries/03_context_matrix.dax",
+      "query_sha256": "695d1467e28005d3246e57545c94da41ddd0ec11815c067ca2f062495518276d",
+      "result_csv": "outputs/verification/service_exports/contexts.csv",
+      "result_sha256": "9cfc13ee30a3f5c2e176363fb2caf21edc6d235dc61666e0db13fed86ee894bf",
+      "raw_tsv": "outputs/verification/service_exports/contexts.raw.tsv",
+      "rows": 12,
+      "columns": 29,
+      "native_status": "generic: Success (818.8 ms)",
+      "source_text_verified_via_native_copy": true,
+      "temporary_measure_definitions": false
+    },
+    {
+      "query_source": "powerbi/queries/04_blank_zero_semantics.dax",
+      "query_sha256": "660d950adef4ba57af3668779e19eef4b2d52f5556cf39cc167fed5bcfbdefa3",
+      "result_csv": "outputs/verification/service_exports/primitives.csv",
+      "result_sha256": "66e04f3b4190516b705ef3cbf9a0ccc83bd301137b524b6e18192abbba39d886",
+      "raw_tsv": "outputs/verification/service_exports/primitives.raw.tsv",
+      "rows": 1,
+      "columns": 5,
+      "native_status": "generic: Success (504.5 ms)",
+      "source_text_verified_via_native_copy": true,
+      "temporary_measure_definitions": false
+    },
+    {
+      "query_source": "powerbi/queries/05_import_integrity.dax",
+      "query_sha256": "981fad066b75a9b5656bb0ace866d84778afb529ff013cf9227b9df01f88eb79",
+      "result_csv": "outputs/verification/service_exports/import_integrity.csv",
+      "result_sha256": "a5864c538fbeec4d1cbf556c0a10ca78a60e7c2d82b27f639077babc5b1e2001",
+      "raw_tsv": "outputs/verification/service_exports/import_integrity.raw.tsv",
+      "rows": 1,
+      "columns": 24,
+      "native_status": "generic: Success (848.4 ms)",
+      "source_text_verified_via_native_copy": true,
+      "temporary_measure_definitions": false
+    },
+    {
+      "query_source": "powerbi/queries/01_history_totals.dax",
+      "query_sha256": "9a001c8cacbf42f5b8ce1956317de39a156acc90272ec5ad9dbf89a201a3feae",
+      "result_csv": "outputs/verification/service_exports/history.csv",
+      "result_sha256": "6b3b639da4389378c49f7decc251391ab9e1ce9371c575117152bf670b704bdb",
+      "raw_tsv": "outputs/verification/service_exports/history.raw.tsv",
+      "rows": 1,
+      "columns": 7,
+      "native_status": "generic: Success (559.0 ms)",
+      "source_text_verified_via_native_copy": true,
+      "temporary_measure_definitions": false
+    }
+  ],
+  "native_metric_reconciliation": {
+    "status": "passed",
+    "receipt": "powerbi/validation/native_export_reconciliation.json",
+    "compared_export_groups": [
+      "history",
+      "models",
+      "contexts",
+      "primitives"
+    ],
+    "models": 5,
+    "contexts": 12,
+    "provenance": "outputs/verification/service_exports/query_provenance.json",
+    "method": "Real Service query execution, source text verified via native copy, Copy Entire table at full precision; raw TSV retained"
+  },
+  "import_integrity_reconciliation": {
+    "status": "all_24_values_match_independent_oracle",
+    "actual_export": "outputs/verification/service_exports/import_integrity.csv",
+    "expected_oracle": "powerbi/validation/expected_import_integrity.json",
+    "checked_values": 24,
+    "observed_table_rows": {
+      "FactDemand": 61368,
+      "FactForecast": 131544,
+      "DimDate": 2558,
+      "DimModel": 5
+    },
+    "scope": "Counts, uniqueness, blank future actuals and key/time consistency; does not establish semantic-model column types"
+  },
+  "session_local_dates": [
+    "2026-10-31",
+    "2026-11-01"
+  ],
+  "service_validation_status": "passed_at_documented_scope",
+  "report_created": true,
+  "report_saved_verified": true,
+  "report_reopened_verified": true,
+  "report_name": "GridCast \u2014 PJM Demand Validation",
+  "report_id": "46cec94e-2c83-41b6-9595-22b721e23c78",
+  "report_filter_interactions_verified": true,
+  "report_page_count": 4,
+  "report_visual_count": 35,
+  "report_page_order": [
+    "01 | Demand history",
+    "02 | Untouched 2025 test",
+    "03 | Error and peak risk",
+    "04 | Historical next day"
+  ],
+  "report_landing_page": "01 | Demand history",
+  "report_pages": [
+    {
+      "page": "01 | Demand history",
+      "visual_count": 10,
+      "screenshot": "outputs/verification/screenshots/10_service_history_page.jpg",
+      "sha256": "a255d5bfd58f23eca157413a1623d7c1f61f38f78a0424079aa0bf9b1145b30b",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "02 | Untouched 2025 test",
+      "visual_count": 9,
+      "screenshot": "outputs/verification/screenshots/06_service_test_page.jpg",
+      "sha256": "c140c814ed9b8eaffcf1528a3318899515eed65db529538d87b7ffd04f896cce",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "03 | Error and peak risk",
+      "visual_count": 11,
+      "screenshot": "outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+      "sha256": "8b8f81de2983c7a5cb14f4ccc2de6e1829b7b8ef210698806fb874221fcc9f6d",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "04 | Historical next day",
+      "visual_count": 5,
+      "screenshot": "outputs/verification/screenshots/11_service_future_page.jpg",
+      "sha256": "39fb0f18dad018d83cbc8959b269821dbf27a662ef27c45ddeeea7bfe6839298",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    }
+  ],
+  "report_observed_filter_checks": [
+    {
+      "selection": "HistGB_small, all dates",
+      "MAE_MW_display": "4,219.4",
+      "WAPE_display": "4.38%",
+      "Bias_MW_display": "-1,465.0",
+      "coverage_display": "78.6%",
+      "comparison_models": 5
+    },
+    {
+      "selection": "DailyNaive, all dates",
+      "MAE_MW_display": "4,863.0",
+      "WAPE_display": "5.05%",
+      "Bias_MW_display": "-62.5",
+      "coverage_display": "-- (BLANK)",
+      "comparison_models": 5,
+      "screenshot": "outputs/verification/screenshots/07_service_baseline_filter.jpg"
+    },
+    {
+      "selection": "HistGB_small, June 1\u201330 2025 UTC",
+      "MAE_MW_display": "6,245.4",
+      "WAPE_display": "6.03%",
+      "Bias_MW_display": "-5,026.2",
+      "coverage_display": "66.5%",
+      "comparison_models": 5,
+      "comparison_scored_hours_each": 720,
+      "screenshot": "outputs/verification/screenshots/08_service_june_filter.jpg"
+    }
+  ],
+  "report_visual_acceptance_receipt": "outputs/verification/service_visual_acceptance.json",
+  "model_metadata_verified": true,
+  "model_metadata_receipt": "outputs/verification/service_exports/metadata_reconciliation.json",
+  "measure_format_metadata_verified": true,
+  "column_type_metadata_verified": true,
+  "model_metadata_scope": "Actual Service metadata exports and native measure-only TMDL: 28 expressions/descriptions/folders, 27 numeric formats, compatible canonical column type families, sort/date-table settings and 3 canonical relationships. Documented Service-generated hidden artifacts are not asserted byte-identical to local BIM.",
+  "future_hourly_rendered_display_verified": true,
+  "future_rendered_display_rows": 24,
+  "future_rendered_display_numeric_cells": 72,
+  "future_rendered_display_receipt": "outputs/verification/service_exports/future_visual_display_reconciliation.json",
+  "future_full_precision_visual_csv_download_verified": false,
+  "future_visual_export_scope": "72 rounded rendered UI values match expected integer rounding; attempted per-hour CSV download timed out. Full-precision aggregate DAX results are separate.",
+  "permissions_verified": true,
+  "permissions_receipt": "outputs/verification/privacy_access_check.json",
+  "permissions_scope": "Owner-only direct access and no sharing links in inspected UI. Organization and administrator policies still apply; this is not a complete tenant security audit. Pending/shared-view tabs were not confirmed.",
+  "report_direct_access_results": 1,
+  "model_direct_access_results": 1,
+  "report_sharing_links_observed": 0,
+  "permission_mutations_performed": false,
+  "public_sharing_performed": false,
+  "public_links_verified": false,
+  "unexpected_license_notice": {
+    "observed_after": "Opening report Manage permissions",
+    "message": "Looks like you wanted to access a shared artifact. We've given you a free trial of Power BI paid features for 60 days so you can navigate Power BI freely.",
+    "action": "Dismissed using Close Dialog. No Start trial, upgrade, billing, license administration or terms action was performed.",
+    "subsequent_header": "Power BI Trial: 59 days left",
+    "access_after_trial_expiry_verified": false
+  },
+  "windows_desktop_compatibility_verified": false,
+  "pbix_download_or_export_verified": false,
+  "remaining_release_gates": [
+    "Explicit authorization for a public repository/portfolio/report release",
+    "Unauthenticated public-link and downloadable-artifact checks after any authorized publication"
+  ],
+  "unclaimed_scopes": [
+    "Windows Desktop/local PBIP compatibility: all nine checklist items remain open",
+    "PBIX download/export",
+    "Full-precision per-hour future visual CSV download",
+    "Exhaustive assistive-technology and keyboard accessibility certification",
+    "Continued Service access after the automatically reported trial ends"
+  ],
+  "relationship_count_scope": "Three canonical/manual fact-to-dimension relationships; not the entire Service-generated engine graph",
+  "engine_relationship_count_including_generated_dates": 7,
+  "engine_generated_date_relationship_count": 4,
+  "canonical_visible_table_count": 4,
+  "engine_total_table_count_including_generated_dates": 9,
+  "engine_generated_hidden_date_table_or_template_count": 5
+}

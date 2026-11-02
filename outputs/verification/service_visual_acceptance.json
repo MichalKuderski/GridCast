@@ -1,0 +1,115 @@
+{
+  "checked_at_utc": "2026-11-01T05:26:43.579628+00:00",
+  "status": "passed_service_visual_acceptance",
+  "evidence_class": "Actual saved Power BI Service report and genuine browser screenshots; not Windows Desktop evidence",
+  "report_id": "46cec94e-2c83-41b6-9595-22b721e23c78",
+  "semantic_model_id": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+  "saved_in": "My workspace",
+  "reopened_saved_report_verified": true,
+  "pages": [
+    {
+      "page": "01 | Demand history",
+      "visual_count": 10,
+      "screenshot": "outputs/verification/screenshots/10_service_history_page.jpg",
+      "sha256": "a255d5bfd58f23eca157413a1623d7c1f61f38f78a0424079aa0bf9b1145b30b",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "02 | Untouched 2025 test",
+      "visual_count": 9,
+      "screenshot": "outputs/verification/screenshots/06_service_test_page.jpg",
+      "sha256": "c140c814ed9b8eaffcf1528a3318899515eed65db529538d87b7ffd04f896cce",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "03 | Error and peak risk",
+      "visual_count": 11,
+      "screenshot": "outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+      "sha256": "8b8f81de2983c7a5cb14f4ccc2de6e1829b7b8ef210698806fb874221fcc9f6d",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    },
+    {
+      "page": "04 | Historical next day",
+      "visual_count": 5,
+      "screenshot": "outputs/verification/screenshots/11_service_future_page.jpg",
+      "sha256": "39fb0f18dad018d83cbc8959b269821dbf27a662ef27c45ddeeea7bfe6839298",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "inspection": "Reviewed actual rendered Service report at fit-to-page reading size by primary agent and independent reviewer. Final line-style/UTC polish on test/future pages reviewed again by primary agent."
+    }
+  ],
+  "total_visuals": 35,
+  "landing_page": "01 | Demand history",
+  "page_order": [
+    "01 | Demand history",
+    "02 | Untouched 2025 test",
+    "03 | Error and peak risk",
+    "04 | Historical next day"
+  ],
+  "observed_filter_checks": [
+    {
+      "selection": "HistGB_small, all dates",
+      "MAE_MW_display": "4,219.4",
+      "WAPE_display": "4.38%",
+      "Bias_MW_display": "-1,465.0",
+      "coverage_display": "78.6%",
+      "comparison_models": 5
+    },
+    {
+      "selection": "DailyNaive, all dates",
+      "MAE_MW_display": "4,863.0",
+      "WAPE_display": "5.05%",
+      "Bias_MW_display": "-62.5",
+      "coverage_display": "-- (BLANK)",
+      "comparison_models": 5,
+      "screenshot": "outputs/verification/screenshots/07_service_baseline_filter.jpg"
+    },
+    {
+      "selection": "HistGB_small, June 1\u201330 2025 UTC",
+      "MAE_MW_display": "6,245.4",
+      "WAPE_display": "6.03%",
+      "Bias_MW_display": "-5,026.2",
+      "coverage_display": "66.5%",
+      "comparison_models": 5,
+      "comparison_scored_hours_each": 720,
+      "screenshot": "outputs/verification/screenshots/08_service_june_filter.jpg"
+    }
+  ],
+  "checks_passed": [
+    "All four pages rendered and saved; reordered logically with historical demand landing page",
+    "Full numeric card display units; no K/B scaling hides forecast accuracy values",
+    "All five comparison models remain visible while model slicer filters cards/trend; date slicer filters comparison as well",
+    "Model without intervals displays BLANK rather than zero coverage",
+    "Actual and forecast use one primary MW axis; forecast uses dashed line and actual solid line",
+    "UTC month chart chronological; local weekdays Monday through Sunday; local/UTC hour columns are categorical axes rather than summed values",
+    "Future chart uses actual hourly DateTimeUTC field instead of automatic date hierarchy",
+    "Future chart explicitly labels UTC, point forecast solid/lower bound dashed/upper bound dotted, with linear interpolation",
+    "Future table restored model-slicer Filter interaction and exposes all24 UTC hours by scrolling",
+    "High-demand definition and realized47.9% nominal80% coverage prominently disclosed",
+    "Meaningful alt text authored for all35 visuals; labels, units, clipping and sorting reviewed at normal reading size"
+  ],
+  "future_display_reconciliation": "outputs/verification/service_exports/future_visual_display_reconciliation.json",
+  "permissions_receipt": "outputs/verification/privacy_access_check.json",
+  "limitations": [
+    "Windows Desktop and local PBIP compatibility were not tested; no Desktop/PBIX validation claim",
+    "Per-hour future visual CSV download timed out;72 rounded rendered UI cells were independently reconciled instead. Full-precision aggregate native DAX evidence is separate.",
+    "No exhaustive assistive-technology or keyboard-tab-order accessibility certification",
+    "Service UI layout refinements do not establish byte-identical PBIR source or native Windows rendering",
+    "No public sharing performed or unauthenticated portfolio/repository/report link tested",
+    "Power BI reported an automatic trial; continued Service access after trial expiry is unverified"
+  ]
+}

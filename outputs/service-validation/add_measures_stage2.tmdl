@@ -1,0 +1,32 @@
+createOrReplace
+	ref table 'DimModel'
+
+		/// Expected hourly slots without a valid observed actual.
+		measure 'Missing Hours' = [Expected Hours] - [Observed Hours]
+			formatString: #,0
+			displayFolder: History
+
+		/// Observed valid hours divided by expected hourly slots.
+		measure 'Observation Completeness' = DIVIDE([Observed Hours], [Expected Hours])
+			formatString: 0.00%
+			displayFolder: History
+
+		/// Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.
+		measure 'Test High Demand Hours' = IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))
+			formatString: #,0
+			displayFolder: Diagnostics
+
+		/// Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.
+		measure 'Test High Demand MAE MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))
+			formatString: #,0.0
+			displayFolder: Diagnostics
+
+		/// Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.
+		measure 'Test High Demand Bias MW' = IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))
+			formatString: +#,0.0;-#,0.0;0.0
+			displayFolder: Diagnostics
+
+		/// Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.
+		measure 'Test High Demand Coverage 80' = IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = "test" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))
+			formatString: 0.0%
+			displayFolder: Diagnostics

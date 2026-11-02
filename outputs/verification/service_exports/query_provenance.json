@@ -1,0 +1,101 @@
+[
+  {
+    "queryFile": "02_test_models.dax",
+    "label": "models",
+    "rows": 5,
+    "columns": 18,
+    "nativeStatus": "generic: Success (516.8 ms)",
+    "copiedAtUtc": "2026-11-01T03:52:14.946Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "03_context_matrix.dax",
+    "label": "contexts",
+    "rows": 12,
+    "columns": 29,
+    "nativeStatus": "generic: Success (818.8 ms)",
+    "copiedAtUtc": "2026-11-01T03:52:23.740Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "04_blank_zero_semantics.dax",
+    "label": "primitives",
+    "rows": 1,
+    "columns": 5,
+    "nativeStatus": "generic: Success (504.5 ms)",
+    "copiedAtUtc": "2026-11-01T03:52:28.719Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "05_import_integrity.dax",
+    "label": "import_integrity",
+    "rows": 1,
+    "columns": 24,
+    "nativeStatus": "generic: Success (848.4 ms)",
+    "copiedAtUtc": "2026-11-01T03:52:31.934Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "01_history_totals.dax",
+    "label": "history",
+    "rows": 1,
+    "columns": 7,
+    "nativeStatus": "generic: Success (559.0 ms)",
+    "copiedAtUtc": "2026-11-01T03:52:34.685Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "06a_service_measures.dax",
+    "label": "metadata_measures",
+    "rows": 28,
+    "columns": 9,
+    "nativeStatus": "generic: Success (720.9 ms)",
+    "copiedAtUtc": "2026-11-01T03:56:19.297Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "06b_service_columns.dax",
+    "label": "metadata_columns",
+    "rows": 28,
+    "columns": 11,
+    "nativeStatus": "generic: Success (669.7 ms)",
+    "copiedAtUtc": "2026-11-01T03:56:21.602Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "06c_service_tables.dax",
+    "label": "metadata_tables",
+    "rows": 9,
+    "columns": 5,
+    "nativeStatus": "generic: Success (663.2 ms)",
+    "copiedAtUtc": "2026-11-01T03:56:49.064Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  {
+    "queryFile": "06d_service_relationships.dax",
+    "label": "metadata_relationships",
+    "rows": 7,
+    "columns": 10,
+    "nativeStatus": "generic: Success (572.8 ms)",
+    "copiedAtUtc": "2026-11-01T03:56:51.356Z",
+    "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "queryTextVerifiedViaNativeCopy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  }
+]

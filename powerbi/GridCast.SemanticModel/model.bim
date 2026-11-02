@@ -1,0 +1,560 @@
+{
+  "name": "GridCast",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DataFolder\", \"ReadCsv\", \"FactDemand\", \"FactForecast\", \"DimDate\", \"DimModel\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "kind": "m",
+        "expression": [
+          "\"C:\\GridCast\\data\\powerbi\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+        ]
+      },
+      {
+        "name": "ReadCsv",
+        "kind": "m",
+        "expression": [
+          "(filename as text) as table =>",
+          "let",
+          "    Source = Csv.Document(File.Contents(DataFolder & \"/\" & filename),",
+          "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+          "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+          "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers))",
+          "in",
+          "    Nulls"
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "FactDemand",
+        "columns": [
+          {
+            "name": "DateTimeUTC",
+            "dataType": "dateTime",
+            "sourceColumn": "DateTimeUTC",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd HH:mm"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "HourUTC",
+            "dataType": "int64",
+            "sourceColumn": "HourUTC",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateLocal",
+            "dataType": "dateTime",
+            "sourceColumn": "DateLocal",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "HourLocal",
+            "dataType": "int64",
+            "sourceColumn": "HourLocal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNumberLocal",
+            "dataType": "int64",
+            "sourceColumn": "DayOfWeekNumberLocal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNameLocal",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekNameLocal",
+            "summarizeBy": "none",
+            "sortByColumn": "DayOfWeekNumberLocal"
+          },
+          {
+            "name": "ActualMW",
+            "dataType": "double",
+            "sourceColumn": "ActualMW",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactDemand",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = ReadCsv(\"FactDemand.csv\"),",
+                "    Typed = Table.TransformColumnTypes(Source,",
+                "        {{\"Date\", type date}, {\"HourUTC\", Int64.Type}, {\"DateLocal\", type date}, {\"HourLocal\", Int64.Type}, {\"ActualMW\", type number}}, \"en-US\"),",
+                "    UTC = Table.TransformColumns(Typed, {{\"DateTimeUTC\", each DateTimeZone.RemoveZone(DateTimeZone.SwitchZone(DateTimeZone.FromText(_), 0)), type datetime}}),",
+                "    Selected = Table.SelectColumns(UTC, {\"DateTimeUTC\", \"Date\", \"HourUTC\", \"DateLocal\", \"HourLocal\", \"ActualMW\"}),",
+                "    WeekdayNumber = Table.AddColumn(Selected, \"DayOfWeekNumberLocal\", each Date.DayOfWeek([DateLocal], Day.Monday) + 1, Int64.Type),",
+                "    WeekdayName = Table.AddColumn(WeekdayNumber, \"DayOfWeekNameLocal\", each Date.DayOfWeekName([DateLocal], \"en-US\"), type text)",
+                "in",
+                "    WeekdayName"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactForecast",
+        "columns": [
+          {
+            "name": "DateTimeUTC",
+            "dataType": "dateTime",
+            "sourceColumn": "DateTimeUTC",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd HH:mm"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "HourUTC",
+            "dataType": "int64",
+            "sourceColumn": "HourUTC",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Model",
+            "dataType": "string",
+            "sourceColumn": "Model",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Split",
+            "dataType": "string",
+            "sourceColumn": "Split",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ForecastOriginUTC",
+            "dataType": "dateTime",
+            "sourceColumn": "ForecastOriginUTC",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd HH:mm"
+          },
+          {
+            "name": "HorizonHours",
+            "dataType": "int64",
+            "sourceColumn": "HorizonHours",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActualMW",
+            "dataType": "double",
+            "sourceColumn": "ActualMW",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ForecastMW",
+            "dataType": "double",
+            "sourceColumn": "ForecastMW",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Lower80MW",
+            "dataType": "double",
+            "sourceColumn": "Lower80MW",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Upper80MW",
+            "dataType": "double",
+            "sourceColumn": "Upper80MW",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactForecast",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = ReadCsv(\"FactForecast.csv\"),",
+                "    Typed = Table.TransformColumnTypes(Source,",
+                "        {{\"Date\", type date}, {\"HourUTC\", Int64.Type}, {\"Model\", type text}, {\"Split\", type text},",
+                "         {\"HorizonHours\", Int64.Type}, {\"ActualMW\", type number}, {\"ForecastMW\", type number},",
+                "         {\"Lower80MW\", type number}, {\"Upper80MW\", type number}}, \"en-US\"),",
+                "    UTC = Table.TransformColumns(Typed, {",
+                "        {\"DateTimeUTC\", each DateTimeZone.RemoveZone(DateTimeZone.SwitchZone(DateTimeZone.FromText(_), 0)), type datetime},",
+                "        {\"ForecastOriginUTC\", each DateTimeZone.RemoveZone(DateTimeZone.SwitchZone(DateTimeZone.FromText(_), 0)), type datetime}}),",
+                "    Selected = Table.SelectColumns(UTC, {\"DateTimeUTC\", \"Date\", \"HourUTC\", \"Model\", \"Split\", \"ForecastOriginUTC\", \"HorizonHours\", \"ActualMW\", \"ForecastMW\", \"Lower80MW\", \"Upper80MW\"})",
+                "in",
+                "    Selected"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd",
+            "isKey": true
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "summarizeBy": "none",
+            "sortByColumn": "MonthNumber"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNumber",
+            "dataType": "int64",
+            "sourceColumn": "DayOfWeekNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekName",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekName",
+            "summarizeBy": "none",
+            "sortByColumn": "DayOfWeekNumber"
+          },
+          {
+            "name": "IsWeekend",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekend",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = ReadCsv(\"DimDate.csv\"),",
+                "    Typed = Table.TransformColumnTypes(Source, {",
+                "        {\"Date\", type date}, {\"Year\", Int64.Type}, {\"MonthNumber\", Int64.Type},",
+                "        {\"MonthName\", type text}, {\"YearMonth\", type text},",
+                "        {\"DayOfWeekNumber\", Int64.Type}, {\"DayOfWeekName\", type text}, {\"IsWeekend\", type logical}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "DimModel",
+        "columns": [
+          {
+            "name": "Model",
+            "dataType": "string",
+            "sourceColumn": "Model",
+            "summarizeBy": "none",
+            "isKey": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimModel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = ReadCsv(\"DimModel.csv\"),",
+                "    Typed = Table.TransformColumnTypes(Source, {{\"Model\", type text}}, \"en-US\"),",
+                "    Selected = Table.SelectColumns(Typed, {\"Model\"})",
+                "in",
+                "    Selected"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Demand MWh",
+            "expression": "SUM(FactDemand[ActualMW])",
+            "displayFolder": "History",
+            "description": "Sum of hourly mean MW multiplied by each one-hour interval.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Mean Demand MW",
+            "expression": "AVERAGE(FactDemand[ActualMW])",
+            "displayFolder": "History",
+            "description": "Mean hourly PJM balancing authority demand over the selected UTC dates.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Peak Demand MW",
+            "expression": "MAX(FactDemand[ActualMW])",
+            "displayFolder": "History",
+            "description": "Maximum observed hourly mean demand; not an instantaneous peak.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Observed Hours",
+            "expression": "COALESCE(COUNT(FactDemand[ActualMW]), 0)",
+            "displayFolder": "History",
+            "description": "Number of nonblank one-hour observations; zero when no observations exist. Missing demand is not counted as zero.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Expected Hours",
+            "expression": "COALESCE(COUNTROWS(FactDemand), 0)",
+            "displayFolder": "History",
+            "description": "Number of expected one-hour slots on the complete UTC grid; zero for an empty date selection.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Missing Hours",
+            "expression": "[Expected Hours] - [Observed Hours]",
+            "displayFolder": "History",
+            "description": "Expected hourly slots without a valid observed actual.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Observation Completeness",
+            "expression": "DIVIDE([Observed Hours], [Expected Hours])",
+            "displayFolder": "History",
+            "description": "Observed valid hours divided by expected hourly slots.",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Model Selection",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), SELECTEDVALUE(DimModel[Model]), \"Select one model to view forecast KPIs\")",
+            "displayFolder": "Controls",
+            "description": "Model safeguard for cards and lines; comparison tables supply row context."
+          },
+          {
+            "name": "Test Hours",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]))), 0))",
+            "displayFolder": "Test",
+            "description": "Scored 2025 hourly pairs for exactly one model; zero for an empty scored subset.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test Actual MWh",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))",
+            "displayFolder": "Test",
+            "description": "Actual one-hour energy on scored test pairs; excludes future rows.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test Forecast MWh",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))",
+            "displayFolder": "Test",
+            "description": "Forecast one-hour energy on the same scored test pairs.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test Actual MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))",
+            "displayFolder": "Test",
+            "description": "Mean actual hourly demand MW, at the current axis grain, on scored test pairs.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test Forecast MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))",
+            "displayFolder": "Test",
+            "description": "Mean forecast MW, at the current axis grain, on scored test pairs.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test MAE MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))",
+            "displayFolder": "Test",
+            "description": "Mean absolute hourly error; lower is better.",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "Test RMSE MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), SQRT(AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), POWER(FactForecast[ForecastMW] - FactForecast[ActualMW], 2))))",
+            "displayFolder": "Test",
+            "description": "Root mean squared hourly error, emphasizing large errors.",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "Test WAPE",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ActualMW]))))",
+            "displayFolder": "Test",
+            "description": "Ratio of aggregate absolute error to aggregate absolute actual demand. Never average daily WAPE.",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Test Bias MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW] - FactForecast[ActualMW]))",
+            "displayFolder": "Test",
+            "description": "Forecast minus actual; positive means overforecasting.",
+            "formatString": "+#,0.0;-#,0.0;0.0"
+          },
+          {
+            "name": "Test Interval Hours",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW]))), 0))",
+            "displayFolder": "Intervals",
+            "description": "Number of scored test observations with both interval bounds; zero when none exist.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test Coverage 80",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])))))",
+            "displayFolder": "Intervals",
+            "description": "Observed empirical coverage of nominal 80% hourly prediction intervals. Zero when no actual is covered, blank when no interval pairs exist.",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Test Mean Interval Width MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[Upper80MW] - FactForecast[Lower80MW]))",
+            "displayFolder": "Intervals",
+            "description": "Mean width on test rows with interval bounds.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Training High Demand Threshold MW",
+            "expression": "111972.4",
+            "displayFolder": "Diagnostics",
+            "description": "Fixed 90th percentile of valid initial training demand (2019\u20132022, after 336-hour warmup). Generated from outputs/run_summary.json; never derived from test demand.",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "Test High Demand Hours",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))",
+            "displayFolder": "Diagnostics",
+            "description": "Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Test High Demand MAE MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))",
+            "displayFolder": "Diagnostics",
+            "description": "Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "Test High Demand Bias MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))",
+            "displayFolder": "Diagnostics",
+            "description": "Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.",
+            "formatString": "+#,0.0;-#,0.0;0.0"
+          },
+          {
+            "name": "Test High Demand Coverage 80",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))",
+            "displayFolder": "Diagnostics",
+            "description": "Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Future Forecast MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[ForecastMW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+            "displayFolder": "Future",
+            "description": "Historical next-day forecast from the end of the frozen 2025 source; not today's live forecast.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Future Lower 80 MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Lower80MW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+            "displayFolder": "Future",
+            "description": "Pointwise lower 80% bound; displayed at hourly grain only.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Future Upper 80 MW",
+            "expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Upper80MW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+            "displayFolder": "Future",
+            "description": "Pointwise upper 80% bound; displayed at hourly grain only.",
+            "formatString": "#,0"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FactDemand_Date",
+        "fromTable": "FactDemand",
+        "fromColumn": "Date",
+        "toTable": "DimDate",
+        "toColumn": "Date",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "isActive": true,
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactForecast_Date",
+        "fromTable": "FactForecast",
+        "fromColumn": "Date",
+        "toTable": "DimDate",
+        "toColumn": "Date",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "isActive": true,
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactForecast_Model",
+        "fromTable": "FactForecast",
+        "fromColumn": "Model",
+        "toTable": "DimModel",
+        "toColumn": "Model",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "isActive": true,
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

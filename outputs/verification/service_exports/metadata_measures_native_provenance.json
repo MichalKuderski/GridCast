@@ -1,0 +1,11 @@
+{
+  "copiedAtUtc": "2026-11-01T03:59:47.355Z",
+  "modelId": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+  "method": "Actual Service TMDL view > DimModel > Script TMDL to > Clipboard",
+  "nativeClipboardSha256": "e8b029b371068f25cdf53cd88edd46a110761919640c0b4097ae48382b024be0",
+  "publicProjectionSha256": "4e19eb486cf0b3246fce7f0b1e7f9e90e4e6090bd6eeba53cde47f5fb46f5506",
+  "projection": "28 native measure blocks retained verbatim after newline normalization; command wrapper uses ref table; existing column and private M partition omitted",
+  "measureCount": 28,
+  "formatStringCount": 27,
+  "partitionOrConnectionDetailsPublished": false
+}

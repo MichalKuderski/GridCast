@@ -1,0 +1,677 @@
+{
+  "status": "manual_construction_plan_not_rendering_evidence",
+  "canvas": {
+    "width": 1280,
+    "height": 900
+  },
+  "source": "powerbi/GridCast.Report/definition",
+  "pages": [
+    {
+      "name": "DemandHistory",
+      "displayName": "01 | Demand history",
+      "visual_count": 10,
+      "visuals": [
+        {
+          "id": "HistoryTitle",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "GridCast | PJM electricity demand",
+          "fields": {},
+          "text": "EIA-930 PJM balancing authority demand. UTC dates; local pattern charts use America/New_York.",
+          "position": {
+            "x": 30,
+            "y": 15,
+            "width": 1220,
+            "height": 70
+          }
+        },
+        {
+          "id": "DateSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "UTC date range",
+          "fields": {
+            "Values": [
+              "DimDate[Date]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 95,
+            "width": 520,
+            "height": 70
+          }
+        },
+        {
+          "id": "CompletenessCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Observation completeness",
+          "fields": {
+            "Values": [
+              "DimModel[Observation Completeness]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 625,
+            "y": 95,
+            "width": 285,
+            "height": 75
+          }
+        },
+        {
+          "id": "MissingCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Missing actual hours",
+          "fields": {
+            "Values": [
+              "DimModel[Missing Hours]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 945,
+            "y": 95,
+            "width": 285,
+            "height": 75
+          }
+        },
+        {
+          "id": "EnergyCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Observed energy proxy | MWh",
+          "fields": {
+            "Values": [
+              "DimModel[Demand MWh]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 180,
+            "width": 380,
+            "height": 105
+          }
+        },
+        {
+          "id": "MeanCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Mean demand | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Mean Demand MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 440,
+            "y": 180,
+            "width": 380,
+            "height": 105
+          }
+        },
+        {
+          "id": "PeakCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Maximum hourly mean | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Peak Demand MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 850,
+            "y": 180,
+            "width": 380,
+            "height": 105
+          }
+        },
+        {
+          "id": "DemandTrend",
+          "type": "lineChart",
+          "ui_type": "Line chart",
+          "title": "Daily mean PJM demand | MW",
+          "fields": {
+            "Category": [
+              "DimDate[Date]"
+            ],
+            "Y": [
+              "DimModel[Mean Demand MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 305,
+            "width": 1200,
+            "height": 285
+          }
+        },
+        {
+          "id": "WeekdayDemand",
+          "type": "clusteredColumnChart",
+          "ui_type": "Clustered column chart",
+          "title": "Mean demand by local weekday | MW",
+          "fields": {
+            "Category": [
+              "FactDemand[DayOfWeekNameLocal]"
+            ],
+            "Y": [
+              "DimModel[Mean Demand MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 610,
+            "width": 570,
+            "height": 245
+          }
+        },
+        {
+          "id": "HourlyDemand",
+          "type": "lineChart",
+          "ui_type": "Line chart",
+          "title": "Mean demand by local hour | MW",
+          "fields": {
+            "Category": [
+              "FactDemand[HourLocal]"
+            ],
+            "Y": [
+              "DimModel[Mean Demand MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 630,
+            "y": 610,
+            "width": 600,
+            "height": 245
+          }
+        }
+      ]
+    },
+    {
+      "name": "TestScorecard",
+      "displayName": "02 | Untouched 2025 test",
+      "visual_count": 9,
+      "visuals": [
+        {
+          "id": "TestTitle",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "GridCast | Forecast validation",
+          "fields": {},
+          "text": "All accuracy measures below use the untouched 2025 test set. Select one model for cards and the trend; compare models in the table.",
+          "position": {
+            "x": 30,
+            "y": 15,
+            "width": 1220,
+            "height": 70
+          }
+        },
+        {
+          "id": "TestModelSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "Select one model",
+          "fields": {
+            "Values": [
+              "DimModel[Model]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 95,
+            "width": 300,
+            "height": 75
+          }
+        },
+        {
+          "id": "TestDateSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "UTC date range (intersected with 2025)",
+          "fields": {
+            "Values": [
+              "DimDate[Date]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 360,
+            "y": 95,
+            "width": 530,
+            "height": 75
+          }
+        },
+        {
+          "id": "MAECard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Hourly MAE | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Test MAE MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "WAPECard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Test WAPE",
+          "fields": {
+            "Values": [
+              "DimModel[Test WAPE]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 340,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "BiasCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Bias | forecast \u2212 actual MW",
+          "fields": {
+            "Values": [
+              "DimModel[Test Bias MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 650,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "CoverageCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "80% interval coverage",
+          "fields": {
+            "Values": [
+              "DimModel[Test Coverage 80]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 960,
+            "y": 185,
+            "width": 270,
+            "height": 100
+          }
+        },
+        {
+          "id": "ForecastTrend",
+          "type": "lineChart",
+          "ui_type": "Line chart",
+          "title": "Daily mean actual and forecast | MW (2025 only)",
+          "fields": {
+            "Category": [
+              "DimDate[Date]"
+            ],
+            "Y": [
+              "DimModel[Test Actual MW]",
+              "DimModel[Test Forecast MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 305,
+            "width": 1200,
+            "height": 280
+          }
+        },
+        {
+          "id": "ModelComparison",
+          "type": "tableEx",
+          "ui_type": "Table",
+          "title": "Model comparison | same scored test pairs",
+          "fields": {
+            "Values": [
+              "DimModel[Model]",
+              "DimModel[Test Hours]",
+              "DimModel[Test MAE MW]",
+              "DimModel[Test RMSE MW]",
+              "DimModel[Test WAPE]",
+              "DimModel[Test Bias MW]",
+              "DimModel[Test Coverage 80]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 610,
+            "width": 1200,
+            "height": 245
+          }
+        }
+      ]
+    },
+    {
+      "name": "Diagnostics",
+      "displayName": "03 | Error and peak-risk diagnostics",
+      "visual_count": 11,
+      "visuals": [
+        {
+          "id": "DiagnosticsTitle",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "GridCast | Error and high-demand risk",
+          "fields": {},
+          "text": "Test diagnostics expose seasonal weaknesses and underforecasting during high observed demand. Select a model; date filters remain UTC.",
+          "position": {
+            "x": 30,
+            "y": 15,
+            "width": 1220,
+            "height": 70
+          }
+        },
+        {
+          "id": "DiagnosticModelSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "Select one model",
+          "fields": {
+            "Values": [
+              "DimModel[Model]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 95,
+            "width": 300,
+            "height": 75
+          }
+        },
+        {
+          "id": "DiagnosticDateSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "UTC date range (intersected with 2025)",
+          "fields": {
+            "Values": [
+              "DimDate[Date]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 360,
+            "y": 95,
+            "width": 530,
+            "height": 75
+          }
+        },
+        {
+          "id": "TrainingThresholdCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "Fixed training p90 threshold | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Training High Demand Threshold MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "HighHoursCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "High observed-demand test hours",
+          "fields": {
+            "Values": [
+              "DimModel[Test High Demand Hours]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 340,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "HighMAECard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "High-demand MAE | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Test High Demand MAE MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 650,
+            "y": 185,
+            "width": 280,
+            "height": 100
+          }
+        },
+        {
+          "id": "HighBiasCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "High-demand bias | MW",
+          "fields": {
+            "Values": [
+              "DimModel[Test High Demand Bias MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 960,
+            "y": 185,
+            "width": 270,
+            "height": 100
+          }
+        },
+        {
+          "id": "MonthlyMAE",
+          "type": "clusteredColumnChart",
+          "ui_type": "Clustered column chart",
+          "title": "Hourly MAE by UTC month | MW",
+          "fields": {
+            "Category": [
+              "DimDate[YearMonth]"
+            ],
+            "Y": [
+              "DimModel[Test MAE MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 305,
+            "width": 1200,
+            "height": 235
+          }
+        },
+        {
+          "id": "HourBias",
+          "type": "clusteredColumnChart",
+          "ui_type": "Clustered column chart",
+          "title": "Mean forecast \u2212 actual bias by UTC hour | MW",
+          "fields": {
+            "Category": [
+              "FactForecast[HourUTC]"
+            ],
+            "Y": [
+              "DimModel[Test Bias MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 565,
+            "width": 1200,
+            "height": 235
+          }
+        },
+        {
+          "id": "HighCoverageCard",
+          "type": "card",
+          "ui_type": "Card (one measure)",
+          "title": "High-demand 80% coverage",
+          "fields": {
+            "Values": [
+              "DimModel[Test High Demand Coverage 80]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 820,
+            "width": 300,
+            "height": 65
+          }
+        },
+        {
+          "id": "HighRiskNote",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "Diagnostic definition",
+          "fields": {},
+          "text": "High-demand subset: actual test demand \u2265 the fixed 90th percentile of initial 2019\u20132022 training demand after feature warmup. This uses observed test demand for retrospective diagnosis, not an advance alert rule.",
+          "position": {
+            "x": 360,
+            "y": 820,
+            "width": 870,
+            "height": 65
+          }
+        }
+      ]
+    },
+    {
+      "name": "HistoricalNextDay",
+      "displayName": "04 | Historical next day",
+      "visual_count": 5,
+      "visuals": [
+        {
+          "id": "FutureTitle",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "GridCast | Historical next-day forecast",
+          "fields": {},
+          "text": "A 24-hour forecast after the frozen historical source cutoff. This is a historical demonstration, not a live forecast for today.",
+          "position": {
+            "x": 30,
+            "y": 15,
+            "width": 1220,
+            "height": 80
+          }
+        },
+        {
+          "id": "FutureModelSlicer",
+          "type": "slicer",
+          "ui_type": "Slicer",
+          "title": "Select one model",
+          "fields": {
+            "Values": [
+              "DimModel[Model]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 95,
+            "width": 300,
+            "height": 75
+          }
+        },
+        {
+          "id": "IntervalNote",
+          "type": "textbox",
+          "ui_type": "Text box",
+          "title": "Interpret the uncertainty",
+          "fields": {},
+          "text": "Only the selected champion has prediction intervals. Bounds are pointwise hourly 80% intervals; they do not give an 80% simultaneous guarantee for the entire day.",
+          "position": {
+            "x": 365,
+            "y": 100,
+            "width": 865,
+            "height": 80
+          }
+        },
+        {
+          "id": "FutureTrend",
+          "type": "lineChart",
+          "ui_type": "Line chart",
+          "title": "Hourly forecast and pointwise 80% bounds | MW, UTC",
+          "fields": {
+            "Category": [
+              "FactForecast[DateTimeUTC]"
+            ],
+            "Y": [
+              "DimModel[Future Forecast MW]",
+              "DimModel[Future Lower 80 MW]",
+              "DimModel[Future Upper 80 MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 205,
+            "width": 1200,
+            "height": 330
+          }
+        },
+        {
+          "id": "FutureTable",
+          "type": "tableEx",
+          "ui_type": "Table",
+          "title": "Forecast review | UTC hour",
+          "fields": {
+            "Values": [
+              "FactForecast[DateTimeUTC]",
+              "DimModel[Future Forecast MW]",
+              "DimModel[Future Lower 80 MW]",
+              "DimModel[Future Upper 80 MW]"
+            ]
+          },
+          "text": "",
+          "position": {
+            "x": 30,
+            "y": 560,
+            "width": 1200,
+            "height": 285
+          }
+        }
+      ]
+    }
+  ]
+}

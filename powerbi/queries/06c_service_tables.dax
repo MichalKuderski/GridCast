@@ -1,0 +1,12 @@
+// Read-only Service metadata audit. No model changes and no partition/M/source-path export.
+// Prepared from Microsoft INFO.VIEW documentation; these new queries have not been executed here.
+EVALUATE
+SELECTCOLUMNS(
+    INFO.VIEW.TABLES(),
+    "Table", [Name],
+    "StorageMode", [StorageMode],
+    "DataCategory", [DataCategory],
+    "IsDateTableByCategory", [DataCategory] = "Time",
+    "IsHidden", [IsHidden]
+)
+ORDER BY [Table]

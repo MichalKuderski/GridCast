@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "HourBias",
+  "position": {
+    "x": 30,
+    "y": 565,
+    "width": 1200,
+    "height": 235,
+    "z": 595,
+    "tabOrder": 5650030
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean forecast \u2212 actual bias by UTC hour | MW'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean forecast \u2212 actual bias by UTC hour | MW'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactForecast"
+                    }
+                  },
+                  "Property": "HourUTC"
+                }
+              },
+              "queryRef": "FactForecast.HourUTC",
+              "nativeQueryRef": "HourUTC"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test Bias MW"
+                }
+              },
+              "queryRef": "DimModel.Test Bias MW",
+              "nativeQueryRef": "Test Bias MW"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactForecast"
+                  }
+                },
+                "Property": "HourUTC"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}

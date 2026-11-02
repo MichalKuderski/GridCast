@@ -1,0 +1,140 @@
+{
+  "createdAtUTC": "2026-10-31T15:23:54.714Z",
+  "purpose": "Same approved CSV data packaged as four Excel Tables for Power BI import",
+  "authoring": "Bundled openpyxl write_only fallback: artifact-tool cannot preserve required ISO text identifiers; artifact-tool used for source-top-row previews with ISO display formats",
+  "sheets": [
+    {
+      "name": "FactDemand",
+      "tableName": "FactDemand",
+      "rows": 61368,
+      "columns": [
+        "DateTimeUTC",
+        "ActualMW",
+        "OriginalDemandMWh",
+        "IsActualValid",
+        "FeatureInputMW",
+        "Date",
+        "HourUTC",
+        "DateLocal",
+        "HourLocal"
+      ],
+      "range": "A1:I61369",
+      "source": "data/powerbi/FactDemand.csv",
+      "sourceSHA256": "19edc154038e9f2310edea2f5f95bffafb7d527e3893bda1a97e0597e9aa426b",
+      "numericColumns": [
+        "ActualMW",
+        "OriginalDemandMWh",
+        "FeatureInputMW",
+        "HourUTC",
+        "HourLocal"
+      ],
+      "booleanColumns": [
+        "IsActualValid"
+      ],
+      "textColumns": [
+        "DateTimeUTC",
+        "Date",
+        "DateLocal"
+      ]
+    },
+    {
+      "name": "FactForecast",
+      "tableName": "FactForecast",
+      "rows": 131544,
+      "columns": [
+        "DateTimeUTC",
+        "Date",
+        "HourUTC",
+        "ForecastOriginUTC",
+        "HorizonHours",
+        "Model",
+        "Split",
+        "ActualMW",
+        "ForecastMW",
+        "Lower80MW",
+        "Upper80MW"
+      ],
+      "range": "A1:K131545",
+      "source": "data/powerbi/FactForecast.csv",
+      "sourceSHA256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
+      "numericColumns": [
+        "HourUTC",
+        "HorizonHours",
+        "ActualMW",
+        "ForecastMW",
+        "Lower80MW",
+        "Upper80MW"
+      ],
+      "booleanColumns": [],
+      "textColumns": [
+        "DateTimeUTC",
+        "Date",
+        "ForecastOriginUTC",
+        "Model",
+        "Split"
+      ]
+    },
+    {
+      "name": "DimDate",
+      "tableName": "DimDate",
+      "rows": 2558,
+      "columns": [
+        "Date",
+        "Year",
+        "MonthNumber",
+        "MonthName",
+        "YearMonth",
+        "DayOfWeekNumber",
+        "DayOfWeekName",
+        "IsWeekend"
+      ],
+      "range": "A1:H2559",
+      "source": "data/powerbi/DimDate.csv",
+      "sourceSHA256": "2c5978537da0d1b699bd6ddf1b5f5e93824edcafef4ca1501db1dd77182f8df2",
+      "numericColumns": [
+        "Year",
+        "MonthNumber",
+        "DayOfWeekNumber"
+      ],
+      "booleanColumns": [
+        "IsWeekend"
+      ],
+      "textColumns": [
+        "Date",
+        "MonthName",
+        "YearMonth",
+        "DayOfWeekName"
+      ]
+    },
+    {
+      "name": "DimModel",
+      "tableName": "DimModel",
+      "rows": 5,
+      "columns": [
+        "Model"
+      ],
+      "range": "A1:A6",
+      "source": "data/powerbi/DimModel.csv",
+      "sourceSHA256": "05f423afa1c6fb6afb4884f5faf03169d9f698ecda764f1bb80a5a02e0b8d985",
+      "numericColumns": [],
+      "booleanColumns": [],
+      "textColumns": [
+        "Model"
+      ]
+    }
+  ],
+  "output": {
+    "file": "outputs/service-validation/GridCastValidation.xlsx",
+    "bytes": 9086934,
+    "sha256": "1771113ab3f5d99fbebd417388ad51d5da16934f2c7250fa6a2edb78fc5b7d05"
+  },
+  "contentPolicy": "Exactly four tables/sheets. No added formulas, summary rows, notes, comments, citations, or analysis. UTC/date keys remain exact ISO strings; numeric and boolean columns are typed; source nulls are blank.",
+  "capability_evidence": "outputs/service-validation/artifact_type_limit.json",
+  "preview_scope": "Seven-row source samples per sheet, not native Excel rendering; exact saved text types and all values independently verified in workbook_roundtrip.json",
+  "visual_review": {
+    "FactDemand": "passed",
+    "FactForecast": "passed",
+    "DimDate": "passed",
+    "DimModel": "passed"
+  }
+}

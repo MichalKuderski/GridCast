@@ -1,0 +1,44 @@
+{
+  "status": "passed_portable_bundle_checks",
+  "checked_at_utc": "2026-11-01T05:41:51.851993+00:00",
+  "archive": {
+    "path": "dist/GridCast-PowerBI-Validation.zip",
+    "bytes": 18206976,
+    "sha256": "1ef122aa41ca83d0be850a05178c2a5c1bbacd06973756f67d06074fa1044d05"
+  },
+  "entrypoints": {
+    "canonical_file_backed": "GridCast/powerbi/GridCast.pbip",
+    "embedded_desktop": "GridCast/powerbi/GridCast-Embedded.pbip"
+  },
+  "checks": {
+    "zip_crc": "passed",
+    "hashed_payload_files": 214,
+    "zip_entries_including_manifest": 215,
+    "public_markdown_documents": 14,
+    "local_markdown_links_resolve": 40,
+    "broken_local_links": 0,
+    "embedded_csv_gzip_roundtrips_exact": 4,
+    "canonical_bim_bytes_and_actual_service_receipt_binding_preserved": true,
+    "corrected_coverage_card_title_in_both_reports": true,
+    "nominal_interval_alt_text_preserved": true,
+    "canonical_static_schema_files_passed": 45,
+    "canonical_visuals": 35,
+    "canonical_measures": 28,
+    "source_model_allM_fourCSV_threeNumericOutputs_champion_before_after_hashes": "unchanged",
+    "private_cache_entries": 0,
+    "public_measure_tmdl_excludes_partition_and_cloud_sources": true
+  },
+  "evidence_scope": {
+    "reconstructed_service_evidence": "Included actual public CSV/TSV/query provenance, measure-only native TMDL, refresh/model/report screenshots, numerical/metadata/visual/access receipts.",
+    "embedded_desktop_runtime_verified": false,
+    "windows_pbip_compatibility_verified": false,
+    "public_sharing_performed": false,
+    "public_link_verified": false
+  },
+  "frozen_receipt_note": "The archive contains the pre-packaging passing publication-audit snapshot. A later repository audit timestamp does not mutate or invalidate that frozen evidence copy.",
+  "limitations": [
+    "Static package, hash, link and payload checks do not execute Power Query/DAX or render Windows Desktop.",
+    "Saved Service evidence remains distinct from the prepared canonical and embedded Desktop projects.",
+    "Public text/path checks and retained screenshot reviews are not exhaustive personal-data or accessibility certification."
+  ]
+}

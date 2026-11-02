@@ -1,0 +1,491 @@
+{
+  "status": "canonical_expected_metadata_not_actual_service_export",
+  "measure_count": 28,
+  "table_count": 4,
+  "relationship_count": 3,
+  "measures": [
+    {
+      "Table": "DimModel",
+      "Measure": "Demand MWh",
+      "Expression": "SUM(FactDemand[ActualMW])",
+      "FormatString": "#,0",
+      "Description": "Sum of hourly mean MW multiplied by each one-hour interval.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Mean Demand MW",
+      "Expression": "AVERAGE(FactDemand[ActualMW])",
+      "FormatString": "#,0",
+      "Description": "Mean hourly PJM balancing authority demand over the selected UTC dates.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Peak Demand MW",
+      "Expression": "MAX(FactDemand[ActualMW])",
+      "FormatString": "#,0",
+      "Description": "Maximum observed hourly mean demand; not an instantaneous peak.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Observed Hours",
+      "Expression": "COALESCE(COUNT(FactDemand[ActualMW]), 0)",
+      "FormatString": "#,0",
+      "Description": "Number of nonblank one-hour observations; zero when no observations exist. Missing demand is not counted as zero.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Expected Hours",
+      "Expression": "COALESCE(COUNTROWS(FactDemand), 0)",
+      "FormatString": "#,0",
+      "Description": "Number of expected one-hour slots on the complete UTC grid; zero for an empty date selection.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Missing Hours",
+      "Expression": "[Expected Hours] - [Observed Hours]",
+      "FormatString": "#,0",
+      "Description": "Expected hourly slots without a valid observed actual.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Observation Completeness",
+      "Expression": "DIVIDE([Observed Hours], [Expected Hours])",
+      "FormatString": "0.00%",
+      "Description": "Observed valid hours divided by expected hourly slots.",
+      "DisplayFolder": "History"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Model Selection",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), SELECTEDVALUE(DimModel[Model]), \"Select one model to view forecast KPIs\")",
+      "FormatString": null,
+      "Description": "Model safeguard for cards and lines; comparison tables supply row context.",
+      "DisplayFolder": "Controls"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Hours",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]))), 0))",
+      "FormatString": "#,0",
+      "Description": "Scored 2025 hourly pairs for exactly one model; zero for an empty scored subset.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Actual MWh",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))",
+      "FormatString": "#,0",
+      "Description": "Actual one-hour energy on scored test pairs; excludes future rows.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Forecast MWh",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))",
+      "FormatString": "#,0",
+      "Description": "Forecast one-hour energy on the same scored test pairs.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Actual MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW]))",
+      "FormatString": "#,0",
+      "Description": "Mean actual hourly demand MW, at the current axis grain, on scored test pairs.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Forecast MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW]))",
+      "FormatString": "#,0",
+      "Description": "Mean forecast MW, at the current axis grain, on scored test pairs.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test MAE MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))",
+      "FormatString": "#,0.0",
+      "Description": "Mean absolute hourly error; lower is better.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test RMSE MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), SQRT(AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), POWER(FactForecast[ForecastMW] - FactForecast[ActualMW], 2))))",
+      "FormatString": "#,0.0",
+      "Description": "Root mean squared hourly error, emphasizing large errors.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test WAPE",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])), SUMX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), ABS(FactForecast[ActualMW]))))",
+      "FormatString": "0.00%",
+      "Description": "Ratio of aggregate absolute error to aggregate absolute actual demand. Never average daily WAPE.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Bias MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ForecastMW] - FactForecast[ActualMW]))",
+      "FormatString": "+#,0.0;-#,0.0;0.0",
+      "Description": "Forecast minus actual; positive means overforecasting.",
+      "DisplayFolder": "Test"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Interval Hours",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW]))), 0))",
+      "FormatString": "#,0",
+      "Description": "Number of scored test observations with both interval bounds; zero when none exist.",
+      "DisplayFolder": "Intervals"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Coverage 80",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])))))",
+      "FormatString": "0.0%",
+      "Description": "Observed empirical coverage of nominal 80% hourly prediction intervals. Zero when no actual is covered, blank when no interval pairs exist.",
+      "DisplayFolder": "Intervals"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test Mean Interval Width MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[Upper80MW] - FactForecast[Lower80MW]))",
+      "FormatString": "#,0",
+      "Description": "Mean width on test rows with interval bounds.",
+      "DisplayFolder": "Intervals"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Training High Demand Threshold MW",
+      "Expression": "111972.4",
+      "FormatString": "#,0.0",
+      "Description": "Fixed 90th percentile of valid initial training demand (2019\u20132022, after 336-hour warmup). Generated from outputs/run_summary.json; never derived from test demand.",
+      "DisplayFolder": "Diagnostics"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test High Demand Hours",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), COALESCE(COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW])), 0))",
+      "FormatString": "#,0",
+      "Description": "Scored test hours whose observed demand is at least the fixed training p90; zero for an empty subset. Retrospective diagnostic, not an advance alert.",
+      "DisplayFolder": "Diagnostics"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test High Demand MAE MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), ABS(FactForecast[ForecastMW] - FactForecast[ActualMW])))",
+      "FormatString": "#,0.0",
+      "Description": "Mean absolute error during test hours above the fixed initial-training p90 actual-demand threshold.",
+      "DisplayFolder": "Diagnostics"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test High Demand Bias MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), AVERAGEX(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ForecastMW] - FactForecast[ActualMW]))",
+      "FormatString": "+#,0.0;-#,0.0;0.0",
+      "Description": "Forecast minus actual bias during high observed demand test hours. Negative indicates underforecasting.",
+      "DisplayFolder": "Diagnostics"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Test High Demand Coverage 80",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), DIVIDE(COALESCE(COUNTROWS(FILTER(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]), FactForecast[ActualMW] >= FactForecast[Lower80MW] && FactForecast[ActualMW] <= FactForecast[Upper80MW])), 0), COUNTROWS(FILTER(FILTER(FactForecast, FactForecast[Split] = \"test\" && NOT ISBLANK(FactForecast[ActualMW]) && NOT ISBLANK(FactForecast[ForecastMW]) && NOT ISBLANK(FactForecast[Lower80MW]) && NOT ISBLANK(FactForecast[Upper80MW])), FactForecast[ActualMW] >= [Training High Demand Threshold MW]))))",
+      "FormatString": "0.0%",
+      "Description": "Empirical coverage of nominal80% pointwise intervals during high observed-demand test hours. Requires valid actual, forecast and both bounds; blank when no valid high-demand intervals exist.",
+      "DisplayFolder": "Diagnostics"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Future Forecast MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[ForecastMW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+      "FormatString": "#,0",
+      "Description": "Historical next-day forecast from the end of the frozen 2025 source; not today's live forecast.",
+      "DisplayFolder": "Future"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Future Lower 80 MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Lower80MW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+      "FormatString": "#,0",
+      "Description": "Pointwise lower 80% bound; displayed at hourly grain only.",
+      "DisplayFolder": "Future"
+    },
+    {
+      "Table": "DimModel",
+      "Measure": "Future Upper 80 MW",
+      "Expression": "IF(HASONEVALUE(DimModel[Model]), CALCULATE(AVERAGE(FactForecast[Upper80MW]), KEEPFILTERS(FactForecast[Split] = \"future\")))",
+      "FormatString": "#,0",
+      "Description": "Pointwise upper 80% bound; displayed at hourly grain only.",
+      "DisplayFolder": "Future"
+    }
+  ],
+  "columns": [
+    {
+      "Table": "FactDemand",
+      "Column": "DateTimeUTC",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "Date",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "HourUTC",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "DateLocal",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "HourLocal",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "DayOfWeekNumberLocal",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "DayOfWeekNameLocal",
+      "CanonicalDataType": "string",
+      "SortByColumn": "DayOfWeekNumberLocal",
+      "IsKey": false
+    },
+    {
+      "Table": "FactDemand",
+      "Column": "ActualMW",
+      "CanonicalDataType": "double",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "DateTimeUTC",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "Date",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "HourUTC",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "Model",
+      "CanonicalDataType": "string",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "Split",
+      "CanonicalDataType": "string",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "ForecastOriginUTC",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "HorizonHours",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "ActualMW",
+      "CanonicalDataType": "double",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "ForecastMW",
+      "CanonicalDataType": "double",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "Lower80MW",
+      "CanonicalDataType": "double",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "FactForecast",
+      "Column": "Upper80MW",
+      "CanonicalDataType": "double",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "Date",
+      "CanonicalDataType": "dateTime",
+      "SortByColumn": null,
+      "IsKey": true
+    },
+    {
+      "Table": "DimDate",
+      "Column": "Year",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "MonthNumber",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "MonthName",
+      "CanonicalDataType": "string",
+      "SortByColumn": "MonthNumber",
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "YearMonth",
+      "CanonicalDataType": "string",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "DayOfWeekNumber",
+      "CanonicalDataType": "int64",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "DayOfWeekName",
+      "CanonicalDataType": "string",
+      "SortByColumn": "DayOfWeekNumber",
+      "IsKey": false
+    },
+    {
+      "Table": "DimDate",
+      "Column": "IsWeekend",
+      "CanonicalDataType": "boolean",
+      "SortByColumn": null,
+      "IsKey": false
+    },
+    {
+      "Table": "DimModel",
+      "Column": "Model",
+      "CanonicalDataType": "string",
+      "SortByColumn": null,
+      "IsKey": true
+    }
+  ],
+  "tables": [
+    {
+      "Table": "FactDemand",
+      "DataCategory": null,
+      "IsDateTableByCategory": false,
+      "StorageMode": "Import"
+    },
+    {
+      "Table": "FactForecast",
+      "DataCategory": null,
+      "IsDateTableByCategory": false,
+      "StorageMode": "Import"
+    },
+    {
+      "Table": "DimDate",
+      "DataCategory": "Time",
+      "IsDateTableByCategory": true,
+      "StorageMode": "Import"
+    },
+    {
+      "Table": "DimModel",
+      "DataCategory": null,
+      "IsDateTableByCategory": false,
+      "StorageMode": "Import"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "FactDemand_Date",
+      "fromTable": "FactDemand",
+      "fromColumn": "Date",
+      "toTable": "DimDate",
+      "toColumn": "Date",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true,
+      "crossFilteringBehavior": "oneDirection"
+    },
+    {
+      "name": "FactForecast_Date",
+      "fromTable": "FactForecast",
+      "fromColumn": "Date",
+      "toTable": "DimDate",
+      "toColumn": "Date",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true,
+      "crossFilteringBehavior": "oneDirection"
+    },
+    {
+      "name": "FactForecast_Model",
+      "fromTable": "FactForecast",
+      "fromColumn": "Model",
+      "toTable": "DimModel",
+      "toColumn": "Model",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true,
+      "crossFilteringBehavior": "oneDirection"
+    }
+  ]
+}

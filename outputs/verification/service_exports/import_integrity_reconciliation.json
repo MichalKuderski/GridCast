@@ -1,0 +1,175 @@
+{
+  "status": "actual_service_import_integrity_matches_expected",
+  "checked_at_utc": "2026-11-01T03:53:46.438968+00:00",
+  "query_file": "powerbi/queries/05_import_integrity.dax",
+  "query_sha256": "981fad066b75a9b5656bb0ace866d84778afb529ff013cf9227b9df01f88eb79",
+  "actual_csv": {
+    "path": "outputs/verification/service_exports/import_integrity.csv",
+    "sha256": "a5864c538fbeec4d1cbf556c0a10ca78a60e7c2d82b27f639077babc5b1e2001"
+  },
+  "expected_oracle": {
+    "path": "powerbi/validation/expected_import_integrity.json",
+    "sha256": "07318078f040e4b90783c362e96a4479f4620e332320cfe7f6234cbf82c55342"
+  },
+  "execution_provenance": {
+    "path": "outputs/verification/service_exports/query_provenance.json",
+    "sha256": "519ec9e7bffad72137aa99349adbebc962af31d824f62da241fd1c9a4d3fc8f5",
+    "semantic_model_id": "839b7e21-65f1-4b05-a378-2d63f450c93f",
+    "native_status": "generic: Success (848.4 ms)",
+    "copied_at_utc": "2026-11-01T03:52:31.934Z",
+    "query_text_verified_via_native_copy": true,
+    "method": "Power BI Service DAX query view > Copy > Entire table; raw TSV retained; CSV quoting only"
+  },
+  "checked_integer_fields": 24,
+  "expected_row": {
+    "FactDemandRows": 61368,
+    "FactForecastRows": 131544,
+    "DimDateRows": 2558,
+    "DimModelRows": 5,
+    "ValidationRows": 43800,
+    "CalibrationRows": 43920,
+    "TestRows": 43800,
+    "FutureRows": 24,
+    "FutureActualNonBlank": 0,
+    "DimDateDistinctDates": 2558,
+    "DimModelDistinctModels": 5,
+    "DemandDistinctDateTimes": 61368,
+    "ForecastDistinctKeys": 131544,
+    "DemandBlankDateTimeRows": 0,
+    "ForecastBlankDateTimeRows": 0,
+    "DimDateBlankDateRows": 0,
+    "DimModelBlankModelRows": 0,
+    "DemandDateKeyMismatchRows": 0,
+    "ForecastDateKeyMismatchRows": 0,
+    "DimDateNonMidnightRows": 0,
+    "DemandHourMismatchRows": 0,
+    "ForecastHourMismatchRows": 0,
+    "ForecastOriginMismatchRows": 0,
+    "ForecastHorizonMismatchRows": 0
+  },
+  "actual_row": {
+    "FactDemandRows": 61368,
+    "FactForecastRows": 131544,
+    "DimDateRows": 2558,
+    "DimModelRows": 5,
+    "ValidationRows": 43800,
+    "CalibrationRows": 43920,
+    "TestRows": 43800,
+    "FutureRows": 24,
+    "FutureActualNonBlank": 0,
+    "DimDateDistinctDates": 2558,
+    "DimModelDistinctModels": 5,
+    "DemandDistinctDateTimes": 61368,
+    "ForecastDistinctKeys": 131544,
+    "DemandBlankDateTimeRows": 0,
+    "ForecastBlankDateTimeRows": 0,
+    "DimDateBlankDateRows": 0,
+    "DimModelBlankModelRows": 0,
+    "DemandDateKeyMismatchRows": 0,
+    "ForecastDateKeyMismatchRows": 0,
+    "DimDateNonMidnightRows": 0,
+    "DemandHourMismatchRows": 0,
+    "ForecastHourMismatchRows": 0,
+    "ForecastOriginMismatchRows": 0,
+    "ForecastHorizonMismatchRows": 0
+  },
+  "maximum_integer_difference": 0,
+  "failures": [],
+  "all_raw_tsv_csv_roundtrips": {
+    "history": {
+      "status": "exact_cell_text_match",
+      "raw_tsv_sha256": "88aaff2058a7100cddfbf4551759f0330abfc70bfc5aa5d5bb342ddbb4111220",
+      "csv_sha256": "6b3b639da4389378c49f7decc251391ab9e1ce9371c575117152bf670b704bdb",
+      "data_rows": 1,
+      "columns": 7
+    },
+    "models": {
+      "status": "exact_cell_text_match",
+      "raw_tsv_sha256": "6f7b5195b60f9079ebe1bfcadd511d27424a1c8924978218da67690e6515e8e3",
+      "csv_sha256": "04472075f67d1c082456c0eb20d267ca61ac48658da393cae3f2888c3eb3b87d",
+      "data_rows": 5,
+      "columns": 18
+    },
+    "contexts": {
+      "status": "exact_cell_text_match",
+      "raw_tsv_sha256": "d9c8d40a63601e876c1e240b8582f2ca64d696d502dc9a420ed32f72ffbbe6f0",
+      "csv_sha256": "9cfc13ee30a3f5c2e176363fb2caf21edc6d235dc61666e0db13fed86ee894bf",
+      "data_rows": 12,
+      "columns": 29
+    },
+    "primitives": {
+      "status": "exact_cell_text_match",
+      "raw_tsv_sha256": "f5b09faffb329e7c4574898be2e3bcb75b0e008a9eb583b0cc46c0c6b54601ff",
+      "csv_sha256": "66e04f3b4190516b705ef3cbf9a0ccc83bd301137b524b6e18192abbba39d886",
+      "data_rows": 1,
+      "columns": 5
+    },
+    "import_integrity": {
+      "status": "exact_cell_text_match",
+      "raw_tsv_sha256": "a304266e9623627afcc80369d579e535bafe003a247ec4451c547b65a7c96dd2",
+      "csv_sha256": "a5864c538fbeec4d1cbf556c0a10ca78a60e7c2d82b27f639077babc5b1e2001",
+      "data_rows": 1,
+      "columns": 24
+    }
+  },
+  "independent_numeric_comparison": {
+    "model_context_numeric_cells": 253,
+    "largest_absolute_difference_by_export": {
+      "models": {
+        "key": "Ridge",
+        "field": "Test Forecast MWh",
+        "absolute_difference": 3.6954879760742188e-06
+      },
+      "contexts": {
+        "key": "champion_all",
+        "field": "Test Forecast MWh",
+        "absolute_difference": 2.384185791015625e-07
+      }
+    }
+  },
+  "champion_actual_service_values": {
+    "Test Hours": 8735.0,
+    "Test Actual MWh": 841096525.0,
+    "Test Forecast MWh": 828300003.1460048,
+    "Test Actual MW": 96290.38637664568,
+    "Test Forecast MW": 94825.41535729877,
+    "Test MAE MW": 4219.447131011435,
+    "Test RMSE MW": 5793.43521743895,
+    "Test WAPE": 0.043820024924469736,
+    "Test Bias MW": -1464.9710193468848,
+    "Test Interval Hours": 8735.0,
+    "Test Coverage 80": 0.7858042358328563,
+    "Test Mean Interval Width MW": 13185.131654700424,
+    "Test High Demand Hours": 1487.0,
+    "Test High Demand MAE MW": 7891.571102531958,
+    "Test High Demand Bias MW": -6592.893197562216,
+    "Test High Demand Coverage 80": 0.47948890383322124,
+    "Training High Demand Threshold MW": 111972.4
+  },
+  "limitations": [
+    "These are real Service query exports per retained operator provenance; this file independently verifies their values and copied-cell preservation, not browser execution itself.",
+    "Import count/key diagnostics do not establish storage types or original UTC provenance; M/model settings and relationship evidence are separate.",
+    "Successful Service refresh/DAX validation does not establish Windows PBIP loading, visual interactions, report rendering, screenshots, accessibility or public publication."
+  ],
+  "lineage_note": {
+    "revalidated_at_utc": "2026-11-01T05:31:41.432299+00:00",
+    "reason": "query_provenance.json was extended after initial05reconciliation by appending the four native metadata-query records. The original five native data-query records remain byte-equivalent under their original JSON serialization.",
+    "previous_provenance_sha256": "219d10e540851387664a76d8c6026716d0b3d312e1a4a5f67724ff41ff3b5dc8",
+    "current_provenance_sha256": "519ec9e7bffad72137aa99349adbebc962af31d824f62da241fd1c9a4d3fc8f5",
+    "original_records_retained": 5,
+    "current_records": 9,
+    "appended_labels": [
+      "metadata_measures",
+      "metadata_columns",
+      "metadata_tables",
+      "metadata_relationships"
+    ],
+    "retained_five_record_prefix_serialization": "UTF-8 json.dumps(prefix, indent=2) plus newline",
+    "retained_prefix_sha256_matches_previous": true,
+    "saved05entry_exactly_unchanged": true,
+    "actual05_csv_and_raw_tsv_unchanged_and_cell_identical": true,
+    "independent_canonical_csv_rescan_integer_fields": 24,
+    "maximum_integer_difference": 0,
+    "scope": "Only the execution-provenance file binding and this lineage note were updated. No new native execution is claimed; query/provenance/canonical files and observed values were not changed."
+  }
+}

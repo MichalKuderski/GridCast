@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "FutureTrend",
+  "position": {
+    "x": 30,
+    "y": 205,
+    "width": 1200,
+    "height": 330,
+    "z": 235,
+    "tabOrder": 2050030
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Hourly forecast and pointwise 80% bounds | MW, UTC'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Hourly forecast and pointwise 80% bounds | MW, UTC'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactForecast"
+                    }
+                  },
+                  "Property": "DateTimeUTC"
+                }
+              },
+              "queryRef": "FactForecast.DateTimeUTC",
+              "nativeQueryRef": "DateTimeUTC"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Forecast MW"
+                }
+              },
+              "queryRef": "DimModel.Future Forecast MW",
+              "nativeQueryRef": "Future Forecast MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Lower 80 MW"
+                }
+              },
+              "queryRef": "DimModel.Future Lower 80 MW",
+              "nativeQueryRef": "Future Lower 80 MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Future Upper 80 MW"
+                }
+              },
+              "queryRef": "DimModel.Future Upper 80 MW",
+              "nativeQueryRef": "Future Upper 80 MW"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactForecast"
+                  }
+                },
+                "Property": "DateTimeUTC"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}

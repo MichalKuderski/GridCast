@@ -1,0 +1,67 @@
+// Read-only Service metadata audit. No model changes and no partition/M/source-path export.
+// Prepared from Microsoft INFO.VIEW documentation; these new queries have not been executed here.
+// Four result sets in order: measures, columns, tables, relationships.
+// If the web UI makes result switching/export awkward, use06a..06d separately.
+
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(INFO.VIEW.MEASURES(), [Table] = "DimModel"),
+    "Table", [Table],
+    "Measure", [Name],
+    "Expression", [Expression],
+    "FormatString", [FormatString],
+    "Description", [Description],
+    "DisplayFolder", [DisplayFolder],
+    "DataType", [DataType],
+    "IsHidden", [IsHidden],
+    "State", [State]
+)
+ORDER BY [Table], [Measure]
+
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(
+        INFO.VIEW.COLUMNS(),
+        [Table] IN {"FactDemand", "FactForecast", "DimDate", "DimModel"}
+            && [DataCategory] <> "RowNumber"
+    ),
+    "Table", [Table],
+    "Column", [Name],
+    "DataType", [DataType],
+    "DataCategory", [DataCategory],
+    "FormatString", [FormatString],
+    "SortByColumn", [SortByColumn],
+    "IsKey", [IsKey],
+    "IsUnique", [IsUnique],
+    "IsNullable", [IsNullable],
+    "SummarizeBy", [SummarizeBy],
+    "IsHidden", [IsHidden]
+)
+ORDER BY [Table], [Column]
+
+EVALUATE
+SELECTCOLUMNS(
+    INFO.VIEW.TABLES(),
+    "Table", [Name],
+    "StorageMode", [StorageMode],
+    "DataCategory", [DataCategory],
+    "IsDateTableByCategory", [DataCategory] = "Time",
+    "IsHidden", [IsHidden]
+)
+ORDER BY [Table]
+
+EVALUATE
+SELECTCOLUMNS(
+    INFO.VIEW.RELATIONSHIPS(),
+    "Relationship", [Relationship],
+    "FromTable", [FromTable],
+    "FromColumn", [FromColumn],
+    "FromCardinality", [FromCardinality],
+    "ToTable", [ToTable],
+    "ToColumn", [ToColumn],
+    "ToCardinality", [ToCardinality],
+    "IsActive", [IsActive],
+    "CrossFilteringBehavior", [CrossFilteringBehavior],
+    "State", [State]
+)
+ORDER BY [FromTable], [FromColumn], [ToTable], [ToColumn]

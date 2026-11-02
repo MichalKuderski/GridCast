@@ -1,0 +1,22 @@
+// Read-only Service metadata audit. No model changes and no partition/M/source-path export.
+// Prepared from Microsoft INFO.VIEW documentation; these new queries have not been executed here.
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(
+        INFO.VIEW.COLUMNS(),
+        [Table] IN {"FactDemand", "FactForecast", "DimDate", "DimModel"}
+            && [DataCategory] <> "RowNumber"
+    ),
+    "Table", [Table],
+    "Column", [Name],
+    "DataType", [DataType],
+    "DataCategory", [DataCategory],
+    "FormatString", [FormatString],
+    "SortByColumn", [SortByColumn],
+    "IsKey", [IsKey],
+    "IsUnique", [IsUnique],
+    "IsNullable", [IsNullable],
+    "SummarizeBy", [SummarizeBy],
+    "IsHidden", [IsHidden]
+)
+ORDER BY [Table], [Column]

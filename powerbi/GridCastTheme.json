@@ -1,0 +1,31 @@
+{
+  "name": "GridCast",
+  "dataColors": [
+    "#137E81",
+    "#E79436",
+    "#5675AC",
+    "#915F9D",
+    "#6B8D3E",
+    "#B3514F"
+  ],
+  "background": "#F5F7FA",
+  "foreground": "#173246",
+  "tableAccent": "#137E81",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#173246"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 15,
+      "color": "#173246"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 30,
+      "color": "#173246"
+    }
+  }
+}

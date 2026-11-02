@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {},
+  "annotations": [
+    {
+      "name": "GridCast.Validation",
+      "value": "Authored source. Native refresh/render and measure reconciliation remain required."
+    }
+  ]
+}

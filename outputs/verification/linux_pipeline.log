@@ -1,0 +1,128 @@
+Selected on 2023 MAE: HistGB_small
+{
+  "quality": {
+    "hourly_rows": 61368,
+    "missing_hours": 0,
+    "duplicate_utc_keys": 0,
+    "excluded_actual_values": 178,
+    "causally_filled_feature_inputs": 178,
+    "source_original_nulls": 167,
+    "source_imputation_candidates": 171,
+    "source_adjusted_differs_from_reported": 7,
+    "manually_excluded_training_spikes": 4,
+    "annual": [
+      {
+        "DateTimeUTC": 2019,
+        "Hours": 8760,
+        "ValidActuals": 8758,
+        "MinMW": 61336.0,
+        "MaxMW": 155276.0
+      },
+      {
+        "DateTimeUTC": 2020,
+        "Hours": 8784,
+        "ValidActuals": 8731,
+        "MinMW": 58480.0,
+        "MaxMW": 145428.0
+      },
+      {
+        "DateTimeUTC": 2021,
+        "Hours": 8760,
+        "ValidActuals": 8757,
+        "MinMW": 61374.0,
+        "MaxMW": 149590.0
+      },
+      {
+        "DateTimeUTC": 2022,
+        "Hours": 8760,
+        "ValidActuals": 8737,
+        "MinMW": 64063.0,
+        "MaxMW": 148528.0
+      },
+      {
+        "DateTimeUTC": 2023,
+        "Hours": 8760,
+        "ValidActuals": 8735,
+        "MinMW": 63543.0,
+        "MaxMW": 147605.0
+      },
+      {
+        "DateTimeUTC": 2024,
+        "Hours": 8784,
+        "ValidActuals": 8737,
+        "MinMW": 56260.0,
+        "MaxMW": 153121.0
+      },
+      {
+        "DateTimeUTC": 2025,
+        "Hours": 8760,
+        "ValidActuals": 8735,
+        "MinMW": 66131.0,
+        "MaxMW": 160560.0
+      }
+    ],
+    "first_utc": "2019-01-01 00:00:00+00:00",
+    "last_utc": "2025-12-31 23:00:00+00:00",
+    "aggregation": "original hourly MWh / 1 hour = mean MW; timestamps interval starts (source hour ending minus 1h)",
+    "feature_fill": "invalid original \u2192 prior week168h, fallback24h, fallback1h; historical inputs only, targets remain missing",
+    "excluded_feature_warmup_hours": 336
+  },
+  "result": {
+    "selected_model": "HistGB_small",
+    "selection_criterion": "minimum 2023 hourly MAE, tie model name",
+    "fit_rows_initial": 34647,
+    "fit_rows_final": 43382,
+    "test_metrics": {
+      "N": 8735,
+      "MAE_MW": 4219.447131015733,
+      "RMSE_MW": 5793.435217444046,
+      "WAPE_pct": 4.382002492451437,
+      "MAPE_pct": 4.188363807137752,
+      "Bias_MW": -1464.9710193527667
+    },
+    "test_interval_coverage": 0.7858042358328563,
+    "test_interval_mean_width_MW": 13185.131654692208,
+    "training_p90_MW": 111972.4,
+    "test_high_demand_metrics": {
+      "N": 1487,
+      "MAE_MW": 7891.5711025358905,
+      "RMSE_MW": 9627.03344052713,
+      "WAPE_pct": 6.354911527889081,
+      "MAPE_pct": 6.266400373930065,
+      "Bias_MW": -6592.893197577092
+    },
+    "test_daily_peak_MAE_MW": 5024.695447906531,
+    "test_complete_peak_days": 363,
+    "interval_radius_by_horizon_MW": {
+      "1": 6735.626616211011,
+      "2": 6613.009842558124,
+      "3": 6231.579155219413,
+      "4": 5817.475660827113,
+      "5": 5655.247642189715,
+      "6": 5429.939535270634,
+      "7": 5514.334538823692,
+      "8": 5677.398613467172,
+      "9": 5674.947635294637,
+      "10": 5875.742778908607,
+      "11": 6211.357269898406,
+      "12": 6587.63956470073,
+      "13": 6743.069026022087,
+      "14": 6710.40058749172,
+      "15": 6510.658158557824,
+      "16": 6299.492158216104,
+      "17": 6949.409772610306,
+      "18": 7221.983847116135,
+      "19": 7809.185205663598,
+      "20": 7571.734089002683,
+      "21": 7774.823096950524,
+      "22": 7717.795345200691,
+      "23": 7642.123559747968,
+      "24": 7244.031106398383
+    },
+    "test_year": 2025,
+    "future_start_utc": "2026-01-01T00:00:00+00:00",
+    "run_time_utc": "2026-10-31T14:15:02.930549+00:00",
+    "python": "3.12.16",
+    "experiment": "Daily midnight UTC origins; horizon1=origin hour; complete observed demand assumed available through origin\u22121h; final model frozen at 2023 end."
+  }
+}

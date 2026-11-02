@@ -1,0 +1,16 @@
+{
+  "platform": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+  "python": "3.12.16",
+  "machine": "aarch64",
+  "native_powerbi_verified": false,
+  "status": "failed",
+  "checks": {
+    "pipeline": {
+      "exit_code": 0
+    },
+    "unit_tests": {
+      "exit_code": 1
+    }
+  },
+  "error": "RuntimeError: unit_tests failed; see linux_unit_tests.log"
+}

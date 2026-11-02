@@ -1,0 +1,12 @@
+// Read-only DAX. Run against the REFRESHED GridCast model; this file has NOT been executed here.
+// Run outside any report visual: queries define their own contexts. CSV blanks are DAX BLANK.
+// Isolates the documented COUNTROWS(empty) behavior without altering the model.
+EVALUATE
+VAR EmptyRows = FILTER({1}, FALSE())
+RETURN ROW(
+    "CountEmptyIsBlank", ISBLANK(COUNTROWS(EmptyRows)),
+    "CountEmptyNormalized", COALESCE(COUNTROWS(EmptyRows), 0),
+    "ZeroCoverageNumerator", DIVIDE(COALESCE(COUNTROWS(EmptyRows), 0), 1),
+    "NoIntervalDenominatorIsBlank", ISBLANK(DIVIDE(0, COUNTROWS(EmptyRows))),
+    "ZeroActualDenominatorIsBlank", ISBLANK(DIVIDE(10, 0))
+)

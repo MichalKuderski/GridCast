@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ModelComparison",
+  "position": {
+    "x": 30,
+    "y": 610,
+    "width": 1200,
+    "height": 245,
+    "z": 640,
+    "tabOrder": 6100030
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model comparison | same scored test pairs'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model comparison | same scored test pairs'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "DimModel.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test Hours"
+                }
+              },
+              "queryRef": "DimModel.Test Hours",
+              "nativeQueryRef": "Test Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test MAE MW"
+                }
+              },
+              "queryRef": "DimModel.Test MAE MW",
+              "nativeQueryRef": "Test MAE MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test RMSE MW"
+                }
+              },
+              "queryRef": "DimModel.Test RMSE MW",
+              "nativeQueryRef": "Test RMSE MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test WAPE"
+                }
+              },
+              "queryRef": "DimModel.Test WAPE",
+              "nativeQueryRef": "Test WAPE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test Bias MW"
+                }
+              },
+              "queryRef": "DimModel.Test Bias MW",
+              "nativeQueryRef": "Test Bias MW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimModel"
+                    }
+                  },
+                  "Property": "Test Coverage 80"
+                }
+              },
+              "queryRef": "DimModel.Test Coverage 80",
+              "nativeQueryRef": "Test Coverage 80"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DimModel"
+                  }
+                },
+                "Property": "Model"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    }
+  }
+}
