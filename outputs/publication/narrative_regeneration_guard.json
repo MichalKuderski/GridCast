@@ -1,0 +1,7 @@
+{
+  "checked_at_utc": "2026-11-02T01:20:58.375260+00:00",
+  "status": "passed",
+  "unchanged_snapshot_preserves_verified_final_documents": true,
+  "changed_source_rejects_preserved_service_claims": true,
+  "method": "Actual narrative builder executed twice against isolated temporary copies; canonical source files and finalized public documents unchanged."
+}

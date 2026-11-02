@@ -23,6 +23,21 @@ def main():
         service_verified = service_verified and source_match and model_match
     except (OSError, KeyError, TypeError, ValueError):
         service_verified = False
+    # Reproduction must not overwrite the reviewed public career/case-study
+    # copy with a preliminary draft. Preserve only byte-verified documents for
+    # the same validated data/model snapshot; changed inputs require new review.
+    finalized = {}
+    try:
+        publication = json.loads((ROOT / 'outputs/publication/anonymous_access.json').read_text())
+        verified = {row['path']: row['sha256'] for row in publication.get('checks', [])
+                    if 'path' in row and row.get('matches_local')}
+        if service_verified and publication.get('status') == 'passed_anonymous_public_access':
+            for name in ['reports/CASE_STUDY.md', 'docs/PORTFOLIO_AND_CAREER.md']:
+                content = (ROOT / name).read_bytes()
+                if hashlib.sha256(content).hexdigest() == verified.get(name):
+                    finalized[name] = content.decode('utf-8')
+    except (OSError, KeyError, TypeError, ValueError):
+        pass
     s = json.loads((ROOT / "outputs/run_summary.json").read_text())
     boot = json.loads((ROOT / "outputs/paired_bootstrap.json").read_text())
     residual = json.loads((ROOT / "outputs/residual_autocorrelation.json").read_text())
@@ -132,7 +147,7 @@ Source: U.S. Energy Information Administration, Form EIA-930 PJM workbook, retri
             "Official report JSON schemas and field/relationship checks pass, and exported metric expectations reconcile to Python. Runtime evidence applies only to the source/model hashes it verified; a changed bundle needs new Service or Desktop checks. **Windows PBIP/Desktop compatibility remains untested.** Follow [the Power BI handoff](../powerbi/README.md) and [the snapshot-scoped Service receipt](../powerbi/SERVICE_VALIDATION.md).",
             "The separate saved **Power BI Service** report has four pages, 35 visuals and 28 persistent measures. A completed manual refresh, real standalone DAX parity, metadata exports, observed model/date filter states and genuine report screenshots are verified in [the Service receipt](../powerbi/SERVICE_VALIDATION.md). DailyNaive is the stronger of the two naive comparators, while the selected model has lower MAE than DailyNaive. **Windows PBIP/Desktop compatibility remains untested**; no PBIX download/export or public sharing is claimed.\n\n![Actual Service test scorecard](../outputs/verification/screenshots/06_service_test_page.jpg)"
         )
-    (ROOT / "reports/CASE_STUDY.md").write_text(case)
+    (ROOT / "reports/CASE_STUDY.md").write_text(finalized.get('reports/CASE_STUDY.md', case))
     career = f"""# Portfolio and career materials
 
 ## Status to use now
@@ -195,7 +210,7 @@ Include a compact evidence strip: 2019–2025 observation period · 61,368 sourc
             "**What remains before publication?** Native Power BI validation and screenshots, a reviewed repository/portfolio link, and a final claim check. No post has been sent automatically.",
             "**What remains before public publication?** Separate release authorization and unauthenticated repository/portfolio link checks. Service validation is complete at its documented scope; Windows compatibility remains an unclaimed separate gate. No public post was sent automatically."
         )
-    (ROOT / "docs/PORTFOLIO_AND_CAREER.md").write_text(career)
+    (ROOT / "docs/PORTFOLIO_AND_CAREER.md").write_text(finalized.get('docs/PORTFOLIO_AND_CAREER.md', career))
     print("Wrote evidence-backed case study and career drafts")
 
 

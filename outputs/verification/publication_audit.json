@@ -1,5 +1,5 @@
 {
-  "audited_at_utc": "2026-11-02T01:18:31.039678+00:00",
+  "audited_at_utc": "2026-11-02T01:21:06.499689+00:00",
   "status": "passed_with_external_gates_open",
   "scope": "Read-only local evidence audit; only this script and its JSON receipt are authored by this audit.",
   "checks": [
@@ -150,7 +150,7 @@
       "check": "public_material_private_path_scan",
       "status": "passed",
       "evidence": {
-        "scanned_text_files": 192,
+        "scanned_text_files": 193,
         "absolute_path_hits": [],
         "credential_signature_hits": [],
         "limitation": "Heuristic signature/path scan; not a complete secret or personal-data certification."
