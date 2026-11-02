@@ -1,5 +1,5 @@
 {
-  "audited_at_utc": "2026-11-02T01:07:49.138779+00:00",
+  "audited_at_utc": "2026-11-02T01:18:31.039678+00:00",
   "status": "passed_with_external_gates_open",
   "scope": "Read-only local evidence audit; only this script and its JSON receipt are authored by this audit.",
   "checks": [
@@ -140,17 +140,17 @@
       "check": "relative_artifact_links_resolve",
       "status": "passed",
       "evidence": {
-        "checked_local_links": 78,
+        "checked_local_links": 87,
         "broken": [],
         "external_links_checked": false,
-        "external_link_count": 14
+        "external_link_count": 19
       }
     },
     {
       "check": "public_material_private_path_scan",
       "status": "passed",
       "evidence": {
-        "scanned_text_files": 189,
+        "scanned_text_files": 192,
         "absolute_path_hits": [],
         "credential_signature_hits": [],
         "limitation": "Heuristic signature/path scan; not a complete secret or personal-data certification."
@@ -211,10 +211,14 @@
       }
     },
     {
-      "check": "public_link_validation_not_claimed",
+      "check": "public_link_access_evidence",
       "status": "passed",
       "evidence": {
-        "public_links": "No published repository/portfolio link is available to validate in this local audit."
+        "receipt": "outputs/publication/anonymous_access.json",
+        "method": "Python urllib HTTPS GET, explicit public User-Agent; no Cookie or Authorization headers, no cookie jar or authenticated GitHub client. Artifact hashes use the immutable published commit; anonymous public main-ref must match it at check time.",
+        "checks": 16,
+        "current_artifact_hashes_match": true,
+        "limitation": "Retained anonymous network observations, not a new request or permanent availability guarantee."
       }
     },
     {
@@ -401,7 +405,10 @@
       "evidence": {
         "packages": 54,
         "runner": "ubuntu-latest",
-        "hosted_execution_verified": false
+        "hosted_execution_verified": true,
+        "validated_source_commit": "c7d0437071803ba71ff0b5e1b69ebccd7254cbc4",
+        "hosted_receipt": "outputs/publication/hosted_ci.json",
+        "scope": "Retained successful GitHub CI status bound to recorded unchanged workflow, dependency, code, test and canonical-source inputs; not Windows or live Power BI execution."
       }
     },
     {
@@ -428,8 +435,8 @@
   "findings": [],
   "remaining_unperformed_gates": [
     "Separate Windows Power BI Desktop/PBIP compatibility acceptance; completed Service checks do not establish it.",
-    "Hosted CI execution and Windows Python/native Desktop validation; Linux result is recorded separately in linux_reproduction.json.",
-    "Public repository/portfolio access and intended audience review; no external publication performed.",
+    "Windows Python/native Desktop validation remains unclaimed; saved hosted Linux CI evidence is reported separately when available.",
+    "Public-link access can change after the recorded anonymous checks; interactive Power BI publication remains outside this GitHub release.",
     "Power BI Service access after the unexpected automatic trial expires; no continued access claim."
   ],
   "summary": {

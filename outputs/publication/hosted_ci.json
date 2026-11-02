@@ -1,0 +1,84 @@
+{
+  "checked_at_utc": "2026-11-02T01:16:52.616451+00:00",
+  "method": "Anonymous public GitHub Actions REST response; no Authorization or Cookie headers",
+  "workflow": "Reproduce historical benchmark",
+  "runs": [
+    {
+      "id": 41371448723,
+      "name": "Reproduce historical benchmark",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c7d0437071803ba71ff0b5e1b69ebccd7254cbc4",
+      "html_url": "https://github.com/MichalKuderski/GridCast/actions/runs/41371448723"
+    },
+    {
+      "id": 41371052532,
+      "name": "Reproduce historical benchmark",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "940a833cc3c4e26faca13115a89e48985d4f4fd1",
+      "html_url": "https://github.com/MichalKuderski/GridCast/actions/runs/41371052532"
+    }
+  ],
+  "scope": "Remote CI status for recorded commits. Service/Windows and public interactive Power BI remain distinct.",
+  "validated_source_commit": "c7d0437071803ba71ff0b5e1b69ebccd7254cbc4",
+  "validated_input_hashes": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "121a0799505b3e0243f5f98008b707f703cc6c3b5620b2bfbd79c29abbaea9e2"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "sha256": "c65df70b350b0ae2dca12e1f133aaf7de6a91a815a9c1ddc23d83e08fbc015b9"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "7f2b9159ecc17b8f831f3f79cdd7ffeff7018e8a46c21ceecae3911714bd8fcf"
+    },
+    {
+      "path": "scripts/run_pipeline.py",
+      "sha256": "b2bf8820cafb4622d30599a1dfa68abac144c784692817790b1aa9b469ce2685"
+    },
+    {
+      "path": "scripts/build_analysis.py",
+      "sha256": "9750a031657a53f60ce9eb044ed3f6c8ea06ea12d15ec62694f5cf2914bcc90c"
+    },
+    {
+      "path": "powerbi/validate_assets.py",
+      "sha256": "c573ca52bcb2d8eb09da9cd2003a1bbf6bf3ae66e3040ce09e22c213284d97b1"
+    },
+    {
+      "path": "powerbi/reconcile_exports.py",
+      "sha256": "821106d2113e2796e02d1129886c87771868e30f8d0b547b8b10563ae4ef9a1f"
+    },
+    {
+      "path": "powerbi/GridCast.SemanticModel/model.bim",
+      "sha256": "e1c2d779839c2121da2e27187f29d7b004ff33ec64605292b670a999d88d407b"
+    },
+    {
+      "path": "data/raw/eia_pjm_hourly_2019_2025.csv",
+      "sha256": "83ee1f5accd837f0f7aadd41637bb0d5bb79607ad54415b0e1b3f21e269ff9f7"
+    },
+    {
+      "path": "src/gridcast/__init__.py",
+      "sha256": "5c89bdd9f9c88b547f5f1b232b18f2133980bf52420d1e2617e123255980833f"
+    },
+    {
+      "path": "src/gridcast/core.py",
+      "sha256": "45062787ded16204ee7db38cf9988d0ef3248513422d70b9e0bda9125a920e2e"
+    },
+    {
+      "path": "tests/test_robustness.py",
+      "sha256": "cf702520df1fd34ff1d5c6aa1ac3c8dac02c7d3ada24a7a743be74d0614359bf"
+    },
+    {
+      "path": "tests/test_core.py",
+      "sha256": "06b86eb031db7a9f3d871380980c75d1672607237d57ddd983f21842055a44dd"
+    },
+    {
+      "path": "tests/test_pipeline_contract.py",
+      "sha256": "249e6d2885c50e0aa4d442f4df7506f1e2981852bd9d253220a332a5e69523a5"
+    }
+  ],
+  "current_validated_inputs_match": true
+}

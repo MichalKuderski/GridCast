@@ -340,11 +340,22 @@ def main():
 
     lock = (ROOT / 'requirements-lock.txt').read_text()
     workflow = (ROOT / '.github/workflows/validate.yml').read_text()
+    hosted_path = ROOT / 'outputs/publication/hosted_ci.json'
+    hosted = json.loads(hosted_path.read_text()) if hosted_path.exists() else {}
+    hosted_inputs = hosted.get('validated_input_hashes', [])
+    hosted_verified = bool(hosted_inputs) and all(sha256(row['path']) == row['sha256'] for row in hosted_inputs) and any(
+        row.get('head_sha') == hosted.get('validated_source_commit') and
+        row.get('status') == 'completed' and row.get('conclusion') == 'success'
+        for row in hosted.get('runs', []))
     lock_lines = [line.strip() for line in lock.splitlines() if line.strip() and not line.startswith('#')]
     pins = [bool(re.fullmatch(r'[A-Za-z0-9_.-]+==[^;\s]+(?:\s*;.*)?', line)) for line in lock_lines]
     record('declared_ci_uses_pinned_environment', all(pins) and 'python-version:' in workflow and "'3.12'" in workflow and
            'pip install -r requirements-lock.txt' in workflow and 'unittest discover' in workflow,
-           {'packages': len(lock_lines), 'runner': 'ubuntu-latest', 'hosted_execution_verified': False})
+           {'packages': len(lock_lines), 'runner': 'ubuntu-latest',
+            'hosted_execution_verified': hosted_verified,
+            'validated_source_commit': hosted.get('validated_source_commit'),
+            'hosted_receipt': str(hosted_path.relative_to(ROOT)) if hosted_path.exists() else None,
+            'scope': 'Retained successful GitHub CI status bound to recorded unchanged workflow, dependency, code, test and canonical-source inputs; not Windows or live Power BI execution.'})
     platform_pins = [line for line in lock_lines if line.split('==')[0].lower() in {'appnope', 'pexpect', 'ptyprocess'} and ';' not in line]
     checks.append({'check': 'cross_platform_lock_scope', 'status': 'informational',
                    'evidence': {'unconditional_platform_associated_pins': platform_pins,
@@ -364,7 +375,7 @@ def main():
         'findings': findings,
         'remaining_unperformed_gates': [
             'Separate Windows Power BI Desktop/PBIP compatibility acceptance; completed Service checks do not establish it.',
-            'Hosted CI execution and Windows Python/native Desktop validation; Linux result is recorded separately in linux_reproduction.json.',
+            'Windows Python/native Desktop validation remains unclaimed; saved hosted Linux CI evidence is reported separately when available.',
             'Public-link access can change after the recorded anonymous checks; interactive Power BI publication remains outside this GitHub release.',
             'Power BI Service access after the unexpected automatic trial expires; no continued access claim.',
         ],

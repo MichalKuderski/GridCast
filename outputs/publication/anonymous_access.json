@@ -1,18 +1,19 @@
 {
   "status": "passed_anonymous_public_access",
-  "checked_at_utc": "2026-11-02T01:11:31.990832+00:00",
-  "method": "Python urllib HTTPS GET with explicit public User-Agent, no Cookie or Authorization headers, no cookie jar or authenticated GitHub client",
+  "checked_at_utc": "2026-11-02T01:15:15.772412+00:00",
+  "source_commit": "c7d0437071803ba71ff0b5e1b69ebccd7254cbc4",
   "repository": "https://github.com/MichalKuderski/GridCast",
   "case_study": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
   "recruiter_guide": "https://github.com/MichalKuderski/GridCast/blob/main/docs/RECRUITER_GUIDE.md",
-  "public_sharing_scope": "Public GitHub repository, rendered Markdown case study and retained screenshots; interactive Power BI report remains private",
+  "method": "Python urllib HTTPS GET, explicit public User-Agent; no Cookie or Authorization headers, no cookie jar or authenticated GitHub client. Artifact hashes use the immutable published commit; anonymous public main-ref must match it at check time.",
+  "public_sharing_scope": "GitHub repository, rendered case study, screenshots and downloads; interactive Power BI report remains private",
   "checks": [
     {
       "label": "repository",
       "url": "https://github.com/MichalKuderski/GridCast",
       "final_url": "https://github.com/MichalKuderski/GridCast",
       "http_status": 200,
-      "bytes": 274803,
+      "bytes": 274703,
       "content_type": "text/html; charset=utf-8",
       "project_text_present": true,
       "login_redirect": false
@@ -22,7 +23,7 @@
       "url": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
       "final_url": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
       "http_status": 200,
-      "bytes": 246570,
+      "bytes": 247261,
       "content_type": "text/html; charset=utf-8",
       "project_text_present": true,
       "login_redirect": false
@@ -40,25 +41,25 @@
     {
       "label": "raw_artifact",
       "path": "README.md",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/README.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/README.md",
       "http_status": 200,
-      "bytes": 9256,
-      "sha256": "8b86c3219cd444740efc8476cbcd22bcf642608c8bbc321314dd510c5f6e0956",
+      "bytes": 9207,
+      "sha256": "a883ef577ad4efb58220fdb9d6da77f312e6a3536b3a491e4b1c95287193dba6",
       "matches_local": true
     },
     {
       "label": "raw_artifact",
       "path": "reports/CASE_STUDY.md",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/reports/CASE_STUDY.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/reports/CASE_STUDY.md",
       "http_status": 200,
-      "bytes": 10815,
-      "sha256": "68d683df2aeac64424f52567e254de40ab113650acd69f5fca3244f12e7d50df",
+      "bytes": 10978,
+      "sha256": "dbfec6abef413381612b5945593a85de53955b83883eea43c09ed5555ac987e3",
       "matches_local": true
     },
     {
       "label": "raw_artifact",
       "path": "docs/RECRUITER_GUIDE.md",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/docs/RECRUITER_GUIDE.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/docs/RECRUITER_GUIDE.md",
       "http_status": 200,
       "bytes": 1494,
       "sha256": "ff2d64c26d512159aa1eb3fe5af2ff4e75dca8a7a7e7b27e54efa1fa0342641e",
@@ -66,8 +67,35 @@
     },
     {
       "label": "raw_artifact",
+      "path": "docs/PORTFOLIO_AND_CAREER.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/docs/PORTFOLIO_AND_CAREER.md",
+      "http_status": 200,
+      "bytes": 3269,
+      "sha256": "2f9d5fdb7dd73318cf81cff1be654fb430520d61fdb34a56b259f8b3f52c0fd6",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "docs/PUBLIC_RELEASE.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/docs/PUBLIC_RELEASE.md",
+      "http_status": 200,
+      "bytes": 2373,
+      "sha256": "da7b75b76f4d71655077b35a53b86966c911837e7a112a5b02060be7d529afde",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "docs/PUBLICATION_CHECKLIST.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/docs/PUBLICATION_CHECKLIST.md",
+      "http_status": 200,
+      "bytes": 17140,
+      "sha256": "66e0f71c028599401702dcdf6761960a02e3b80fab1798c08b96bcf6248701bc",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
       "path": "notebooks/GridCast_Analysis.ipynb",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/notebooks/GridCast_Analysis.ipynb",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/notebooks/GridCast_Analysis.ipynb",
       "http_status": 200,
       "bytes": 922140,
       "sha256": "5002d3682bf5a1066de8ddf1cc42cfa46f0cff73a554ad728ec43affcffaba22",
@@ -76,7 +104,7 @@
     {
       "label": "raw_artifact",
       "path": "outputs/verification/screenshots/06_service_test_page.jpg",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/06_service_test_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/outputs/verification/screenshots/06_service_test_page.jpg",
       "http_status": 200,
       "bytes": 101695,
       "sha256": "c140c814ed9b8eaffcf1528a3318899515eed65db529538d87b7ffd04f896cce",
@@ -85,7 +113,7 @@
     {
       "label": "raw_artifact",
       "path": "outputs/verification/screenshots/09_service_diagnostics_page.jpg",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/outputs/verification/screenshots/09_service_diagnostics_page.jpg",
       "http_status": 200,
       "bytes": 101171,
       "sha256": "8b8f81de2983c7a5cb14f4ccc2de6e1829b7b8ef210698806fb874221fcc9f6d",
@@ -94,7 +122,7 @@
     {
       "label": "raw_artifact",
       "path": "outputs/verification/screenshots/10_service_history_page.jpg",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/10_service_history_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/outputs/verification/screenshots/10_service_history_page.jpg",
       "http_status": 200,
       "bytes": 108296,
       "sha256": "a255d5bfd58f23eca157413a1623d7c1f61f38f78a0424079aa0bf9b1145b30b",
@@ -103,7 +131,7 @@
     {
       "label": "raw_artifact",
       "path": "outputs/verification/screenshots/11_service_future_page.jpg",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/11_service_future_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/outputs/verification/screenshots/11_service_future_page.jpg",
       "http_status": 200,
       "bytes": 102828,
       "sha256": "39fb0f18dad018d83cbc8959b269821dbf27a662ef27c45ddeeea7bfe6839298",
@@ -112,15 +140,22 @@
     {
       "label": "raw_artifact",
       "path": "data/powerbi/FactForecast.csv",
-      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/data/powerbi/FactForecast.csv",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/c7d0437071803ba71ff0b5e1b69ebccd7254cbc4/data/powerbi/FactForecast.csv",
       "http_status": 200,
       "bytes": 14511035,
       "sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
       "matches_local": true
+    },
+    {
+      "label": "anonymous_main_reference",
+      "http_status": 200,
+      "observed_commit": "c7d0437071803ba71ff0b5e1b69ebccd7254cbc4",
+      "matches_expected_commit": true
     }
   ],
   "limitations": [
-    "Single external network vantage; not a guarantee against later GitHub outages, link changes or access restrictions.",
-    "Does not establish public interactive Power BI access or Windows Desktop compatibility."
+    "One network vantage and recorded time, not a permanent availability guarantee.",
+    "A later evidence-only commit can add this receipt without changing the verified artifact bytes.",
+    "No Windows Desktop compatibility or public interactive Power BI access is established."
   ]
 }
