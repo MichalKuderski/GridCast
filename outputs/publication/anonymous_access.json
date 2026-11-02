@@ -1,0 +1,126 @@
+{
+  "status": "passed_anonymous_public_access",
+  "checked_at_utc": "2026-11-02T01:11:31.990832+00:00",
+  "method": "Python urllib HTTPS GET with explicit public User-Agent, no Cookie or Authorization headers, no cookie jar or authenticated GitHub client",
+  "repository": "https://github.com/MichalKuderski/GridCast",
+  "case_study": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
+  "recruiter_guide": "https://github.com/MichalKuderski/GridCast/blob/main/docs/RECRUITER_GUIDE.md",
+  "public_sharing_scope": "Public GitHub repository, rendered Markdown case study and retained screenshots; interactive Power BI report remains private",
+  "checks": [
+    {
+      "label": "repository",
+      "url": "https://github.com/MichalKuderski/GridCast",
+      "final_url": "https://github.com/MichalKuderski/GridCast",
+      "http_status": 200,
+      "bytes": 274803,
+      "content_type": "text/html; charset=utf-8",
+      "project_text_present": true,
+      "login_redirect": false
+    },
+    {
+      "label": "case_study",
+      "url": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
+      "final_url": "https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md",
+      "http_status": 200,
+      "bytes": 246570,
+      "content_type": "text/html; charset=utf-8",
+      "project_text_present": true,
+      "login_redirect": false
+    },
+    {
+      "label": "recruiter_guide",
+      "url": "https://github.com/MichalKuderski/GridCast/blob/main/docs/RECRUITER_GUIDE.md",
+      "final_url": "https://github.com/MichalKuderski/GridCast/blob/main/docs/RECRUITER_GUIDE.md",
+      "http_status": 200,
+      "bytes": 184376,
+      "content_type": "text/html; charset=utf-8",
+      "project_text_present": true,
+      "login_redirect": false
+    },
+    {
+      "label": "raw_artifact",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/README.md",
+      "http_status": 200,
+      "bytes": 9256,
+      "sha256": "8b86c3219cd444740efc8476cbcd22bcf642608c8bbc321314dd510c5f6e0956",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "reports/CASE_STUDY.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/reports/CASE_STUDY.md",
+      "http_status": 200,
+      "bytes": 10815,
+      "sha256": "68d683df2aeac64424f52567e254de40ab113650acd69f5fca3244f12e7d50df",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "docs/RECRUITER_GUIDE.md",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/docs/RECRUITER_GUIDE.md",
+      "http_status": 200,
+      "bytes": 1494,
+      "sha256": "ff2d64c26d512159aa1eb3fe5af2ff4e75dca8a7a7e7b27e54efa1fa0342641e",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "notebooks/GridCast_Analysis.ipynb",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/notebooks/GridCast_Analysis.ipynb",
+      "http_status": 200,
+      "bytes": 922140,
+      "sha256": "5002d3682bf5a1066de8ddf1cc42cfa46f0cff73a554ad728ec43affcffaba22",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "outputs/verification/screenshots/06_service_test_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/06_service_test_page.jpg",
+      "http_status": 200,
+      "bytes": 101695,
+      "sha256": "c140c814ed9b8eaffcf1528a3318899515eed65db529538d87b7ffd04f896cce",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/09_service_diagnostics_page.jpg",
+      "http_status": 200,
+      "bytes": 101171,
+      "sha256": "8b8f81de2983c7a5cb14f4ccc2de6e1829b7b8ef210698806fb874221fcc9f6d",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "outputs/verification/screenshots/10_service_history_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/10_service_history_page.jpg",
+      "http_status": 200,
+      "bytes": 108296,
+      "sha256": "a255d5bfd58f23eca157413a1623d7c1f61f38f78a0424079aa0bf9b1145b30b",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "outputs/verification/screenshots/11_service_future_page.jpg",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/outputs/verification/screenshots/11_service_future_page.jpg",
+      "http_status": 200,
+      "bytes": 102828,
+      "sha256": "39fb0f18dad018d83cbc8959b269821dbf27a662ef27c45ddeeea7bfe6839298",
+      "matches_local": true
+    },
+    {
+      "label": "raw_artifact",
+      "path": "data/powerbi/FactForecast.csv",
+      "url": "https://raw.githubusercontent.com/MichalKuderski/GridCast/main/data/powerbi/FactForecast.csv",
+      "http_status": 200,
+      "bytes": 14511035,
+      "sha256": "879092619d5e5face78a8416f1f2f1010cbe47538bd2672fc6476147c420f78f",
+      "matches_local": true
+    }
+  ],
+  "limitations": [
+    "Single external network vantage; not a guarantee against later GitHub outages, link changes or access restrictions.",
+    "Does not establish public interactive Power BI access or Windows Desktop compatibility."
+  ]
+}

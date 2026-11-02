@@ -92,7 +92,7 @@ Observed Service filters also reconcile visually: daily persistence shows 4,863.
 
 ![Actual Power BI Service test scorecard](../outputs/verification/screenshots/06_service_test_page.jpg)
 
-[The Service receipt](../powerbi/SERVICE_VALIDATION.md) links the history, diagnostics, future and filter screenshots, engine exports and verification scope. This proves the reconstructed Service implementation; **Windows PBIP/Desktop compatibility is still untested**, and no PBIX download/export is claimed. The report remains in the owner's workspace with no sharing links. Public publication and unauthenticated link checks remain separate.
+[The Service receipt](../powerbi/SERVICE_VALIDATION.md) links the history, diagnostics, future and filter screenshots, engine exports and verification scope. This proves the reconstructed Service implementation; **Windows PBIP/Desktop compatibility is still untested**, and no PBIX download/export is claimed. The report remains in the owner's workspace with no sharing links. The repository and this case study are public; anonymous repository, case-study, screenshot and raw-download checks are recorded in [the release receipt](../docs/PUBLIC_RELEASE.md). The interactive Power BI report remains private.
 
 The next-day output is a historical, unscored illustration for **1 January 2026 UTC**, based on the end of the 2025 snapshot. It is not today's forecast.
 

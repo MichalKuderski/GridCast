@@ -89,7 +89,7 @@ Describe the local PBIP as a **source project prepared for Windows Desktop valid
 - [x] Recommendations are proportional to the evidence, such as analyst review of weak hours or a proposed next experiment.
 - [x] No claim implies deployed production use, avoided outages, improved reliability, procurement savings, price forecasts, or emissions reductions unless independently implemented and measured.
 - [x] Scope and status are accurate: one regional historical prototype, any unperformed native BI checks, and any unimplemented weather/deployment extension are disclosed.
-- [ ] The repository and portfolio links work for an unauthenticated intended reader; downloads and screenshots open correctly.
+- [x] Public repository and rendered case-study links return HTTP 200 without authentication; four dashboard screenshots, the executed notebook and raw data downloads match local SHA256 values. See `outputs/publication/anonymous_access.json`. This does not claim a public interactive Power BI link.
 - [x] The final resume/LinkedIn wording reflects work actually completed and tested. Proposed future work is not phrased in the past tense.
 
 ## Suggested evidence receipt
@@ -114,6 +114,6 @@ Record the following beside the published release or case study:
 | Screenshot locations and inspected pages | outputs/verification/screenshots; actual relationships/refresh 03/04, all four Service pages and two filter states; Python chart figures also inspected |
 | Remaining limitations or unperformed checks | Nine Windows Desktop checks, PBIX download/export, public release authorization and unauthenticated links, exhaustive accessibility and post-trial Service access; full-precision per-hour future CSV download was not completed |
 
-Follow-up evidence: outputs/verification/REVIEW_2026-10-31.md is the historical pre-Service audit. Current runtime, metadata, visual and access receipts document the subsequent Service pass. Windows compatibility remains untested, public sharing remains unauthorized, and no unauthenticated public link has been validated.
+Follow-up evidence: outputs/verification/REVIEW_2026-10-31.md is the historical pre-Service audit. Current runtime, metadata, visual and access receipts document the subsequent Service pass. Windows compatibility remains untested. Public GitHub repository/case-study publication was authorized on 1 November 2026 and anonymous access was verified; interactive Power BI sharing remains separate.
 
 This receipt is a factual handoff record. It does not require publishing to an external service or sending a post before the underlying work is ready for review.

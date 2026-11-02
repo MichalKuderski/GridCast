@@ -5,6 +5,8 @@
 **GridCast | Energy Demand Forecasting & Power BI**  
 Python · pandas · scikit-learn · Power BI Service · DAX · Power Query
 
+[Repository](https://github.com/MichalKuderski/GridCast) · [Case study](https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md)
+
 - Built a reproducible Python pipeline for hourly PJM electricity-demand forecasting using official EIA-930 data; audited 61,368 hourly slots and preserved source provenance and missing-target exclusions.
 - Achieved **4.38% WAPE** and **4,219 MW MAE** across **8,735 held-out 2025 hours**, reducing MAE **13.2%** versus a daily seasonal naïve baseline through chronological model selection.
 - Developed a **four-page Power BI Service report with 28 DAX measures**; reconciled engine results against Python, verified refresh and model/date filters, and communicated uncertainty and high-demand forecast failures.
@@ -28,7 +30,8 @@ The most useful finding was a limitation: nominal 80% intervals covered 78.6% ov
 
 This is a historical forecasting study and decision-support prototype, not a live operational forecasting system.
 
-Code and case study: [Public links will be inserted after anonymous-access verification.]
+Code: https://github.com/MichalKuderski/GridCast
+Case study: https://github.com/MichalKuderski/GridCast/blob/main/reports/CASE_STUDY.md
 
 #DataAnalytics #DataScience #PowerBI #Python #TimeSeries #Energy
 

@@ -12,7 +12,7 @@ A reproducible historical forecasting study and Power BI decision-support protot
 
 ![GridCast Power BI Service test scorecard](outputs/verification/screenshots/06_service_test_page.jpg)
 
-**What to assess:** chronological forecasting evaluation, reproducible Python analysis, data-quality decisions, dimensional modeling, DAX, and clear communication of uncertainty. The screenshots and code can be reviewed without a Power BI account once this repository is public. The interactive Service report remains private.
+**What to assess:** chronological forecasting evaluation, reproducible Python analysis, data-quality decisions, dimensional modeling, DAX, and clear communication of uncertainty. The screenshots and code are public and can be reviewed without a Power BI account. The interactive Service report remains private.
 
 ## Verification update · 31 October–1 November 2026
 
@@ -20,7 +20,7 @@ A deeper review reproduced the full model pipeline and notebook on both macOS an
 
 The observed 2025 result remains unchanged. The 25 missing test actuals are one contiguous gap around the autumn clock change, and high-demand interval coverage is only47.95%. A fixed-specification sensitivity retaining the four manual training spikes changes MAE by0.16%; this does not confirm the spikes as operator errors. See the [review and remaining gates](outputs/verification/REVIEW_2026-10-31.md) and [robustness evidence](outputs/verification/ROBUSTNESS_REVIEW.md).
 
-The browser validation created and saved a separate Service model/report from the frozen exports. Four report pages and the baseline/June filter states were inspected and captured. The default landing page is demand history. [Service evidence and limits](powerbi/SERVICE_VALIDATION.md) distinguish these completed checks from untested Windows compatibility, PBIX download/export, and public-link access. The report remains in the owner's workspace with no sharing links; The interactive Power BI Service report has not been shared publicly. Repository and case-study publication were authorized separately on 1 November 2026. An unexpected automatic trial notice appeared in the Service; no Start trial, upgrade, billing or terms action was taken, and access after expiry has not been established.
+The browser validation created and saved a separate Service model/report from the frozen exports. Four report pages and the baseline/June filter states were inspected and captured. The default landing page is demand history. [Service evidence and limits](powerbi/SERVICE_VALIDATION.md) distinguish these completed checks from untested Windows compatibility, PBIX download/export, and public-link access. The interactive Power BI Service report remains private in the owner's workspace with no sharing links. Repository and case-study publication were authorized separately on 1 November 2026. An unexpected automatic trial notice appeared in the Service; no Start trial, upgrade, billing or terms action was taken, and access after expiry has not been established.
 
 ## Start here
 

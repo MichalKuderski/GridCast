@@ -246,8 +246,24 @@ def main():
     native_checks = re.findall(r'^- \[([xX ])\] (.+)$', native_section, flags=re.M)
     record('unperformed_native_checks_are_open', bool(native_checks) and not any(state.lower() == 'x' for state, _ in native_checks),
            {'native_items': len(native_checks), 'checked_native_items': sum(state.lower() == 'x' for state, _ in native_checks)})
-    record('public_link_validation_not_claimed', bool(re.search(r'^- \[ \] The repository and portfolio links work', checklist, re.M)),
-           {'public_links': 'No published repository/portfolio link is available to validate in this local audit.'})
+    public_path = ROOT / 'outputs/publication/anonymous_access.json'
+    if public_path.exists():
+        public = json.loads(public_path.read_text())
+        public_checks = public.get('checks', [])
+        matching_artifacts = all(sha256(row['path']) == row['sha256']
+                                 for row in public_checks if 'path' in row)
+        record('public_link_access_evidence',
+               public.get('status') == 'passed_anonymous_public_access' and
+               len(public_checks) >= 12 and matching_artifacts and
+               all(row['http_status'] == 200 and not row.get('login_redirect', False) and
+                   row.get('matches_local', True) for row in public_checks),
+               {'receipt': str(public_path.relative_to(ROOT)),
+                'method': public.get('method'), 'checks': len(public_checks),
+                'current_artifact_hashes_match': matching_artifacts,
+                'limitation': 'Retained anonymous network observations, not a new request or permanent availability guarantee.'})
+    else:
+        record('public_link_validation_not_claimed', bool(re.search(r'^- \[ \] The repository and portfolio links work', checklist, re.M)),
+               {'public_links': 'No published repository/portfolio link is available to validate in this local audit.'})
 
     # These are retained observations and comparison receipts, not a new engine run.
     service = read_json('outputs/verification/service_session_status.json')
@@ -349,7 +365,7 @@ def main():
         'remaining_unperformed_gates': [
             'Separate Windows Power BI Desktop/PBIP compatibility acceptance; completed Service checks do not establish it.',
             'Hosted CI execution and Windows Python/native Desktop validation; Linux result is recorded separately in linux_reproduction.json.',
-            'Public repository/portfolio access and intended audience review; no external publication performed.',
+            'Public-link access can change after the recorded anonymous checks; interactive Power BI publication remains outside this GitHub release.',
             'Power BI Service access after the unexpected automatic trial expires; no continued access claim.',
         ],
         'summary': computed,
